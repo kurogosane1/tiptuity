@@ -16,5 +16,10 @@
   "bugs": {
     "url": "https://github.com/kurogosane1/tiptuity/issues"
   },
-  "homepage": "https://github.com/kurogosane1/tiptuity#readme"
+  "homepage": "https://github.com/kurogosane1/tiptuity#readme",
+  "dependencies": {
+    "body-parser": "^1.17.1",
+    "express": "^4.15.2",
+    "stripe": "^4.17.0"
+  }
 }
