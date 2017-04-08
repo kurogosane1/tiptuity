@@ -8,7 +8,7 @@ var stripe = require('stripe')(keys.testSecretKey);
 var PORT = process.env.PORT || 5000;
 
 // Serve static content for the app from the "public" directory in the application directory.
-app.use(express.static(process.cwd() + "/public"));
+// app.use(express.static(process.cwd() + "/views/layout"));
 
 // BodyParser makes it possible for our server to interpret data sent to it.
 // The code below is pretty standard.
