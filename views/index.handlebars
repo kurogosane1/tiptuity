@@ -1,0 +1,49 @@
+<header>
+  <h1>Welcome to tip TipTuity</h1>
+</header>
+
+
+
+<form action="/charge" method='post' class='need' method='GET'>
+  <label>
+    <span>Name</span>
+    <input id='cardName' type='tel' name="cardholderName" class="field" placeholder="Jane Doe" />
+  </label>
+  <label>
+    <span>Phone</span>
+    <input id='cardPhone' class="field" placeholder="(123) 456-7890" type="tel" />
+  </label>
+  <label>
+    <span>ZIP code</span>
+    <input id='cardZip' name="cardZip" class="field" placeholder="94110" />
+  </label>
+  <label>
+    <span>CVV</span>
+    <input id='cardCvc' name="cardCvc" class="field" placeholder="XXX" />
+  </label>
+  <label>
+    <span>Expiry Month</span>
+    <input id='cardMonth' name="cardExpMonth" class="field" placeholder="XX" min='1' max='12' type='number' />
+  </label>
+  <label>
+    <span>expiry Year</span>
+    <input id='cardYear' name="cardExpYear" class="field" min= "2016" type='number' placeholder="XXXX" />
+  </label>
+  <label>
+    <span>Card</span>
+    <div id="card-element" class="field">
+      
+    <input id='cardNumber' name="cardNum" class="field"  type='number' placeholder="XXXX-XXXX-XXXX-XXXX" />
+    </div>
+  </label>
+  <label>
+     <input name ="amount" class='field' id='tip-amount'type="numbers" placeholder="0.00">
+  </label>
+  <button id='submit-button' type="submit">Submit</button> {{!--
+  <div class="outcome">
+    <div class="error"></div>
+    <div class="success">
+      Success! Your Stripe token is <span class="token"></span>
+    </div>
+  </div>--}}
+</form>

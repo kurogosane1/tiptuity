@@ -1,25 +1,19 @@
 {
   "name": "tiptuity",
   "version": "1.0.0",
-  "description": "A app on tipping",
+  "description": "A tipping app",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/kurogosane1/tiptuity.git"
-  },
   "author": "Syed Saad Khurshid",
-  "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/kurogosane1/tiptuity/issues"
-  },
-  "homepage": "https://github.com/kurogosane1/tiptuity#readme",
+  "license": "ISC",
   "dependencies": {
     "body-parser": "^1.17.1",
     "express": "^4.15.2",
-    "stripe": "^4.17.0"
+    "express-handlebars": "^3.0.0",
+    "strip": "^3.0.0",
+    "stripe": "^4.17.1"
   }
 }
