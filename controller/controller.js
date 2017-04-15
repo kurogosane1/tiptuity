@@ -30,8 +30,8 @@ module.exports = function (app, passport) {
 
     }),
 
-    //this is for the admin login//
-    app.post('/admin', passport.Authenticate('local-login', {
+    // this is for the admin login//
+    app.post('/admin', passport.authenticate('local-login', {
       successRedirect: '/business',
       failuireRedirect: '/admin',
       failureFlash: true
@@ -50,7 +50,8 @@ module.exports = function (app, passport) {
     })
 
   //This is where the charges would take place//
-  app.post("/charge", function (req, res) {
+  app.post("/charge/:id", function (req, res) {
+    var id= req.param.id
     var data = req.body;
     var charges = parseInt(data.amount) * 100; // for some reason sprite does not see in digits//
 

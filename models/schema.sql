@@ -18,9 +18,9 @@ CREATE TABLE IF NOT EXISTS tips
 (
 	tip_id INT(30)AUTO_INCREMENT NOT NULL PRIMARY KEY,
 	employee_id SMALLINT UNSIGNED NOT NULL REFERENCES `employees`(`employee_id`),
-	tip_amount INT(30) NOT NULL,
-	tip_fees INT(30) NOT NULL,
-	tip_final INT(30) NOT NULL	
+	tip_amount FLOAT(5,2) NOT NULL,
+	tip_fees FLOAT(5,2) NOT NULL,
+	tip_final FLOAT(5,2) NOT NULL	
 );
 
 

@@ -1,5 +1,5 @@
 var LocalStrategy = require("passport-local").Strategy;
-
+//bring in a database of users to get the newUser error removed//
 var User = require(" ../models/user");
 
 module.exports = function(passport){
