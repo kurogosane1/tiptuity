@@ -24,4 +24,9 @@ CREATE TABLE IF NOT EXISTS tips
 );
 
 
+CREATE TABLE IF NOT EXISTS user {
+    username VARCHAR(10) NOT NULL PRIMARY KEY,
+    password = VARCHAR(30) NOT NULL
+};
+
 

@@ -1,11 +1,15 @@
 //Initialize dependencies//
-var express = require("express");
-var app = express();
-var exphbs = require("express-handlebars");
-var bodyParser = require('body-parser');
-var keys = require("./controller/keys");
-var stripe = require('stripe')(keys.testSecretKey);
-var PORT = process.env.PORT || 5000;
+const express = require("express");
+const app = express();
+const exphbs = require("express-handlebars");
+const bodyParser = require('body-parser');
+const keys = require("./controller/keys");
+const stripe = require('stripe')(keys.testSecretKey);
+const session =  require("express-session");
+const PORT = process.env.PORT || 5000;
+const passport = require('passport'); 
+const LocalStrategy = require('passport-local').Strategy;
+const flash = require("connect-flash");
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(process.cwd() + "/views"));
@@ -22,11 +26,18 @@ app.use(express.static(process.cwd() + "/views"));
 
 // allow PUT and DELETE methods.
 // app.use(methodOverride("_method"));
-require("./controller/controller.js")(app);
+require("./controller/controller.js")(app, passport);
+require('./config/passport')(passport);
 
 // setup the handle bars
 app.engine("handlebars", exphbs({defaultLayout: "main" }));
 app.set("view engine", "handlebars");
+
+//Passport//
+app.use(passport.initialize());
+app.use(passport.session());
+app.use(flash());
+
 
 
 app.listen(5000, function(){
