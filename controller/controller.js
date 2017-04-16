@@ -12,7 +12,7 @@ const flash = require("connect-flash");
 // var stripe = Stripe(keys.testPublishableKey); var elements =
 // stripe.elements();
 
-module.exports = function (app, passport) {
+module.exports = function (app) {
 
 
 
@@ -24,30 +24,30 @@ module.exports = function (app, passport) {
 
     }),
 
-    app.get("/admin", function (req, res) {
+    // app.get("/admin", function (req, res) {
 
-      res.render("admin-login", {message: req.flash('loginMessage')});
+    //   res.render("admin-login", {message: req.flash('loginMessage')});
 
-    }),
+    // }),
 
     // this is for the admin login//
-    app.post('/admin', passport.authenticate('local-login', {
-      successRedirect: '/business',
-      failuireRedirect: '/admin',
-      failureFlash: true
-    })),
+    // app.post('/admin', passport.authenticate('local-login', {
+    //   successRedirect: '/business',
+    //   failuireRedirect: '/admin',
+    //   failureFlash: true
+    // })),
 
-    app.get("/business", isLoggedIn,  function (req, res) {
+    // app.get("/business", isLoggedIn,  function (req, res) {
 
-      res.render("business", {user: req.user});
+    //   res.render("business", {user: req.user});
 
-    }),
+    // }),
 
     // to redirect the user when they click logout//
-    app.get('/logout', function(req, res){
-      req.logout();
-      res.redirect('/admin');
-    })
+    // app.get('/logout', function(req, res){
+    //   req.logout();
+    //   res.redirect('/admin');
+    // })
 
   //This is where the charges would take place//
   app.post("/charge/:id", function (req, res) {
@@ -118,9 +118,9 @@ module.exports = function (app, passport) {
   })
 };
 
-function isLoggedIn(req, res, next){
-  if (req.isAuthenticated()){
-    return next();
-  }
-  res.redirect('/business')
-}
+// function isLoggedIn(req, res, next){
+//   if (req.isAuthenticated()){
+//     return next();
+//   }
+//   res.redirect('/business')
+// }

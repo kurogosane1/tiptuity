@@ -7,9 +7,9 @@ const keys = require("./controller/keys");
 const stripe = require('stripe')(keys.testSecretKey);
 const session =  require("express-session");
 const PORT = process.env.PORT || 5000;
-const passport = require('passport'); 
-const LocalStrategy = require('passport-local').Strategy;
-const flash = require("connect-flash");
+// const passport = require('passport'); 
+// const LocalStrategy = require('passport-local').Strategy;
+// const flash = require("connect-flash");
 
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(process.cwd() + "/views"));
@@ -26,17 +26,17 @@ app.use(express.static(process.cwd() + "/views"));
 
 // allow PUT and DELETE methods.
 // app.use(methodOverride("_method"));
-require("./controller/controller.js")(app, passport);
-require('./config/passport')(passport);
+require("./controller/controller.js")(app);
+// require('./config/passport')(passport);
 
 // setup the handle bars
 app.engine("handlebars", exphbs({defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 //Passport//
-app.use(passport.initialize());
-app.use(passport.session());
-app.use(flash());
+// app.use(passport.initialize());
+// app.use(passport.session());
+// app.use(flash());
 
 
 

@@ -1,4 +1,4 @@
-* {
+                            * {
   font-family: "Helvetica Neue", Helvetica, sans-serif;
   font-size: 15px;
   font-variant: normal;
@@ -19,7 +19,10 @@ body {
 
 form {
   width: 480px;
+  
   margin: 20px auto;
+  border-style: dashed;
+  border-color: black;
 }
 
 label {
@@ -59,6 +62,7 @@ label > span {
 .field:focus,
 .field.StripeElement--focus {
   border-color: #F99A52;
+  margin: 5px;
 }
 
 button {
@@ -114,4 +118,19 @@ button:active {
 .success .token {
   font-weight: 500;
   font-size: 13px;
+}
+/*
+form {
+    margin: 5px 20px;
+    padding: 20px;
+    height: 600px;
+    width: 300px;
+    border-color: black;
+    border-style: dashed;
+}
+.field{
+    margin: 5px;
+}*/
+.top-head{
+    text-align: center;
 }
