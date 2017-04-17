@@ -2,11 +2,12 @@
 const keys = require("./keys");
 const express = require("express");
 const app = express();
+const tips = require("../models/tips");
 // var token = require.body.stripeToken; //using express
 const stripe = require('stripe')(keys.testSecretKey);
 const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
-const func = require("./orm.js");
+const func = require("../config/orm");
 const flash = require("connect-flash");
 
 // var stripe = Stripe(keys.testPublishableKey); var elements =
@@ -22,6 +23,13 @@ module.exports = function (app) {
 
       res.render("index");
 
+    }),
+
+  app.get("/portal", function (req, res) {
+      
+      tips("all", res);
+      // tips("sumTips", res);
+      
     }),
 
     // app.get("/admin", function (req, res) {
