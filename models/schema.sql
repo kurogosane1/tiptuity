@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS tips_db;
 
 -- we are telling the system to use burger_db
-USE burger_db;
+USE tips_db;
 
 CREATE TABLE IF NOT EXISTS employees
 (
