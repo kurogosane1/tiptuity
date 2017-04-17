@@ -8,8 +8,21 @@ var selectAllTips = function(res){
 		if (err){
 			throw err;
 		}
+		//This is to get the total of Tips without creating a new Function
+		var sumTips= 0;
+		var length = data.length;
+		
+			for (var i =0; i< length; i++){
+				sumTips = sumTips + data[i].tip_final;
+				
+			}
+			console.log(sumTips);
+			
+	
+		
 
-		res.render("portal", { tips: data});
+
+		res.render("portal", { tips: data, sumTips: sumTips});
 	});
 };
 var selectTipsByEmp = function(res){
