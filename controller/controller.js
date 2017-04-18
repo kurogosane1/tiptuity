@@ -58,10 +58,25 @@ module.exports = function (app) {
     // })
 
   //This is where the charges would take place//
-  app.post("/charge/:id", function (req, res) {
-    var id= req.param.id
+  app.post("/charge", function (req, res) {
+    var id= 1;
+    console.log(id);
     var data = req.body;
+    var tipped = data.amount;
     var charges = parseInt(data.amount) * 100; // for some reason sprite does not see in digits//
+
+    //now we will insert into tips table//
+    var tipFee = tipped *5.9% + 0.33;
+    var tipFinal = tipped - tipFee;
+
+    var tipp = {
+      id: id,
+      tipped:tipped,
+      tipFee: tipFee,
+      tipFinal : tipFinal
+    }
+
+    
 
     //card details stored is sent to stripe//
     var cardDetail = {
@@ -118,9 +133,9 @@ module.exports = function (app) {
         })
 
       }
-
+      
     });
-
+    tips("insert", tipp);
     res.render("payment");
 
   })

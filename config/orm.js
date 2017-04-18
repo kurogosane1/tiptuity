@@ -1,6 +1,7 @@
 //requiring the connection to the database
 var connection = require("./connection.js");
-
+const express = require("express");
+const app = express();
 
 // creating different fuctions for each connection querys, inputing them into an object so it can be exported. The first function will also render to the handlebars. Rest will redirect to the app.get which goes back to the first function
 var selectAllTips = function(res){
@@ -45,14 +46,23 @@ var sumAllTips = function(res){
 };
 
 
-var insertOneTip = function(res, tips){
-	connection.query("INSERT INTO tips (employee_id) VALUES (?)", [tip_amount, tip_fees, tip_final], function(err, result) {
-    if (err) {
-      throw err;
-    }
+var insertOneTip = function(tipp){
+	console.log(tipp);
+	connection.query("INSERT INTO tips SET ? WHERE ?", {
+		tip_amount : tipp.tipped,
+		tip_fees: tipp.tipFee,
+		tip_final: tipp.tipFinal
+	},{employee_id: tipp.id,}, function(err, res){
+		if (err){
+			console.log(err);
+			throw err;
+		}else{
+		console.log("Insert successfull");
+		}
+	});
 
-    res.redirect("/portal");
-  });
+    // res.render("/payment");
+  
 };
 
 var updateOne = function(res, employee_id){
