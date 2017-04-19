@@ -7,6 +7,15 @@ var tips = function (func, res, para){
 		case "all":
 			ORM.selectAllTips(res);
 			break;
+		case "empOne":
+			ORM.selectOneTips(res);
+			break;
+		case "empTwo":
+			ORM.selectTwoTips(res);
+			break;
+		case "empThree":
+			ORM.selectThreeTips(res);
+			break;
 		case "sumTips":
 			ORM.sumAllTips(res);
 			break

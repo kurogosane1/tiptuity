@@ -94,6 +94,82 @@ var combinedAll = function (res, combinedTips) {
 	})
 
 };
+//This is for Employee id is 1//
+var selectOneTips = function (res){connection.query("SELECT employees.employee_id, tips.tip_id, employees.first_name, employees.last_name, tips.tip_amount, tips.tip_fees, tips.tip_final FROM employees INNER JOIN tips ON employees.employee_id = tips.employee_id WHERE employees.employee_id = 1", function (err, data) {
+		if (err) {
+			throw err;
+		}
+		//This is to get the total of Tips without creating a new Function
+		var sumTips = 0;
+		var length = data.length;
+
+		for (var i = 0; i < length; i++) {
+			sumTips = sumTips + data[i].tip_final;
+
+		}
+		console.log(sumTips);
+
+
+
+
+
+		res.render("empOne", {
+			tips: data,
+			sumTips: sumTips
+		});
+	});
+};
+
+//This is for the second employee Syed//
+var selectTwoTips = function (res){connection.query("SELECT employees.employee_id, tips.tip_id, employees.first_name, employees.last_name, tips.tip_amount, tips.tip_fees, tips.tip_final FROM employees INNER JOIN tips ON employees.employee_id = tips.employee_id WHERE employees.employee_id = 2", function (err, data) {
+		if (err) {
+			throw err;
+		}
+		//This is to get the total of Tips without creating a new Function
+		var sumTips = 0;
+		var length = data.length;
+
+		for (var i = 0; i < length; i++) {
+			sumTips = sumTips + data[i].tip_final;
+
+		}
+		console.log(sumTips);
+
+
+
+
+
+		res.render("empOne", {
+			tips: data,
+			sumTips: sumTips
+		});
+	});
+};
+
+var selectThreeTips = function (res){connection.query("SELECT employees.employee_id, tips.tip_id, employees.first_name, employees.last_name, tips.tip_amount, tips.tip_fees, tips.tip_final FROM employees INNER JOIN tips ON employees.employee_id = tips.employee_id WHERE employees.employee_id = 3", function (err, data) {
+		if (err) {
+			throw err;
+		}
+		//This is to get the total of Tips without creating a new Function
+		var sumTips = 0;
+		var length = data.length;
+
+		for (var i = 0; i < length; i++) {
+			sumTips = sumTips + data[i].tip_final;
+
+		}
+		console.log(sumTips);
+
+
+
+
+
+		res.render("empThree", {
+			tips: data,
+			sumTips: sumTips
+		});
+	});
+};
 
 var end = function () {
 	connection.end();
@@ -105,7 +181,10 @@ var ORM = {
 	updateOne: updateOne,
 	selectTipsByEmp: selectTipsByEmp,
 	end: end,
-	sumTips: sumAllTips
+	sumTips: sumAllTips,
+	selectOneTips: selectOneTips,
+	selectTwoTips: selectTwoTips,
+	selectThreeTips: selectThreeTips
 };
 
 module.exports = ORM;

@@ -32,6 +32,25 @@ module.exports = function (app) {
       
     }),
 
+  app.get("/empOne", function (req, res) {
+      
+      tips("empOne", res);
+      // tips("sumTips", res);
+      
+    }),
+
+  app.get("/empTwo", function (req, res) {
+      
+      tips("empTwo", res);
+      // tips("sumTips", res);
+      
+    }),
+  app.get("/empThree", function (req, res) {
+      
+      tips("empThree", res);
+      // tips("sumTips", res);
+      
+    }),
     // app.get("/admin", function (req, res) {
 
     //   res.render("admin-login", {message: req.flash('loginMessage')});
@@ -58,7 +77,7 @@ module.exports = function (app) {
     // })
 
   //This is where the charges would take place//
-  app.post("/charge", function (req, res) {
+  app.post("/charge/:id", function (req, res) {
     var id= 1;
     console.log(id);
     var data = req.body;
