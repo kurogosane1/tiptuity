@@ -1,0 +1,122 @@
+#main{
+  background-color: silver ;
+}
+.links li 
+{
+ list-style: none;
+ margin: 10px auto;
+ 
+}
+.links li a {
+  font-family: 'Asar', serif;
+  font-size: 16px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+  text-decoration: none;
+  color: black
+}
+
+
+.jumbotron {
+  /*border-style: dashed;
+  border-color: red;*/
+  margin-bottom: 20px;
+  padding: 100px;
+  background-color: none;
+}
+
+#container-1{
+  /*border-style: dashed;
+  border-color: blue;*/
+  width: 100%;
+  margin-bottom: 20px;
+}
+#container-2{
+  /*border-style: dashed;
+  border-color: green;*/
+  padding: 0 0 auto 0;
+  
+}
+
+#employeeTipSection{
+border-style: none;
+
+float: right;
+width: 80%;
+/*border-color: purple;*/
+
+}
+
+#nav-section {
+  
+  background-color: #f6f6f6;
+  box-shadow: 0 0 20px #262626;
+  border-radius: 5px;
+}
+
+#amount-total{
+  border-style: none;
+  border-radius: 10px;
+  /*border-color:pink;*/
+  text-align : center;
+  height: 100px;
+  float: right;
+  background-color: #f6f6f6;
+box-shadow: 0 0 20px #262626;
+  z-index: 2;  
+}
+#logo{
+  
+  
+  height: 100px;
+  width: 30%;
+  background-color: #66ff99;
+  border-radius: 10px;
+box-shadow: 0 0 20px #262626;
+  float: left;
+  
+  
+}
+#amtToRec {
+  margin-top: 10px;
+  font-size: 45px;
+  font-family: 'Asar', serif;
+  text-align: center;
+  color:rgb(0.9%, 60.9%, 0.9%);
+}
+#logo img{
+  position: absolute;
+  height: 100px;
+  margin: 2px 5px 2px 60px;
+  
+}
+th{
+  background:#66e199;
+  color: white;
+  align-content: center;
+  text-align: center;
+  padding-left: 100px;
+  font-family: 'Asar', serif;
+
+  
+  
+}
+td{
+  text-align: center;
+  width: 30%;
+  background-color: white;
+ 
+}
+tr{
+  border-top: 1px solid #C1C3D1;
+  border-bottom: 1px solid #C1C3D1;
+ 
+}
+#table {
+
+box-shadow: 0 0 20px #262626;
+
+}
+/*#employee-list{
+  box-shadow: 0 0 10px #777777;
+}*/

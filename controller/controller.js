@@ -58,11 +58,11 @@ module.exports = function (app) {
     // }),
 
     // this is for the admin login//
-    // app.post('/admin', passport.authenticate('local-login', {
-    //   successRedirect: '/business',
-    //   failuireRedirect: '/admin',
-    //   failureFlash: true
-    // })),
+    app.post('/admin', passport.authenticate('local-login', {
+      successRedirect: '/business',
+      failuireRedirect: '/admin',
+      failureFlash: true
+    })),
 
     // app.get("/business", isLoggedIn,  function (req, res) {
 

@@ -85,16 +85,7 @@ var updateOne = function (res, employee_id) {
 	});
 };
 
-var combinedAll = function (res, combinedTips) {
-	connection.query("SELECT * FROM combinedTips", function (err, data) {
-		if (err) {
-			throw err;
-		}
-		res.redirect("/portal")
-	})
-
-};
-//This is for Employee id is 1//
+//This is for Employee id is 1 and for Alex//
 var selectOneTips = function (res){connection.query("SELECT employees.employee_id, tips.tip_id, employees.first_name, employees.last_name, tips.tip_amount, tips.tip_fees, tips.tip_final FROM employees INNER JOIN tips ON employees.employee_id = tips.employee_id WHERE employees.employee_id = 1", function (err, data) {
 		if (err) {
 			throw err;
@@ -107,12 +98,6 @@ var selectOneTips = function (res){connection.query("SELECT employees.employee_i
 			sumTips = sumTips + data[i].tip_final;
 
 		}
-		console.log(sumTips);
-
-
-
-
-
 		res.render("empOne", {
 			tips: data,
 			sumTips: sumTips
@@ -133,19 +118,13 @@ var selectTwoTips = function (res){connection.query("SELECT employees.employee_i
 			sumTips = sumTips + data[i].tip_final;
 
 		}
-		console.log(sumTips);
-
-
-
-
-
 		res.render("empOne", {
 			tips: data,
 			sumTips: sumTips
 		});
 	});
 };
-
+//This is for Faisal//
 var selectThreeTips = function (res){connection.query("SELECT employees.employee_id, tips.tip_id, employees.first_name, employees.last_name, tips.tip_amount, tips.tip_fees, tips.tip_final FROM employees INNER JOIN tips ON employees.employee_id = tips.employee_id WHERE employees.employee_id = 3", function (err, data) {
 		if (err) {
 			throw err;
@@ -158,12 +137,6 @@ var selectThreeTips = function (res){connection.query("SELECT employees.employee
 			sumTips = sumTips + data[i].tip_final;
 
 		}
-		console.log(sumTips);
-
-
-
-
-
 		res.render("empThree", {
 			tips: data,
 			sumTips: sumTips

@@ -1,29 +1,32 @@
 
-<div class="jumbotron">
+<div id = 'container-1' class='container-fluid'>
+<div class="jumbotron" style="background-color:transparent !important">
     <div class='row'>
-        <div class='col-sm-6'>
-            {{!--this is where the logo would go--}}
+        <div id='logo' class='col-sm-6'>
+            <img src="./public/images/TiptuityLogo.png" alt="">
         </div>
-        <div class='col-sm-6'>
-            {{sumTips}}
+        <div id='amount-total' class='col-sm-6'>
+           <p id='amtToRec'> ${{sumTips}}</p>
+           
         </div>
     </div>
+</div>
+</div>
+<div id='container-2'class='container-fuild'>
 
-<div class='container-fuild'>
-
-    <div class="col-sm-3 col-lg-2">
-        <nav class="navbar navbar-default navbar-fixed-side">
+    <div id='nav-section'class="col-sm-3 col-lg-2">
+        <nav id='sideNavBar' class="navbar navbar-fixed-side" style="background:transparent !important">
             <!-- normal collapsible navbar markup -->
-            <ul>
-                <li><a href="">Home</a></li>
-                <li><a href="">Alex</a></li>
-                <li><a href="">Syed</a></li>
-                <li><a href="">Faisal</a></li>
+            <ul class='links'>
+                <li id= "home" ><a href="/portal">Home</a></li>
+                <li><a action='/empOne' href="/empOne">Alex</a></li>
+                <li><a action = '/empTwo' href="/empTwo">Syed</a></li>
+                <li><a action='/empThree' href="/empThree">Faisal</a></li>
             </ul>
 
         </nav>
     </div>
-    <div class="col-sm-6 col-lg-10">
+    <div id='employeeTipSection' class="col-sm-6 col-lg-10">
         <!-- your page content -->
         <div id='employee-list'>
             {{#each tips}}
@@ -32,14 +35,14 @@
                 <table class='table'>
                     <tr>
                         {{!--//this is where the employee img would go--}}
-                        <th><img src="#" alt=""></th>
+                        <th></th>
                         <th>{{this.first_name}}</th>
                         <th>{{this.last_name}}</th>
                     </tr>
                     <tr>
-                        <td>{{this.tip_amount}}</td>
-                        <td>{{this.tip_fees}}</td>
-                        <td>{{this.tip_final}}</td>
+                        <td>${{this.tip_amount}}</td>
+                        <td>${{this.tip_fees}}</td>
+                        <td>${{this.tip_final}}</td>
                     </tr>
                 </table>
 

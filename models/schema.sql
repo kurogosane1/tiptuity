@@ -27,10 +27,10 @@ CREATE TABLE IF NOT EXISTS combinedTips AS (SELECT employees.employee_id, tips.t
 
 
 
-CREATE TABLE IF NOT EXISTS user {
+CREATE TABLE IF NOT EXISTS user (
     username VARCHAR(10) NOT NULL PRIMARY KEY,
-    password = VARCHAR(30) NOT NULL
-};
+    password  VARCHAR(30) NOT NULL
+);
 
 UPDATE combinedTips
 ON employees.employee_id, tips.tip_id,tips.tip_amount, tips.tip_fees, tips.tip_final
