@@ -25,6 +25,8 @@ module.exports = function (app) {
 
     }),
 
+    
+
   app.get("/portal", function (req, res) {
       
       tips("all", res);

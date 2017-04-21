@@ -23,7 +23,7 @@ var selectAllTips = function (res) {
 
 
 
-		res.render("portal", {
+		res.render("test", {
 			tips: data,
 			sumTips: sumTips
 		});
