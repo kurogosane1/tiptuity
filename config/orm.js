@@ -6,24 +6,27 @@ const app = express();
 // creating different fuctions for each connection querys, inputing them into an object so it can be exported. The first function will also render to the handlebars. Rest will redirect to the app.get which goes back to the first function
 var selectAllTips = function (res) {
 	connection.query("SELECT employees.employee_id, tips.tip_id, employees.first_name, employees.last_name, tips.tip_amount, tips.tip_fees, tips.tip_final FROM employees INNER JOIN tips ON employees.employee_id = tips.employee_id", function (err, data) {
+		console.log(data);
 		if (err) {
 			throw err;
 		}
 		//This is to get the total of Tips without creating a new Function
+		
+		var sumtips = 0;
 		var sumTips = 0;
 		var length = data.length;
-
+			
 		for (var i = 0; i < length; i++) {
-			sumTips = sumTips + data[i].tip_final;
-
+			sumtips = sumtips + data[i].tip_final;
+			sumTips = sumtips.toFixed(2);
 		}
-		console.log(sumTips);
+		
 
 
 
 
 
-		res.render("test", {
+		res.render("portal", {
 			tips: data,
 			sumTips: sumTips
 		});
@@ -92,11 +95,13 @@ var selectOneTips = function (res){connection.query("SELECT employees.employee_i
 		}
 		//This is to get the total of Tips without creating a new Function
 		var sumTips = 0;
+		var sumtips=0;
 		var length = data.length;
 
 		for (var i = 0; i < length; i++) {
-			sumTips = sumTips + data[i].tip_final;
-
+			// sumTips = sumTips + data[i].tip_final;
+			sumtips = sumtips + data[i].tip_final;
+			sumTips = sumtips.toFixed(2);
 		}
 		res.render("empOne", {
 			tips: data,
@@ -112,10 +117,12 @@ var selectTwoTips = function (res){connection.query("SELECT employees.employee_i
 		}
 		//This is to get the total of Tips without creating a new Function
 		var sumTips = 0;
+		var sumtips = 0;
 		var length = data.length;
 
 		for (var i = 0; i < length; i++) {
-			sumTips = sumTips + data[i].tip_final;
+			sumtips = sumtips + data[i].tip_final;
+			sumTips = sumtips.toFixed(2);
 
 		}
 		res.render("empOne", {
@@ -131,10 +138,12 @@ var selectThreeTips = function (res){connection.query("SELECT employees.employee
 		}
 		//This is to get the total of Tips without creating a new Function
 		var sumTips = 0;
+		var sumtips=0;
 		var length = data.length;
 
 		for (var i = 0; i < length; i++) {
-			sumTips = sumTips + data[i].tip_final;
+			sumtips = sumtips + data[i].tip_final;
+			sumTips = sumtips.toFixed(2);
 
 		}
 		res.render("empThree", {
