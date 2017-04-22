@@ -33,6 +33,12 @@ module.exports = function (app) {
     res.render("index");
 
   }),
+  app.get("/charge/1", function (req, res) {
+
+    res.render("Alex");
+
+  }),
+
   app.get("/CreditCard", function (req, res) {
 
     res.render("CreditCard");
