@@ -16,8 +16,8 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = Promise;
 
-// mongoose.connect('mongodb://localhost/login');
-mongoose.connect('mongodb://heroku_jkk1chtk:jmdvdkpc71fl037lvr6vgao1q0@ds155418.mlab.com:55418/heroku_jkk1chtk');
+mongoose.connect('mongodb://localhost/login');
+// mongoose.connect('mongodb://heroku_jkk1chtk:jmdvdkpc71fl037lvr6vgao1q0@ds155418.mlab.com:55418/heroku_jkk1chtk');
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(process.cwd() + "/views"));
 
@@ -28,9 +28,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 //Passport//
-// app.use(session({ secret: 'keep it safe',
-// 				  saveUninitialized: true,
-// 				  resave: true }));
+app.use(session({ secret: 'keep it safe',
+				  saveUninitialized: true,
+				  resave: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());

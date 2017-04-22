@@ -4,7 +4,7 @@ const express = require("express");
 const app = express();
 const tips = require("../models/tips");
 // var token = require.body.stripeToken; //using express
-const stripe = require('stripe')(keys.testPublishableKey);
+const stripe = require('stripe')(keys.testSecretKey);
 const passport = require('passport');
 // const LocalStrategy = require('passport-local').Strategy;
 const func = require("../config/orm");
@@ -33,11 +33,283 @@ module.exports = function (app) {
     res.render("index");
 
   }),
+
+  app.get("/charge/2", function (req, res) {
+
+    res.render("Syed");
+
+  }),
+  app.post("/charge/2", function (req, res) {
+
+    var id = 1;
+      console.log(id);
+      var data = req.body;
+      console.log(data);
+      var tipped = parseInt(data.amount);
+      console.log('this is line 118');
+      console.log(tipped);
+      var charges = parseInt(data.amount) * 100; // for some reason sprite does not see in digits//
+
+      //now we will insert into tips table//
+      var tipFee = tipped * 5.9 % + 0.33;
+      var tipFinal = tipped - tipFee;
+
+      var tipp = {
+        id: id,
+        tipped: tipped,
+        tipFee: tipFee,
+        tipFinal: tipFinal
+      }
+
+
+
+      //card details stored is sent to stripe//
+      var cardDetail = {
+        name: data.cardholderName,
+        number: parseInt(data.cardNum),
+        exp_month: parseInt(data.cardExpMonth),
+        exp_year: parseInt(data.cardExpYear),
+        cvc: data.cardCvc,
+        currency: "USD",
+        zipcode: data.cardZip
+      }
+
+
+      //The token is created//
+      var token = stripe.tokens.create({
+        "card": {
+          number: cardDetail.number,
+          cvc: cardDetail.cvc,
+          exp_month: cardDetail.exp_month,
+          exp_year: cardDetail.exp_year,
+        },
+        "customer": cardDetail.cardholderName
+
+
+
+      }, function (err, token) {
+        if (err) {
+          console.log(err);
+        } else {
+          return stripe.customers.create({ //If there is no error, the customer is created//
+            customer: {
+              email: "paying.user@example.com",
+              name: cardDetail.cardholderName,
+              source: token,
+              "card": token.card.id
+            }
+          }).then(function (customer) {
+
+            return stripe.charges.create({ //the charge would then direct it based on the token//
+              amount: charges,
+              currency: "usd",
+              source: token.id,
+              // customer: customer.id
+
+            }),
+              function (err, charge) {
+                if (err) {
+                  console.log(err)
+                } else {
+                  console.log(charge);
+                }
+              }
+
+          })
+
+        }
+
+      });
+      tips("insert", tipp);
+      res.render("payment");
+
+    }),
+
+  app.get("/charge/3", function (req, res) {
+
+    res.render("Faisal");
+
+  }),
+  app.post("/charge/3", function (req, res) {
+
+    var id = 1;
+      console.log(id);
+      var data = req.body;
+      console.log(data);
+      var tipped = parseInt(data.amount);
+      console.log('this is line 118');
+      console.log(tipped);
+      var charges = parseInt(data.amount) * 100; // for some reason sprite does not see in digits//
+
+      //now we will insert into tips table//
+      var tipFee = tipped * 5.9 % + 0.33;
+      var tipFinal = tipped - tipFee;
+
+      var tipp = {
+        id: id,
+        tipped: tipped,
+        tipFee: tipFee,
+        tipFinal: tipFinal
+      }
+
+
+
+      //card details stored is sent to stripe//
+      var cardDetail = {
+        name: data.cardholderName,
+        number: parseInt(data.cardNum),
+        exp_month: parseInt(data.cardExpMonth),
+        exp_year: parseInt(data.cardExpYear),
+        cvc: data.cardCvc,
+        currency: "USD",
+        zipcode: data.cardZip
+      }
+
+
+      //The token is created//
+      var token = stripe.tokens.create({
+        "card": {
+          number: cardDetail.number,
+          cvc: cardDetail.cvc,
+          exp_month: cardDetail.exp_month,
+          exp_year: cardDetail.exp_year,
+        },
+        "customer": cardDetail.cardholderName
+
+
+
+      }, function (err, token) {
+        if (err) {
+          console.log(err);
+        } else {
+          return stripe.customers.create({ //If there is no error, the customer is created//
+            customer: {
+              email: "paying.user@example.com",
+              name: cardDetail.cardholderName,
+              source: token,
+              "card": token.card.id
+            }
+          }).then(function (customer) {
+
+            return stripe.charges.create({ //the charge would then direct it based on the token//
+              amount: charges,
+              currency: "usd",
+              source: token.id,
+              // customer: customer.id
+
+            }),
+              function (err, charge) {
+                if (err) {
+                  console.log(err)
+                } else {
+                  console.log(charge);
+                }
+              }
+
+          })
+
+        }
+
+      });
+      tips("insert", tipp);
+      res.render("payment");
+
+    }),
+
+
+
   app.get("/charge/1", function (req, res) {
 
     res.render("Alex");
 
   }),
+  app.post("/charge/1", function (req, res) {
+
+    var id = 1;
+      console.log(id);
+      var data = req.body;
+      console.log(data);
+      var tipped = parseInt(data.amount);
+      console.log('this is line 118');
+      console.log(tipped);
+      var charges = parseInt(data.amount) * 100; // for some reason sprite does not see in digits//
+
+      //now we will insert into tips table//
+      var tipFee = tipped * 5.9 % + 0.33;
+      var tipFinal = tipped - tipFee;
+
+      var tipp = {
+        id: id,
+        tipped: tipped,
+        tipFee: tipFee,
+        tipFinal: tipFinal
+      }
+
+
+
+      //card details stored is sent to stripe//
+      var cardDetail = {
+        name: data.cardholderName,
+        number: parseInt(data.cardNum),
+        exp_month: parseInt(data.cardExpMonth),
+        exp_year: parseInt(data.cardExpYear),
+        cvc: data.cardCvc,
+        currency: "USD",
+        zipcode: data.cardZip
+      }
+
+
+      //The token is created//
+      var token = stripe.tokens.create({
+        "card": {
+          number: cardDetail.number,
+          cvc: cardDetail.cvc,
+          exp_month: cardDetail.exp_month,
+          exp_year: cardDetail.exp_year,
+        },
+        "customer": cardDetail.cardholderName
+
+
+
+      }, function (err, token) {
+        if (err) {
+          console.log(err);
+        } else {
+          return stripe.customers.create({ //If there is no error, the customer is created//
+            customer: {
+              email: "paying.user@example.com",
+              name: cardDetail.cardholderName,
+              source: token,
+              "card": token.card.id
+            }
+          }).then(function (customer) {
+
+            return stripe.charges.create({ //the charge would then direct it based on the token//
+              amount: charges,
+              currency: "usd",
+              source: token.id,
+              // customer: customer.id
+
+            }),
+              function (err, charge) {
+                if (err) {
+                  console.log(err)
+                } else {
+                  console.log(charge);
+                }
+              }
+
+          })
+
+        }
+
+      });
+      tips("insert", tipp);
+      res.render("payment");
+
+    }),
+
+  
 
   app.get("/CreditCard", function (req, res) {
 
