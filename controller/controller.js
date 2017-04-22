@@ -17,7 +17,7 @@ function isAuthenticated(req, res, next) {
     return next();
   }
 
-  res.redirect('/')
+  res.redirect('/login')
 }
 // var stripe = Stripe(keys.testPublishableKey); var elements =
 // stripe.elements();
