@@ -27,3 +27,7 @@ INSERT INTO tips (employee_id,tip_amount,tip_fees,tip_final) VALUES (3.00,20.00,
 INSERT INTO tips (employee_id,tip_amount,tip_fees,tip_final) VALUES (2.00,10.00, 0.71, 9.29);
 INSERT INTO tips (employee_id,tip_amount,tip_fees,tip_final) VALUES (1.00,20.00, 1.09, 18.91);
 INSERT INTO tips (employee_id,tip_amount,tip_fees,tip_final) VALUES (3.00,1.00, 0.37, 0.63);
+
+
+-- this is to enter into my mongoDB
+db.users.insert({"email": "123@me.com", "password": "1234"});

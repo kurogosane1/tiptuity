@@ -41,7 +41,7 @@ module.exports = function (app) {
   }),
   app.post("/charge/2", function (req, res) {
 
-    var id = 1;
+    var id = 2;
       console.log(id);
       var data = req.body;
       console.log(data);
@@ -132,7 +132,7 @@ module.exports = function (app) {
   }),
   app.post("/charge/3", function (req, res) {
 
-    var id = 1;
+    var id = 3;
       console.log(id);
       var data = req.body;
       console.log(data);

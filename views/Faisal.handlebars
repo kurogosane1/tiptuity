@@ -1,6 +1,6 @@
 <style>
     body {
-        background-color: #ebebeb;
+        background-color: grey;
     }
     .jumbotron {
         margin-top: 3%;
@@ -65,35 +65,35 @@
         }
     }
 </style>
-    <div class= “container”>
-        <div class= “jumbotron”>
-            <div class= “row”>
-                <div class= “text-center”>
-                <img src="../public/images/TiptuityLogo.png" id="tiptuity" alt="" width="400px">                </div>
-            </div>
-            <div class=“row”>
-                <div class=“text-center”>
-                    <button name=“OneDoll” value=“1" onclick=“paySent()” type=“button” class=“btn-xl btn-primary btn-circle”>$1</button>
-                    <button name=“OneDoll” value=“1” onclick=“paySent()” type=“button” class=“btn-xl btn-primary btn-circle”>$3</button>
-                    <button name=“OneDoll” value=“1" onclick=“paySent()” type=“button” class=“btn-xl btn-primary btn-circle”>$5</button>
-                    <button name=“OneDoll” value=“1” onclick=“paySent()” type=“button” class=“btn-xl btn-primary btn-circle”>$10</button>
+    <div class="container">
+        <div class="jumbotron" id="box">
+            <div class="row">
+                <div class="text-center">
+                    <img src="../public/images/TiptuityLogo.png" id="tiptuity" alt="" width="400px">
                 </div>
-                <div class=“enterAmount”>
-                    <div class=“row”>
-                        <div class=“col-sm-12”>
-                            <div class=“center-inner-addon”>
+            </div>
+            <div class="row">
+                <div class="text-center">
+                    <button name="OneDoll" value="1" onclick="paySent()" type="button" class="btn-xl btn-primary btn-circle" id="btnColor">$1</button>
+                    <button name="OneDoll" value="1" onclick="paySent()" type="button" class="btn-xl btn-primary btn-circle">$3</button>
+                    <button name="OneDoll" value="1" onclick="paySent()" type="button" class="btn-xl btn-primary btn-circle">$5</button>
+                    <button name="OneDoll" value="1" onclick="paySent()" type="button" class="btn-xl btn-primary btn-circle">$10</button>
+                </div>
+                <div class="enterAmount">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="center-inner-addon">
                                 <span>$</span>
-                                <input type=“number” class=“form-control” min=“0.01” step=“0.01" max=“2500” value=“" placeholder=“0.00” />
+                                <input type="number" class="form-control" min="0.01" step="0.01" max="2500" value=""  placeholder="0.00" />
                             </div>
                         </div>
                     </div>
                 </div>
                 <br>
-                <div class=“row”>
-                    <div class=“text-center”>
-                        <button name=“OneDoll” value=“1” onclick=“submitTip()” type=“button” class=“btn-lg btn-primary”>Submit Tip</button>
+                <div class="row">
+                    <div class="text-center">
+                        <button name="OneDoll" value="1" onclick="submitTip()" type="button" class="btn-lg btn-primary">Submit Tip</button>
                     </div>
-
                     <br>
                 
                 <button type="button" class="btn btn-primary btn-lg col-xs-offset-5" data-toggle="modal" data-target="#myModal">
@@ -101,14 +101,17 @@
                 </button>
                 </div>
                 <br>
-                <div class=“row” class=“empPic”>
-                    <div class=“text-center”>
-                        <img src=“https://avatars1.githubusercontent.com/u/18063370?v=3&s=460” id=“profilePic” width=“200px”>
+                <div class="row" class="empPic">
+                    <div class="text-center">
+                        <img src="https://avatars1.githubusercontent.com/u/18063370?v=3&s=460" id="profilePic" width="200px">
                         <h2>Faisal Narsi</h2>
                         <br>
                     </div>
                 </div>
-                <!-- Modal -->
+                
+            </div>
+        </div>
+<!-- Modal -->
     <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <!--Content-->
@@ -223,29 +226,29 @@
     </div>
     <!-- /.Live preview-->
 </div>
-            </div>
-        </div>
+<!-- /.Live preview-->
     </div>
-    <script type=“text/javascript” >
+    <script type="text/javascript">
         var paySent
         var submitTip
-
-        $('#myModal').on('shown.bs.modal', function () {
-        $('#myInput').focus()
-
-
+       
+      
+      $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').focus()
+        })
+   
         function paySent() {
-            if (confirm(“Is this the right tip amount?“) == true) {
-                alert(“Your TIP has sent, Thank You!“);
+            if (confirm("Is this the right tip amount?") == true) {
+                alert("Your TIP has sent, Thank You!");
             } else {
-                alert(“OK, enter the right amount”);
+                alert("OK, enter the right amount");
             }
         };
         function submitTip() {
-            if (confirm(“Is this the right tip amount?“) == true) {
-                alert(“Your TIP has sent, Thank You!“);
+            if (confirm("Is this the right tip amount?") == true) {
+                alert("Your TIP has sent, Thank You!");
             } else {
-                alert(“OK, enter the right amount”);
+                alert("OK, enter the right amount");
             }
         };
     </script>
