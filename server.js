@@ -14,11 +14,11 @@ const path = require('path');
 
 const mongoose = require('mongoose');
 
-mongoose.Promise = Promise;
+mongoose.Promise = global.Promise;
 
 var mongoConnect = process.env.MONGODB_URI || "mongodb://localhost/login";
-
-mongoose.connect(mongoConnect);
+var uri = 'mongodb://heroku_jkk1chtk:jmdvdkpc71fl037lvr6vgao1q0@ds155418.mlab.com:55418/heroku_jkk1chtk';
+mongoose.connect(uri);
 // mongoose.connect('mongodb://heroku_jkk1chtk:jmdvdkpc71fl037lvr6vgao1q0@ds155418.mlab.com:55418/heroku_jkk1chtk');
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(process.cwd() + "/views"));
