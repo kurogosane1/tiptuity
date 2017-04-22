@@ -28,9 +28,9 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 //Passport//
-app.use(session({ secret: 'keep it safe',
-				  saveUninitialized: true,
-				  resave: true }));
+// app.use(session({ secret: 'keep it safe',
+// 				  saveUninitialized: true,
+// 				  resave: true }));
 app.use(passport.initialize());
 app.use(passport.session());
 app.use(flash());
