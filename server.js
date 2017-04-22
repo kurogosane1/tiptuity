@@ -36,7 +36,7 @@ app.use(passport.session());
 app.use(flash());
 
 // deploy the public folder
-app.use(express.static(process.cwd() + "/views"));
+// app.use(express.static(process.cwd() + "/views"));
 
 // allow PUT and DELETE methods.
 // app.use(methodOverride("_method"));
