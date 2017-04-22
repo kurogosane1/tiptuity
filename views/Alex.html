@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>QR data test</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u"
+        crossorigin="anonymous">
+</head>
+
+<body>
+<style>
+    .well {
+        margin-top: 3%;
+        background-color: #40d873;
+        /*height: 100vh;*/
+        /*width: 100vw;*/
+        border: none;
+    }
+
+    #profilePic {
+        border: 5px solid black;
+    }
+
+    .btn-primary {
+        background-color: #4C5056;
+        border: none;
+    }
+
+    .enterAmount {
+        text-align: center;
+    }
+
+    .center-inner-addon input {
+        padding-left: 22px;
+    }
+
+    .center-inner-addon span {
+        position: absolute;
+        padding: 7px 12px;
+        pointer-events: none;
+    }
+
+    .center-inner-addon {
+        padding-top: 10px;
+        display: inline-block;
+        text-align: left;
+    }
+
+    .btn-circle {
+        width: 30px;
+        height: 30px;
+        text-align: center;
+        padding: 6px 0;
+        font-size: 12px;
+        line-height: 1.428571429;
+        border-radius: 15px;
+    }
+
+    .btn-circle.btn-lg {
+        width: 50px;
+        height: 50px;
+        padding: 10px 16px;
+        font-size: 18px;
+        line-height: 1.33;
+        border-radius: 25px;
+    }
+
+    .btn-circle.btn-xl {
+        width: 80px;
+        height: 80px;
+        padding: 10px 17px;
+        font-size: 18px;
+        line-height: 1.33;
+        border-radius: 45px;
+    }
+
+
+    @media (max-width: 768px) {
+        #tiptuity {
+            width: 70%;
+            margin: auto;
+        }
+    }
+</style>
+
+
+
+    <div class="container">
+        <div class="well">
+            <div class="row">
+                <div class="text-center">
+                    <img src="./public/images/TiptuityLogo.png" id="tiptuity" alt="" width="400px">
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="text-center">
+                    <button name="OneDoll" value="1" onclick="paySent()" type="button" class="btn-xl btn-primary btn-circle">$1</button>
+                    <button name="OneDoll" value="1" onclick="paySent()" type="button" class="btn-xl btn-primary btn-circle">$3</button>
+                    <button name="OneDoll" value="1" onclick="paySent()" type="button" class="btn-xl btn-primary btn-circle">$5</button>
+                    <button name="OneDoll" value="1" onclick="paySent()" type="button" class="btn-xl btn-primary btn-circle">$10</button>
+                </div>
+                <div class="enterAmount">
+                    <div class="row">
+                        <div class="col-sm-12">
+                            <div class="center-inner-addon">
+                                <span>$</span>
+                                <input type="number" class="form-control" min="0.01" step="0.01" max="2500" value=""  placeholder="0.00" />
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="row">
+                    <div class="text-center">
+                        <button name="OneDoll" value="1" onclick="submitTip()" type="button" class="btn-lg btn-primary">Submit Tip</button>
+                    </div>
+                </div>
+                <br>
+
+                <div class="row" class="empPic">
+                    <div class="text-center">
+                        <img src="https://avatars3.githubusercontent.com/u/22298628?v=3&s=460" id="profilePic" width="200px">
+                        <h2>Alex Slayton</h2>
+                        <br>
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+
+<!-- Button trigger modal -->
+<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+    Launch demo modal
+</button>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <!--Content-->
+        <div class="modal-content">
+            <!--Header-->
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+                <h4 class="modal-title w-100" id="myModalLabel">Modal title</h4>
+            </div>
+            <!--Body-->
+            <div class="modal-body">
+                ...
+            </div>
+            <!--Footer-->
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+        </div>
+        <!--/.Content-->
+    </div>
+</div>
+<!-- /.Live preview-->
+    </div>
+
+    <script type="text/javascript">
+        var paySent
+        var submitTip
+
+       
+      
+      $('#myModal').on('shown.bs.modal', function () {
+      $('#myInput').focus()
+        })
+   
+
+
+        function paySent() {
+            if (confirm("Is this the right tip amount?") == true) {
+                alert("Your TIP has sent, Thank You!");
+            } else {
+                alert("OK, enter the right amount");
+            }
+
+        };
+
+        function submitTip() {
+            if (confirm("Is this the right tip amount?") == true) {
+                alert("Your TIP has sent, Thank You!");
+            } else {
+                alert("OK, enter the right amount");
+            }
+
+        };
+    </script>
+
+</body>
+
+</html>
