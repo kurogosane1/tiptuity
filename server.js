@@ -16,7 +16,8 @@ const mongoose = require('mongoose');
 
 mongoose.Promise = Promise;
 
-mongoose.connect('mongodb://localhost/login');
+// mongoose.connect('mongodb://localhost/login');
+mongoose.connect('mongodb://heroku_jkk1chtk:jmdvdkpc71fl037lvr6vgao1q0@ds155418.mlab.com:55418/heroku_jkk1chtk');
 // Serve static content for the app from the "public" directory in the application directory.
 app.use(express.static(process.cwd() + "/views"));
 
