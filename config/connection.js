@@ -6,7 +6,7 @@ var connectionInfo = {
   password: "saadkhurshid310588",
   database: "tips_db"
 };
-var JAWSDB_URL ="mysql://pd8snkhuu33r73wq:ulg388f5wf2hiltk@vvfv20el7sb2enn3.cbetxkdyhwsb.us-east-1.rds.amazonaws.com:3306/hr73pb1yryr21n9s";
+
 if (process.env.JAWSDB_URL)
 {
   connectionInfo = process.env.JAWSDB_URL;
