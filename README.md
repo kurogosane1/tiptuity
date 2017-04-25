@@ -8,7 +8,7 @@ Welcome to Tiptuity your cashless way of paying tips.
 The future possibilities are coming and Tiptuity is going to take advantage of it. 
 
 Tituity was created as a class project for our graduation but we have decided to take the project further. 
-It had been developed by three awesome developmers who learnt coding in a very short amount of time.
+It had been developed by three awesome developers who learnt coding in a very short amount of time.
 The players are:
 1. Alex Slayton github link: https://github.com/AlexSlayton,
 2. Syed S Khurshid, github link : https://github.com/kurogosane1,
@@ -17,7 +17,7 @@ The players are:
 It is only through they're hardwork that we have been able to get this app so far and I would appreciate feedback as well. 
 
 ## To get started:
-You need to first go to stripe.com and create a account there. They shall provide you the keys you need to begin to payment setup:
+You need to first go to stripe.com and create a account there. They shall provide you the keys you need to begin to payment setup. Place those keys in the keys.js section in the areas shown below:
 ```
 var keys = {
    testSecretKey : " ",
@@ -30,13 +30,13 @@ module.exports = keys;
 ```
 In order for you to start using stripe you need to use the testSecret key to test on your own server.
 
-After getting the test keys just do the code below:
+After getting the test keys just run the code below:
 ```
 npm install
 ```
 it shall install all the dependencies for you.
 
-You also need to create your own database in MySQL and whatever name and password you have created place the required information in the area below inside connection.js :
+You also need to create your own database in MySQL and MangoDB and whatever name and password you have created place the required information in the area below inside connection.js for MySQL :
 ```
 var connectionInfo = {
   host: "localhost",
@@ -45,7 +45,26 @@ var connectionInfo = {
   database: "Your own database"
 };
 ```
+and for MongoDb side you need to change the address below where you see mongodb:// your database location. A sample is shown below:
+
+```
+var mongoConnect = process.env.MONGODB_URI || "mongodb://localhost/login";
+```
+
 Advance users can set their own host and user.
+
+THE MONGODB_URI is the address we got from Herokuapp when we add those addons.Your will be different depending on the hose you use. 
+
+The same goes for the MySQL. 
+
+
+
+
+![code](https://files.slack.com/files-tmb/T2E15A9E3-F53QYKD4P-e49c5e9a0b/screen_shot_2017-04-22_at_2.38.12_am_720.png)
+
+
+
+
 
 Thats it. Your all ready started. 
 
