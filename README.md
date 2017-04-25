@@ -57,13 +57,7 @@ THE MONGODB_URI is the address we got from Herokuapp when we add those addons.Yo
 
 The same goes for the MySQL. 
 
-
-
-
-![code](https://files.slack.com/files-tmb/T2E15A9E3-F53QYKD4P-e49c5e9a0b/screen_shot_2017-04-22_at_2.38.12_am_720.png)
-
-
-
+![screen shot 2017-04-22 at 2 38 12 am](https://cloud.githubusercontent.com/assets/20883272/25368392/b11462f2-2941-11e7-92da-1f1b0193ff43.png)
 
 
 Thats it. Your all ready started. 
