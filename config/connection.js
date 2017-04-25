@@ -3,8 +3,8 @@ var mysql = require("mysql");
 var connectionInfo = {
   host: "localhost",
   user: "root",
-  password: "saadkhurshid310588",
-  database: "tips_db"
+  password: " Your own password",
+  database: "Your own database"
 };
 
 if (process.env.JAWSDB_URL)
