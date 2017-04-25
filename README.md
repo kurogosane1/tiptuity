@@ -77,14 +77,16 @@ password: 123
 
 2. Create a user confirmation on when the user pays something, a confirmation and a option to change the amount to tip would change. 
 
-3. Change the back end completely. Right now its not Finance friendly and will revamp the back end completely. This one will the longest and more finance knowledge would be required. 
+3. Change the back end completely. Right now its not Finance friendly and will revamp the back end completely. This one will the take some time and more Finance knowledge study would be needed. 
 
-4. Another goal is to learn swift. Swift is awesome to use and implementing it with apple pay is a feature I hope would change the world. Samung pay, google pay all would be a awesome feature to implement. 
+4. Another goal is to learn swift. Swift is awesome to use and implementing it with apple pay is a feature I hope would like to implement as well as Samsung pay, google pay all would be a awesome feature to implement. 
 
 5. Have a employee database where pictures and user information can be pulled so that many different pages don't have to be created for each employee. The user's information would be stored in a database. 
 
 
-longterm goals we hope to utilize and if people are willing to work together then we can utilize this app anywhere. 
+Longterm goals we hope to utilize and if people are willing to work together then we can utilize this app anywhere.
+
+ 
 
 
 
