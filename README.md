@@ -1,6 +1,6 @@
 # Tiptuity
             
-            ![](https://files.slack.com/files-pri/T2E15A9E3-F5330GM60/code.png)
+           ![code](https://cloud.githubusercontent.com/assets/20883272/25368066/b0161186-293f-11e7-857e-6a6ace609810.png)
             
 Welcome to Tiptuity your cashless way of paying tips.
 The future possibilities are coming and Tiptuity is going to take advantage of it. 
