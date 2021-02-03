@@ -1,6 +1,7 @@
 import React from "react";
-import EmployeeNav from "./sub-Container/subNav";
-import SideClient from "./sub-Container/SideClient.jsx";
+import EmployeeNav from "./sub-Container/EmployeeNav";
+import SideClient from "./sub-Container/SideClient";
+import Employee from "./sub-Container/Employee";
 
 export default function Employees() {
   const employees = [
@@ -107,35 +108,217 @@ export default function Employees() {
     },
   ];
   return (
-    <div className="container mx-auto flex flex-col justify-center align-center gap-3">
+    <div className="container h-screen mt-1">
       <EmployeeNav />
-      <div className="container h-full text-center flex flex-row justify-center items-center bg-white gap-8">
-        <div className="container">All Employees</div>
-        <div className="container flex flex-col justify-center items-center gap-3 py-4">
-          <span>Clients</span>
-          <div className="flex flex-col justify-center items-center gap-3 py-4">
-            {client.map((Data) => {
-              return (
-                <div>
-                  <SideClient name={Data.name} image={Data.image} />
-                </div>
-              );
+      <div className="Side-Clients flex flex-row justify-center items-start  gap-8 h-auto mt-8">
+        <div className="flex flex-col justify-center items-center bg-white p-10 rounded-lg shadow-xl">
+          <span className="text-3xl text-left">All Employees</span>
+          <div className="container flex flex-col justify-evenly items-start">
+            <span className="text-lg my-4">Clients</span>
+            {client.map((data) => {
+              return <SideClient name={data.name} image={data.image} />;
             })}
+            <span className="text-lg my-2">Status</span>
+            <span className="text-md my-2">Full Time</span>
+            <span className="text-md my-2">Part Time Time</span>
           </div>
         </div>
-        <div className="container flex flex-grow justify-center items-center gap-3">
-          <div className="table container  bg-white">
-            {employees.map((data) => {
-              return (
-                <div className="flex justify-evenly items-center">
-                  <span>{data.FirstName}</span>
-                  <span>{data.LastName}</span>
-                  <span>{data.JobTitle}</span>
+        {/* <div className="flex flex-row justify-center items-center w-8/12  h-full rounder-large">
+          <div className="container flex flex-col justify-center items-center w-full ">
+            <div className="flex flex-row justify-evenly items-center w-full">
+              <input
+                type="checkbox"
+                class="form-checkbox h-6 w-6 rounded-lg outline-none"
+              />
+              <span>EMPLOYEE</span>
+              <span>EMPLOYEE TYPE</span>
+              <span>JOINED DATE</span>
+              <span>MANAGE</span>
+            </div>
+            <div className="flex flex-row justify-between items-center mt-5 bg-white w-full p-4 rounded-lg gap-3 shadow-lg">
+              <div className="flex flex-row justify-evenly items-center flex-grow">
+                <input
+                  type="checkbox"
+                  class="form-checkbox h-6 w-6 rounded-lg outline-none"
+                />
+                <Avatar />
+                <div className="flex flex-col justify-evenly items-start pl-2 pr-2">
+                  <span className="text-lg">Roni James</span>
+                  <span className="text-sm text-left">Valet</span>
                 </div>
-              );
-            })}
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-row justify-between items-center mt-5 bg-white w-full p-4 rounded-lg gap-3 shadow-lg">
+              <div className="flex flex-row justify-evenly items-center flex-grow">
+                <input
+                  type="checkbox"
+                  class="form-checkbox h-6 w-6 rounded-lg outline-none"
+                />
+                <Avatar />
+                <div className="flex flex-col justify-evenly items-start pl-2 pr-2">
+                  <span className="text-lg">Roni James</span>
+                  <span className="text-sm text-left">Valet</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-row justify-between items-center mt-4 bg-white w-full p-4 rounded-lg gap-3 shadow-lg">
+              <div className="flex flex-row justify-evenly items-center flex-grow">
+                <input
+                  type="checkbox"
+                  class="form-checkbox h-6 w-6 rounded-lg outline-none"
+                />
+                <Avatar />
+                <div className="flex flex-col justify-evenly items-start pl-2 pr-2">
+                  <span className="text-lg">Roni James</span>
+                  <span className="text-sm text-left">Valet</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-row justify-between items-center mt-4 bg-white w-full p-4 rounded-lg gap-3 shadow-lg">
+              <div className="flex flex-row justify-evenly items-center flex-grow">
+                <input
+                  type="checkbox"
+                  class="form-checkbox h-6 w-6 rounded-lg outline-none"
+                />
+                <Avatar />
+                <div className="flex flex-col justify-evenly items-start pl-2 pr-2">
+                  <span className="text-lg">Roni James</span>
+                  <span className="text-sm text-left">Valet</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-row justify-between items-center mt-4 bg-white w-full p-4 rounded-lg gap-3 shadow-lg">
+              <div className="flex flex-row justify-evenly items-center flex-grow">
+                <input
+                  type="checkbox"
+                  class="form-checkbox h-6 w-6 rounded-lg outline-none"
+                />
+                <Avatar />
+                <div className="flex flex-col justify-evenly items-start pl-2 pr-2">
+                  <span className="text-lg">Roni James</span>
+                  <span className="text-sm text-left">Valet</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-row justify-between items-center mt-4 bg-white w-full p-4 rounded-lg gap-3 shadow-lg">
+              <div className="flex flex-row justify-evenly items-center flex-grow">
+                <input
+                  type="checkbox"
+                  class="form-checkbox h-6 w-6 rounded-lg outline-none"
+                />
+                <Avatar />
+                <div className="flex flex-col justify-evenly items-start pl-2 pr-2">
+                  <span className="text-lg">Roni James</span>
+                  <span className="text-sm text-left">Valet</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+              </div>
+            </div>
+
+            <div className="flex flex-row justify-between items-center mt-4 bg-white w-full p-4 rounded-lg gap-3 shadow-lg">
+              <div className="flex flex-row justify-evenly items-center flex-grow">
+                <input
+                  type="checkbox"
+                  class="form-checkbox h-6 w-6 rounded-lg outline-none"
+                />
+                <Avatar />
+                <div className="flex flex-col justify-evenly items-start pl-2 pr-2">
+                  <span className="text-lg">Roni James</span>
+                  <span className="text-sm text-left">Valet</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+                <div className="flex flex-col justify-center items-center pl-2 pr-2">
+                  <span className="text-lg">$3,200</span>
+                  <span className="text-sm text-left">Full Time</span>
+                </div>
+              </div>
+            </div>
           </div>
-        </div>
+        </div> */}
+        <Employee employees={employees} />
       </div>
     </div>
   );
