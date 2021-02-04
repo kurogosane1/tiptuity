@@ -1,32 +1,31 @@
-import Nav from "./layout/Nav";
-import Footer from "./layout/Footer";
-import Home from "./pages/Home";
-import Statistics from "./pages/Stats/Statistics";
-import Clients from "./pages/Client/Clients";
+import "./App.css";
+import Footer from "./Layout/Footer";
+import Navbar from "./Layout/Navbar";
+import Main from "./Pages/Main";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
-import Employees from "./pages/Employees/Employees";
+import Employees from "./Pages/Employees";
+import Clients from "./Pages/Clients";
+import Statistics from "./Pages/Statistics";
 
 function App() {
   return (
     <Router>
       <div className="App">
-        <Nav />
-        <div className="h-auto bg-gray-100">
-          <Switch>
-            <Route exact path="/">
-              <Home />
-            </Route>
-            <Route path="/Statistics">
-              <Statistics />
-            </Route>
-            <Route path="/Employee">
-              <Employees />
-            </Route>
-            <Route path="/Client">
-              <Clients />
-            </Route>
-          </Switch>
-        </div>
+        <Navbar />
+        <Switch>
+          <Route exact path="/">
+            <Main />
+          </Route>
+          <Route path="/Stats">
+            <Statistics />
+          </Route>
+          <Route path="/Employees">
+            <Employees />
+          </Route>
+          <Route path="/Clients">
+            <Clients />
+          </Route>
+        </Switch>
         <Footer />
       </div>
     </Router>

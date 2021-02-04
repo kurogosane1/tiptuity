@@ -1,0 +1,150 @@
+@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+*,
+*::after,
+*::before {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+html,
+body {
+  height: 100%;
+  width: 100%;
+  background-color: #f5f5f7;
+}
+
+root {
+  --lg-screen: 128px;
+  --md-screen: 960px;
+  --sm-screen: 600px;
+  --xs-screen: 0px;
+  --backColor: #f5f5f7;
+  --containerColor: #ffffff;
+  --iconColor: #d2d2de;
+  --darkColor: rgba(28, 28, 28, 0.825);
+  --logoColor: #12c9ae;
+}
+
+.Navbar {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin: 0px auto;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 0px 0px rgba(204, 204, 204, 0.482);
+}
+.qrcode {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0.5;
+  justify-content: flex-start;
+  padding-left: 1rem;
+}
+.Tiptuity {
+  font-family: Fira Sans;
+  font-weight: 600;
+  color: #12c9ae;
+}
+.links {
+  display: flex;
+  flex-direction: row;
+  flex-grow: 0.25;
+  justify-content: space-evenly;
+  align-items: center;
+  list-style: none;
+  padding: 1rem;
+  height: 100%;
+}
+.links > li {
+}
+
+.NavLink {
+  align-self: center;
+  text-decoration: none;
+  font-family: Fira Sans;
+  font-weight: normal;
+  color: #929298;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  transition: ease-in-out;
+}
+.NavLink:hover {
+  color: #12c9ae;
+}
+.stats {
+  height: 100%;
+  border-bottom: solid 4px;
+  border-color: #12c9ae;
+}
+
+.social {
+  display: flex;
+  flex-grow: 0.5;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.social-bell,
+.email-icon {
+  /* height: 3rem;
+  width: 3rem; */
+  color: #d2d2de;
+}
+.social-bell:hover,
+.email-icon:hover {
+  color: #12c9ae;
+  cursor: pointer;
+}
+
+/* This is for Employees side */
+.Employees {
+  display: flex;
+  flex-direction: column;
+  
+  height: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+  .Navbar {
+    flex-direction: column;
+    justify-content: space-evenlys;
+    padding: 1rem;
+  }
+  .links {
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 100%;
+  }
+  .links > li {
+    width: 100vw;
+    align-items: center;
+    text-align: center;
+    padding: 1rem;
+  }
+
+  .NavLink {
+    justify-self: center;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    width: 100%;
+  }
+
+  .stats {
+    border: none;
+    height: 100;
+  }
+  .social {
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 100vw;
+  }
+  .social-bell,
+  .email-icon,
+  .Avatar {
+    height: 100%;
+  }
+}

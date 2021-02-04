@@ -1,9 +1,9 @@
-import React from "react";
+import React from 'react'
 
 export default function Footer() {
-  return (
-    <div className="flex flex-column justify-center items-center">
-      <h2>This is the footer</h2>
-    </div>
-  );
+    return (
+        <div>
+            <h2>This is the footers page</h2>
+        </div>
+    )
 }
