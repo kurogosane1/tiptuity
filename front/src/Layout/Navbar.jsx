@@ -3,15 +3,22 @@ import { NavLink } from "react-router-dom";
 import { Avatar } from "@material-ui/core";
 import NotificationsNoneIcon from "@material-ui/icons/NotificationsNone";
 import MailOutlineIcon from "@material-ui/icons/MailOutline";
+import MenuIcon from "@material-ui/icons/Menu";
+import CloseIcon from "@material-ui/icons/Close";
 
 export default function Navbar() {
   //State to make the selection and change color
   const [selection, setSelection] = useState(0);
+  const [clicked, setClicked] = useState(false);
 
   //This is the function to change
   const changeState = (e) => {
     const value = e.target.name;
     setSelection(value);
+  };
+
+  const changeMenu = () => {
+    setClicked(!clicked);
   };
 
   return (
@@ -32,8 +39,12 @@ export default function Navbar() {
         </svg>
 
         <h2 className="Tiptuity">Tiptuity</h2>
+
+        <button className="menu-icon" onClick={changeMenu}>
+          {!clicked ? <MenuIcon /> : <CloseIcon />}
+        </button>
       </div>
-      <ul className="links">
+      <ul className="links main">
         <li>
           <NavLink
             name="1"
@@ -68,7 +79,7 @@ export default function Navbar() {
           </NavLink>
         </li>
       </ul>
-      <div className="social">
+      <div className="social main">
         <NotificationsNoneIcon className="social-bell" fontSize="large" />
         <MailOutlineIcon className="email-icon" fontSize="large" />
 
@@ -76,6 +87,52 @@ export default function Navbar() {
           style={{ width: "2rem", height: "2rem", cursor: "pointer" }}
           className="Avatar"
         />
+      </div>
+      <div className={clicked ? "sub-menu" : "hide"}>
+        <ul className="links ">
+          <li>
+            <NavLink
+              name="1"
+              onClick={(e) => {
+                changeState(e);
+              }}
+              className={selection === "1" ? "NavLink stats" : "NavLink"}
+              to="/Stats">
+              Stats
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              name="2"
+              onClick={(e) => {
+                changeState(e);
+              }}
+              className={selection === "2" ? "NavLink stats" : "NavLink"}
+              to="/Employees">
+              Employees
+            </NavLink>
+          </li>
+          <li>
+            <NavLink
+              name="3"
+              onClick={(e) => {
+                changeState(e);
+              }}
+              className={selection === "3" ? "NavLink stats" : "NavLink"}
+              to="/Clients">
+              Clients
+            </NavLink>
+          </li>
+        </ul>
+        <div className="social">
+          <NotificationsNoneIcon className="social-bell" fontSize="large" />
+          <MailOutlineIcon className="email-icon" fontSize="large" />
+
+          <Avatar
+            style={{ width: "2rem", height: "2rem", cursor: "pointer" }}
+            className="Avatar"
+          />
+        </div>
       </div>
     </nav>
   );
