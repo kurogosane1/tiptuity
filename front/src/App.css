@@ -1,326 +1,38 @@
-@import url("https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
-
-*,
-*::after,
-*::before {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
-html,
-body {
-  height: 100%;
-  width: 100%;
-  background-color: #f5f5f7;
+.App {
+  text-align: center;
 }
 
-root {
-  --lg-screen: 128px;
-  --md-screen: 960px;
-  --sm-screen: 600px;
-  --xs-screen: 0px;
-  --backColor: #f5f5f7;
-  --containerColor: #ffffff;
-  --iconColor: #d2d2de;
-  --darkColor: rgba(28, 28, 28, 0.825);
-  --logoColor: #12c9ae;
+.App-logo {
+  height: 40vmin;
+  pointer-events: none;
 }
 
-.Navbar {
-  display: flex;
-  flex-wrap: wrap;
-  flex-direction: row;
-  justify-content: space-between;
-  align-items: center;
-  margin: 0px auto;
-  background-color: #ffffff;
-  box-shadow: 0px 0px 0px 0px rgba(204, 204, 204, 0.482);
-}
-.qrcode {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex-grow: 0.5;
-  justify-content: flex-start;
-  padding-left: 1rem;
-}
-.Tiptuity {
-  font-family: Fira Sans;
-  font-weight: 600;
-  color: #12c9ae;
-}
-.menu-icon {
-  display: none;
-  color: #12c9ae;
-}
-.links {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  flex-grow: 0.25;
-  justify-content: space-evenly;
-  align-items: center;
-  list-style: none;
-  padding: 1rem;
-  height: 100%;
-}
-.links > li {
+@media (prefers-reduced-motion: no-preference) {
+  .App-logo {
+    animation: App-logo-spin infinite 20s linear;
+  }
 }
 
-.NavLink {
-  align-self: center;
-  text-decoration: none;
-  font-family: Fira Sans;
-  font-weight: normal;
-  color: #929298;
-  padding-top: 1rem;
-  padding-bottom: 1rem;
-  transition: ease-in-out;
-}
-.NavLink:hover {
-  color: #12c9ae;
-}
-.stats {
-  height: 100%;
-  border-bottom: solid 4px;
-  border-color: #12c9ae;
-}
-
-.social {
-  display: flex;
-  flex-wrap: wrap;
-  flex-grow: 0.5;
-  justify-content: space-evenly;
-  align-items: center;
-}
-
-.social-bell,
-.email-icon {
-  /* height: 3rem;
-  width: 3rem; */
-  color: #d2d2de;
-}
-.social-bell:hover,
-.email-icon:hover {
-  color: #12c9ae;
-  cursor: pointer;
-}
-
-/* This is for Employees side */
-.Employees {
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
-  flex-wrap: wrap;
-  height: 100%;
-}
-
-.sub-menu {
-  display: none;
-}
-.hide {
-  display: none;
-}
-
-/* This is for the employee section */
-.Employees {
-  /* margin: 4rem 6rem; */
-  margin-top: 4rem;
-  /* display: Grid;
-  grid-template-columns: 200px 3fr;
-  grid-template-rows: auto; */
-
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  align-items: center;
   justify-content: center;
-  align-items: center;
-  gap: 8;
-  width: 100%;
-  height: 100%;
-}
-.Side-Filter {
-  display: flex;
-  flex-direction: column;
-  flex-wrap: wrap;
-
-  justify-content: center;
-  align-items: center;
-  padding: 1rem;
-  background-color: #ffffff;
-  border-radius: 1.1rem;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }
 
-.side {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  align-items: center;
-  justify-content: space-evenly;
-  width: 100%;
-  padding: 1rem;
-  border-bottom: #d2d2de 1px solid;
-}
-.side > span {
-  font-family: Fira Sans;
-  padding-right: 1rem;
+.App-link {
+  color: #61dafb;
 }
 
-.client-side {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 1rem;
-}
-.client-information > ul {
-  width: 100%;
-}
-.client-list {
-  list-style: none;
-  padding: 1rem;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-}
-.client-list:hover {
-  cursor: pointer;
-  background-color: #e5e5f4;
-  border-radius: 0.5rem;
-  width: 100%;
-}
-.employee-list {
-  list-style: none;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 1rem;
-}
-.employee-list:hover {
-  cursor: pointer;
-  background-color: #e5e5f4;
-  border-radius: 0.5rem;
-}
-
-.mainContent {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-left: 1rem;
-  width: 50vw;
-}
-
-.list-heading {
-  display: flex;
-  flex-direction: row;
-  flex-grow: 1;
-  width: 100%;
-  justify-content: space-evenly;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.list-content {
-  flex-grow: 1;
-  width: 100%;
-}
-
-.employeeName {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: nowrap;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: #ffffff;
-  border-radius: 0.5rem;
-  margin-bottom: 1.2rem;
-}
-
-.employee-listing {
-  display: flex;
-  justify-content: space-evenly;
-  align-items: center;
-  padding: 1rem;
-}
-
-@media only screen and (max-width: 600px) {
-  .Navbar {
-    width: 100vw;
-    justify-content: center;
-    align-items: center;
-    padding: 1rem 0;
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
   }
-  .qrcode {
-    /* background-color: #12c9ae; */
-    width: 100%;
-    justify-content: center;
-  }
-  .menu-icon {
-    cursor: pointer;
-    margin-left: 60%;
-    display: block;
-    border: none;
-    background: transparent;
-    transition: 2s ease-in-out 6s;
-  }
-  /* .links {
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 100%;
-  } */
-  .links > li {
-    width: 100vw;
-    align-items: center;
-    text-align: center;
-    padding: 1rem;
-  }
-
-  .NavLink {
-    justify-self: center;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
-    width: 100%;
-  }
-
-  .stats {
-    border: none;
-    height: 100;
-  }
-  .social {
-    justify-content: space-evenly;
-    align-items: center;
-    width: 100vw;
-  }
-  .social-bell,
-  .email-icon,
-  .Avatar {
-    height: 100%;
-  }
-  .close-icons {
-    display: none;
-    animation-name: ;
-    animation-delay: 6s;
-    height: 100%;
-    transition: height 3s ease-in-out 3s;
-  }
-
-  .main {
-    display: none;
-  }
-  .sub-menu {
-    display: block;
-    transition: 2s ease-in-out 6s;
-  }
-  .hide {
-    display: none;
+  to {
+    transform: rotate(360deg);
   }
 }
