@@ -1,9 +1,16 @@
-import React from 'react'
+import React from "react";
 
 export default function Clients() {
-    return (
-        <div>
-            <h2>This is the Clients side</h2>
-        </div>
-    )
+  return (
+    <div
+      style={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+      }}>
+      <h2>This is the Clients</h2>
+    </div>
+  );
 }

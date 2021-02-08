@@ -1,66 +1,37 @@
-import "./App.css";
+import { makeStyles, Grid, Paper } from "@material-ui/core";
 import { useState } from "react";
-import {
-  Grid,
-  Paper,
-  makeStyles,
-  createMuiTheme,
-  ThemeProvider,
-} from "@material-ui/core";
+import "./App.css";
 import Navbar from "./Layout/Navbar";
 import View from "./Layout/View";
-import Footer from "./Layout/Footer";
 import { BrowserRouter as Router } from "react-router-dom";
 
-//This is for Themeing Purpose
-const useStyles = makeStyles({
+const useStyles = makeStyles((themes) => ({
   root: {
-    display: "flex",
-    minHeight: "100vh",
-    maxWidth: "100vw",
+    // display: "flex",
+    // flexDirection: "column",
   },
-});
-
-const darkTheme = createMuiTheme({
-  palette: {
-    type: "dark",
-  },
-});
-const LightTheme = createMuiTheme({
-  palette: {
-    type: "light",
-  },
-});
+}));
 
 function App() {
-  //Bring ing in the theme from the useStyles outside the function
+  const [employeeData, setEmployeeData] = useState([]);
   const classes = useStyles();
-  //Createing the state where the style can be changed on click
-  const [darkMode, setDark] = useState(false);
-
-  //creating the theme
-  const preferTheme = createMuiTheme({
-    palette: {
-      type: darkMode ? "dark" : "light",
-      transitions: {
-        easing: {
-          easeIn: "1s",
-        },
-      },
-    },
-    transitions: {
-      easing: "easeOut",
-    },
-  });
   return (
-    <ThemeProvider theme={preferTheme}>
-      <Paper className={classes.root}>
-        <Router>
-          <Navbar dark={darkMode} setDark={setDark} />
-          <View />
-        </Router>
+    <Router>
+      <Paper>
+        <Grid container justify="center" align="center">
+          <Grid item xs={3} sm={3}>
+            <Navbar />
+          </Grid>
+          <Grid item xs={9} sm={9}>
+            <View
+              style={{ minHeight: "100vh" }}
+              data={employeeData}
+              setEmployeeData={setEmployeeData}
+            />
+          </Grid>
+        </Grid>
       </Paper>
-    </ThemeProvider>
+    </Router>
   );
 }
 

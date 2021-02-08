@@ -1,17 +1,16 @@
 import React from "react";
-import { makeStyles } from "@material-ui/core";
-
-const useStyles = makeStyles({
-  root: {
-    height: "100%",
-  },
-});
 
 export default function Home() {
-  const classes = useStyles();
   return (
-    <div className={classes.root}>
-      <h2>This is the Home side</h2>
+    <div
+      style={{
+        height: "100%",
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "space-evenly",
+        alignItems: "center",
+      }}>
+      <h2>This is the Home page</h2>
     </div>
   );
 }
