@@ -56,23 +56,9 @@ function App() {
     <ThemeProvider theme={preferTheme}>
       <Paper className={classes.root}>
         <Router>
-          {/* <Grid
-            container
-            direction="column"
-            justify="center"
-            alignItems="center"
-            spacing={3}>
-            <Grid item sm={4} xs={3}> */}
-              <Navbar dark={darkMode} setDark={setDark} />
-            {/* </Grid>
-            <Grid item sm={8} xs={12}> */}
-              <View />
-            {/* </Grid>
-          </Grid>
-
-          <Grid container justify="center" alignItems="center"></Grid> */}
+          <Navbar dark={darkMode} setDark={setDark} />
+          <View />
         </Router>
-        {/* <Footer /> */}
       </Paper>
     </ThemeProvider>
   );
