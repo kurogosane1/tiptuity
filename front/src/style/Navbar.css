@@ -1,0 +1,71 @@
+.topNav {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f7;
+  width: auto;
+  color: #236703;
+  outline: none;
+  border-radius: 1rem;
+  box-shadow: 20px 20px 60px #b3b3bd, -20px -20px 60px #f2f2ff;
+  transition: 1s ease-in-out;
+}
+
+.topNav-hide {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  height: 100vh;
+  background-color: #f5f5f7;
+  width: 45%;
+  color: #236703;
+  outline: none;
+  border-radius: 1rem;
+  box-shadow: 7px 7px 23px #e4e4e6, -7px -7px 23px #ffffff;
+  transition: 2s ease-in;
+}
+
+.fa-building,
+.fa-user,
+.fa-money,
+.fa-line-chart,
+.fa-qrcode,
+.fa-sign-out {
+  color: #236703;
+}
+
+.nav_buttons {
+  width: 100%;
+  color: #236703;
+  /* padding-right: 1rem; */
+  /* margin-left: 1rem; */
+}
+.nav_buttons_icons {
+  /* padding-right: 1rem; */
+  margin-left: 2rem;
+}
+.nav_buttons_hidden {
+  margin-left: 1rem;
+}
+.nav_buttons_hidden2 {
+  margin-left: 1.5rem;
+}
+/* .nav_buttons:hover {
+  transition: 1s ease;
+  color: #7cea4a;
+} */
+
+.fa-building:hover,
+.fa-user:hover,
+.fa-money:hover,
+.fa-line-chart:hover,
+.fa-qrcode:hover,
+.fa-sign-out:hover,
+.nav_buttons:hover {
+  transition: 1s ease;
+  color: #7cea4a;
+  background-color: transparent;
+}

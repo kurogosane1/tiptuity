@@ -1,22 +1,28 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
-
-import Home from "../Pages/Home";
-import Employees from "../Pages/Employees";
 import Clients from "../Pages/Clients";
+import Employees from "../Pages/Employees";
+import Stats from "../Pages/Stats";
+import Tips from "../Pages/Tips";
+import "../style/View.css";
 
-export default function View({ data, setEmployeeData }) {
+export default function View() {
   return (
-    <Switch>
-      <Route exact path="/">
-        <Home style={{ minHeight: "100vh" }} />
-      </Route>
-      <Route path="/Employees">
-        <Employees style={{ minheight: "100vh" }} data={data} setEmployeeData />
-      </Route>
-      <Route path="/Clients">
-        <Clients style={{ minheight: "100vh" }} />
-      </Route>
-    </Switch>
+    <div className="views">
+      <Switch>
+        <Route exact path="/">
+          <Stats />
+        </Route>
+        <Route path="/Clients">
+          <Clients />
+        </Route>
+        <Route path="/Employees">
+          <Employees />
+        </Route>
+        <Route path="/tips">
+          <Tips />
+        </Route>
+      </Switch>
+    </div>
   );
 }

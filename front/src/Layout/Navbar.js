@@ -1,132 +1,116 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import {
-  Grid,
-  ListItem,
-  List,
-  ListItemIcon,
-  ListItemText,
-  makeStyles,
-  Container,
-  Divider,
-} from "@material-ui/core";
-import WbSunnyIcon from "@material-ui/icons/WbSunny";
-import HomeIcon from "@material-ui/icons/Home";
-import PeopleOutlineIcon from "@material-ui/icons/PeopleOutline";
-import BusinessIcon from "@material-ui/icons/Business";
-import Logo from "../Assets/Logo.svg";
+import "../style/Navbar.css";
+import "boxicons";
+import logo from "../Assets/Logo.svg";
+import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
 
-const useStyles = makeStyles((themes) => ({
-  root: {
-    minHeight: "100%",
-    backgroundColor: "blue",
-  },
-  subList: {
-    display: "flex",
-    flexDirection: "column",
-    flexGrow: "1",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-  SecondsubList: {
-    display: "flex",
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-  },
-}));
-
-export default function Navbar() {
+export default function Navbar({ hide }) {
   const history = useHistory();
-  const classes = useStyles();
 
   const itemsList = [
     {
-      text: "Home",
-      icons: <HomeIcon />,
+      text: "Stats",
+      icons: <i class="fa fa-line-chart fa-2x" aria-hidden="true"></i>,
       onClick: () => history.push("/"),
     },
     {
+      text: "Tips",
+      icons: <i class="fa fa-money fa-2x" aria-hidden="true"></i>,
+      onClick: () => history.push("/tips"),
+    },
+    {
       text: "Employees",
-      icons: <PeopleOutlineIcon />,
+      icons: <i class="fa fa-user fa-2x" aria-hidden="true"></i>,
       onClick: () => history.push("/Employees"),
     },
     {
       text: "Clients",
-      icons: <BusinessIcon />,
+      icons: <i class="fa fa-building fa-2x" aria-hidden="true"></i>,
       onClick: () => history.push("/Clients"),
     },
   ];
 
   return (
-    <Grid
-      container
-      direction="column"
-      justify="space-evenly"
-      alignItems="center"
-      space={3}
-      style={{
-        displat: "flex",
-        flexGrow: "1",
-        flexDirection: "column",
-        justifyContent: "center",
-        alignItems: "center",
-        minHeight: "100vh",
-        textAlign: "center",
-        margin: "0 auto",
-        border: "none",
-        boxShadow: "7px 0px 31px 0px rgba(0,0,0,0.05)",
-      }}>
-      <Container>
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}>
-          <List>
+    <>
+      <header className={hide ? "topNav" : "topNav-hide"}>
+        <List className="main-heading">
+          {hide ? (
             <ListItem
               button
-              onClick={() => {
-                history.push("/");
-              }}>
+              className="nav_buttons"
+              style={{ backgroundColor: "transparent" }}>
               <ListItemIcon>
-                <img src={Logo} />
+                <i className="fa fa-qrcode fa-3x" aria-hidden="true"></i>
               </ListItemIcon>
               <ListItemText primary="TipTuity" />
             </ListItem>
-            <Divider />
-            <ListItem button>
-              <ListItemIcon>
-                <WbSunnyIcon />
+          ) : (
+            <ListItem
+              button
+              className="nav_buttons"
+              style={{ backgroundColor: "transparent" }}>
+              <ListItemIcon className="nav_buttons_hidden">
+                <i className="fa fa-qrcode fa-3x" aria-hidden="true"></i>
               </ListItemIcon>
-              <ListItemText primary="Darkmode" />
             </ListItem>
-            <Divider />
-          </List>
-        </div>
+          )}
+        </List>
 
-        <div
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            justifyContent: "center",
-            alignItems: "center",
-          }}>
-          <List>
-            {itemsList.map((data, index) => {
-              const { text, icons, onClick } = data;
-              return (
-                <ListItem button key={index} onClick={onClick}>
-                  <ListItemIcon>{icons}</ListItemIcon>
-                  <ListItemText primary={text} />
-                </ListItem>
-              );
-            })}
-          </List>
-        </div>
-      </Container>
-    </Grid>
+        <List className="list-style">
+          {hide
+            ? itemsList.map((data, index) => {
+                return (
+                  <ListItem
+                    button
+                    onClick={data.onClick}
+                    key={index}
+                    className="nav_buttons"
+                    style={{ backgroundColor: "transparent" }}>
+                    <ListItemIcon>{data.icons}</ListItemIcon>
+                    <ListItemText primary={data.text} />
+                  </ListItem>
+                );
+              })
+            : itemsList.map((data, index) => {
+                return (
+                  <ListItem
+                    button
+                    onClick={data.onClick}
+                    key={index}
+                    className="nav_buttons"
+                    style={{ backgroundColor: "transparent" }}>
+                    <ListItemIcon className="nav_buttons_hidden2">
+                      {data.icons}
+                    </ListItemIcon>
+                  </ListItem>
+                );
+              })}
+        </List>
+        <List className="list-style">
+          {hide ? (
+            <ListItem
+              button
+              className="nav_buttons"
+              style={{ backgroundColor: "transparent" }}>
+              <ListItemIcon>
+                <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+              </ListItemIcon>
+              <ListItemText primary="Log Out" />
+            </ListItem>
+          ) : (
+            <ListItem
+              button
+              className="nav_buttons"
+              style={{ backgroundColor: "transparent" }}>
+              <ListItemIcon className="nav_buttons_icons">
+                <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+              </ListItemIcon>
+            </ListItem>
+          )}
+        </List>
+      </header>
+      <div className="menu"></div>
+    </>
   );
 }

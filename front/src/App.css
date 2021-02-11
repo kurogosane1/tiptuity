@@ -1,6 +1,36 @@
-*,
-*:before,
-*:after {
-  margin: 0;
-  padding: 0;
+body {
+  height: 100%;
+}
+.App {
+  display: grid;
+  grid-template-columns: auto 5px 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "sidebar sandwich body";
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.fa-chevron-left {
+  grid-area: sandwich;
+  cursor: pointer;
+  margin-top: 2rem;
+  margin-left: 1rem;
+  align-self: flex-start;
+
+  color: #5eb735;
+}
+.col2 {
+  background-color: brown;
+  grid-area: sandwich;
+}
+
+.fa-chevron-right {
+  grid-area: sandwich;
+  cursor: pointer;
+  margin-top: 2rem;
+  margin-right: 10rem;
+  align-self: flex-start;
+
+  color: #236703;
 }
