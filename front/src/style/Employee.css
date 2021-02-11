@@ -1,0 +1,93 @@
+.emp_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-gap: 2rem;
+  grid-template-areas:
+    "statistics statistics statistics"
+    "topFiv topFiv tips";
+  justify-content: space-evenly;
+  align-items: center;
+}
+.emp_container_stats {
+  grid-area: statistics;
+  display: Grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "stats coll something";
+  grid-gap: 2rem;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.emp_tips_collected {
+  border-radius: 1rem;
+  width: 300px;
+  height: 100px;
+  background: #f5f5f7;
+  box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.one {
+  grid-area: stats;
+}
+.two {
+  grid-area: coll;
+}
+.three {
+  grid-area: something;
+}
+
+.emp_container_list {
+  grid-area: topFiv;
+  box-sizing: border-box;
+  padding: 2rem;
+  border-radius: 1rem;
+  background: #f5f5f7;
+  box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
+}
+
+.heading {
+  border-bottom: 1px solid black;
+  border-width: 2px;
+  padding: 1rem;
+}
+.details {
+  padding: 1rem;
+}
+
+.emp_tips {
+  grid-area: tips;
+  border-radius: 1rem;
+  background: #f5f5f7;
+  box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
+}
+
+@media only screen and (max-width: 600px) {
+  .emp_container {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 2rem;
+    grid-template-areas:
+      "statistics"
+      "statistics"
+      "statistics"
+      "topFiv"
+      "topFiv"
+      "tips";
+  }
+
+  .emp_container_stats {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto;
+    grid-gap: 2rem;
+    grid-template-areas:
+      "stats"
+      "coll"
+      "something";
+  }
+}

@@ -11,22 +11,22 @@ export default function Navbar({ hide }) {
   const itemsList = [
     {
       text: "Stats",
-      icons: <i class="fa fa-line-chart fa-2x" aria-hidden="true"></i>,
+      icons: <i className="fa fa-line-chart fa-2x" aria-hidden="true"></i>,
       onClick: () => history.push("/"),
     },
     {
       text: "Tips",
-      icons: <i class="fa fa-money fa-2x" aria-hidden="true"></i>,
+      icons: <i className="fa fa-money fa-2x" aria-hidden="true"></i>,
       onClick: () => history.push("/tips"),
     },
     {
       text: "Employees",
-      icons: <i class="fa fa-user fa-2x" aria-hidden="true"></i>,
+      icons: <i className="fa fa-user fa-2x" aria-hidden="true"></i>,
       onClick: () => history.push("/Employees"),
     },
     {
       text: "Clients",
-      icons: <i class="fa fa-building fa-2x" aria-hidden="true"></i>,
+      icons: <i className="fa fa-building fa-2x" aria-hidden="true"></i>,
       onClick: () => history.push("/Clients"),
     },
   ];
@@ -94,7 +94,7 @@ export default function Navbar({ hide }) {
               className="nav_buttons"
               style={{ backgroundColor: "transparent" }}>
               <ListItemIcon>
-                <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+                <i className="fa fa-sign-out fa-2x" aria-hidden="true"></i>
               </ListItemIcon>
               <ListItemText primary="Log Out" />
             </ListItem>
@@ -104,7 +104,7 @@ export default function Navbar({ hide }) {
               className="nav_buttons"
               style={{ backgroundColor: "transparent" }}>
               <ListItemIcon className="nav_buttons_icons">
-                <i class="fa fa-sign-out fa-2x" aria-hidden="true"></i>
+                <i className="fa fa-sign-out fa-2x" aria-hidden="true"></i>
               </ListItemIcon>
             </ListItem>
           )}
