@@ -5,9 +5,10 @@
   grid-gap: 2rem;
   grid-template-areas:
     "statistics statistics statistics"
-    "topFiv topFiv tips";
+    "topFiv tips tips";
   justify-content: space-evenly;
   align-items: center;
+  color: #2f2f31;
 }
 .emp_container_stats {
   grid-area: statistics;
@@ -52,7 +53,7 @@
 }
 
 .heading {
-  border-bottom: 1px solid black;
+  border-bottom: 1px solid #ceced3;
   border-width: 2px;
   padding: 1rem;
 }
@@ -65,6 +66,59 @@
   border-radius: 1rem;
   background: #f5f5f7;
   box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
+}
+
+/* =============== Top 5 layouts ============ */
+.topFive_list {
+  list-style: none;
+}
+.topFive_emp_details {
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 18px 18px 36px #d9d9d9, -18px -18px 36px #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "namer amount";
+  justify-content: space-evenly;
+  align-items: center;
+}
+.topFive_emp_details_clicked {
+  cursor: pointer;
+  box-sizing: border-box;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  border-color: #7cea4a;
+  background: #ffffff;
+  box-shadow: inset 18px 18px 36px #d9d9d9, inset -18px -18px 36px #ffffff;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: auto;
+  grid-template-areas: "namer amount";
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.topFive_emp_names {
+  grid-area: namer;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.topFive_emp_amount {
+  grid-area: amount;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
 }
 
 @media only screen and (max-width: 600px) {
@@ -89,5 +143,8 @@
       "stats"
       "coll"
       "something";
+  }
+  .emp_tips {
+    display: none;
   }
 }

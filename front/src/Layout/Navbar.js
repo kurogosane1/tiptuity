@@ -3,10 +3,23 @@ import { useHistory } from "react-router-dom";
 import "../style/Navbar.css";
 import "boxicons";
 import logo from "../Assets/Logo.svg";
-import { List, ListItem, ListItemIcon, ListItemText } from "@material-ui/core";
+import {
+  List,
+  ListItem,
+  ListItemIcon,
+  ListItemText,
+  makeStyles,
+} from "@material-ui/core";
+
+const useStyles = makeStyles((theme) => ({
+  ListItemText: {
+    fontFamily: "Poppins",
+  },
+}));
 
 export default function Navbar({ hide }) {
   const history = useHistory();
+  const classes = useStyles();
 
   const itemsList = [
     {
@@ -43,7 +56,11 @@ export default function Navbar({ hide }) {
               <ListItemIcon>
                 <i className="fa fa-qrcode fa-3x" aria-hidden="true"></i>
               </ListItemIcon>
-              <ListItemText primary="TipTuity" />
+              <ListItemText
+                primary="TipTuity"
+                className="main-heading-text"
+                classes={{ primary: classes.ListItemText }}
+              />
             </ListItem>
           ) : (
             <ListItem
@@ -68,7 +85,10 @@ export default function Navbar({ hide }) {
                     className="nav_buttons"
                     style={{ backgroundColor: "transparent" }}>
                     <ListItemIcon>{data.icons}</ListItemIcon>
-                    <ListItemText primary={data.text} />
+                    <ListItemText
+                      primary={data.text}
+                      classes={{ primary: classes.ListItemText }}
+                    />
                   </ListItem>
                 );
               })
@@ -96,7 +116,10 @@ export default function Navbar({ hide }) {
               <ListItemIcon>
                 <i className="fa fa-sign-out fa-2x" aria-hidden="true"></i>
               </ListItemIcon>
-              <ListItemText primary="Log Out" />
+              <ListItemText
+                primary="Log Out"
+                classes={{ primary: classes.ListItemText }}
+              />
             </ListItem>
           ) : (
             <ListItem
