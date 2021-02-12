@@ -18,12 +18,15 @@ export default function Data(props) {
       let id = faker.random.uuid();
       let employee_address = faker.address.streetAddress();
       let date_joined = faker.date.past();
-      for (let v = 1; v <= 10; v++) {
-        let tip = faker.finance.amount();
+      let image = faker.image.people();
+      for (let v = 1; v <= 1; v++) {
+        let tip = parseFloat(faker.finance.amount());
         let client = faker.company.companyName();
+        let date = faker.date.recent();
         tips.push({
           tip,
           client,
+          date
         });
       }
       data.push({
@@ -31,6 +34,7 @@ export default function Data(props) {
         lastName,
         email,
         id,
+        image,
         employee_address,
         date_joined,
         tipsAmount: [...tips],

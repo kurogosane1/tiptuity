@@ -1,9 +1,9 @@
-import { get } from "mongoose";
 import React, { useContext, useEffect, useState } from "react";
 import { DataContext } from "../Context/Data";
 import "../style/Employee.css";
 import { GrMoney } from "react-icons/gr";
 import { IoPersonOutline } from "react-icons/io5";
+import { Avatar } from "@material-ui/core";
 
 export default function Employees() {
   const { employee, getFaker } = useContext(DataContext);
@@ -11,6 +11,9 @@ export default function Employees() {
   const [totEmp, setTotEmp] = useState();
   const [topfives, setTop5] = useState();
   const [clicked, setClicked] = useState();
+  const [selection, setSelection] = useState();
+  const [selData, setSelData] = useState();
+  const [indTips, setIndTips] = useState();
 
   //this is the tips collected in total;
   const totalTips = () => {
@@ -54,10 +57,41 @@ export default function Employees() {
     setTop5([...largest_tips]);
   };
 
+  //Get the data for the selection
+  const getSelection = () => {
+    console.log(employee);
+    if (selection) {
+      const information = employee
+        .map((data) => data)
+        .filter(
+          (data) =>
+            data.firstName === selection.first &&
+            data.lastName === selection.last
+        );
+      const setTips = information[0].tipsAmount;
+      setSelData(information);
+      setIndTips([...setTips]);
+    }
+  };
+
+  //This is after a click has been made
+  const handleclick = (index, firstName, lastName) => {
+    setClicked(index);
+    setSelection({
+      first: firstName,
+      last: lastName,
+    });
+  };
+
   useEffect(() => {
     totalTips();
     findTopFive();
   }, []);
+
+  useEffect(() => {
+    getSelection();
+  }, [selection, selData, indTips]);
+  useEffect(() => {}, [selData, indTips]);
 
   //Formatter
   const formatter = new Intl.NumberFormat("en-US", {
@@ -100,6 +134,7 @@ export default function Employees() {
                 {topfives
                   ? topfives.map((data, index) => {
                       const { firstName, lastName, total_Tips } = data;
+
                       return (
                         <li className="topFive_emp" key={index}>
                           <div
@@ -108,7 +143,9 @@ export default function Employees() {
                                 ? "topFive_emp_details_clicked"
                                 : "topFive_emp_details"
                             }
-                            onClick={() => setClicked(index)}>
+                            onClick={() => {
+                              handleclick(index, firstName, lastName);
+                            }}>
                             <div className="topFive_emp_names">
                               <h3>{firstName}</h3>
                               <span>{lastName}</span>
@@ -132,12 +169,49 @@ export default function Employees() {
         </div>
       </div>
       <div className="emp_tips">
-        <h2>This is where the tips will go</h2>
+        <div className="emp_heading">
+          <div className="topFive_tips_coll">
+            {selData ? (
+              selData.map((data, index) => {
+                const { firstName, lastName, image, tipsAmount } = data;
+                return (
+                  <div key={index}>
+                    <div className="emp_heading">
+                      <h2>{firstName}</h2>
+                      <h2>{lastName}</h2>
+                    </div>
+                    <div className="emp_img">
+                      <Avatar src={image} />
+                    </div>
+                  </div>
+                );
+              })
+            ) : (
+              <h2></h2>
+            )}
+            <ul className="emp_tips_list">
+              {indTips ? (
+                indTips.map((data, index) => {
+                  console.log(data.tip);
+                  return (
+                    <li className="emp_tips_so_far" key={index}>
+                      <div>
+                        <h2>{formatter.format(data.tip)}</h2>
+                      </div>
+                      <div></div>
+                      <div>
+                        <h2>{data.client}</h2>
+                      </div>
+                    </li>
+                  );
+                })
+              ) : (
+                <h2></h2>
+              )}
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   );
 }
-
-// grid-template-areas:
-//     "statistics statistics statistics"
-//     "topFiv topFiv tips";
