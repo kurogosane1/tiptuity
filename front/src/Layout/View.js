@@ -2,6 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import Clients from "../Pages/Clients";
 import Employees from "../Pages/Employees";
+import EmpOverview from "../Pages/EmpOverview";
 import Stats from "../Pages/Stats";
 import Tips from "../Pages/Tips";
 import "../style/View.css";
@@ -18,6 +19,9 @@ export default function View() {
         </Route>
         <Route path="/Employees">
           <Employees />
+        </Route>
+        <Route path="/EmpOverview">
+          <EmpOverview/>
         </Route>
         <Route path="/tips">
           <Tips />

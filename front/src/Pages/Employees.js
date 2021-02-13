@@ -4,8 +4,11 @@ import "../style/Employee.css";
 import { GrMoney } from "react-icons/gr";
 import { IoPersonOutline } from "react-icons/io5";
 import { Avatar } from "@material-ui/core";
+import { useHistory } from "react-router-dom";
 
 export default function Employees() {
+  const history = useHistory();
+
   const { employee, getFaker } = useContext(DataContext);
   const [totTips, setTotalTips] = useState();
   const [totEmp, setTotEmp] = useState();
@@ -127,7 +130,9 @@ export default function Employees() {
               <span>
                 Employees with the largest collection of tips over the years
               </span>
-              <button>View All Employees</button>
+              <button onClick={() => history.push("/EmpOverview")}>
+                View All Employees
+              </button>
             </div>
             <div className="details">
               <ul className="topFive_list">
