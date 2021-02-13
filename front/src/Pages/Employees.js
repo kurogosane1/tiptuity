@@ -59,7 +59,6 @@ export default function Employees() {
 
   //Get the data for the selection
   const getSelection = () => {
-    console.log(employee);
     if (selection) {
       const information = employee
         .map((data) => data)
@@ -128,6 +127,7 @@ export default function Employees() {
               <span>
                 Employees with the largest collection of tips over the years
               </span>
+              <button>View All Employees</button>
             </div>
             <div className="details">
               <ul className="topFive_list">
@@ -177,8 +177,8 @@ export default function Employees() {
                 return (
                   <div key={index}>
                     <div className="emp_heading">
-                      <h2>{firstName}</h2>
-                      <h2>{lastName}</h2>
+                      <h2 style={{ textAlign: "center" }}>{firstName}</h2>
+                      <h2 style={{ textAlign: "center" }}>{lastName}</h2>
                     </div>
                     <div className="emp_img">
                       <Avatar src={image} />
@@ -192,21 +192,22 @@ export default function Employees() {
             <ul className="emp_tips_list">
               {indTips ? (
                 indTips.map((data, index) => {
-                  console.log(data.tip);
+                  let d = new Date(data.date);
+
                   return (
                     <li className="emp_tips_so_far" key={index}>
                       <div>
-                        <h2>{formatter.format(data.tip)}</h2>
-                      </div>
-                      <div></div>
-                      <div>
                         <h2>{data.client}</h2>
+                      </div>
+                      <div>{d.toString()}</div>
+                      <div>
+                        <h2>{formatter.format(data.tip)}</h2>
                       </div>
                     </li>
                   );
                 })
               ) : (
-                <h2></h2>
+                <h2 style={{ maxHeight: "53.5vh" }}></h2>
               )}
             </ul>
           </div>
