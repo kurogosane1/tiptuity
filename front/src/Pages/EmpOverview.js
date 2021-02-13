@@ -52,5 +52,253 @@ export default function EmpOverview() {
     getTotalTips();
   }, []);
 
-  return <div>{totalTips}</div>;
+  return (
+    <div className="overview_container">
+      <section className="emp_over_list">
+        <div className="emp_over_info">
+          <h4>Names of all employees</h4>
+          <button>Add More Employees</button>
+        </div>
+        <div className="name_listing">
+          <ul>
+            <li>
+              <div className="name_container">
+                <span>Avatar</span>
+                <span>First Name</span>
+                <span>Last Name</span>
+              </div>
+            </li>
+            <li>
+              <div className="name_container">
+                <span>Avatar</span>
+                <span>First Name</span>
+                <span>Last Name</span>
+              </div>
+            </li>
+            <li>
+              <div className="name_container">
+                <span>Avatar</span>
+                <span>First Name</span>
+                <span>Last Name</span>
+              </div>
+            </li>
+            <li>
+              <div className="name_container">
+                <span>Avatar</span>
+                <span>First Name</span>
+                <span>Last Name</span>
+              </div>
+            </li>
+            <li>
+              <div className="name_container">
+                <span>Avatar</span>
+                <span>First Name</span>
+                <span>Last Name</span>
+              </div>
+            </li>
+            <li>
+              <div className="name_container">
+                <span>Avatar</span>
+                <span>First Name</span>
+                <span>Last Name</span>
+              </div>
+            </li>
+            <li>
+              <div className="name_container">
+                <span>Avatar</span>
+                <span>First Name</span>
+                <span>Last Name</span>
+              </div>
+            </li>
+            <li>
+              <div className="name_container">
+                <span>Avatar</span>
+                <span>First Name</span>
+                <span>Last Name</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+      <section className="tips_collected">
+        <div className="tips_collected_container">
+          <div className="emp_over_heading">
+            <h3>First Name</h3>
+            <h3>Last Name</h3>
+          </div>
+          <div className="emp_over_image">
+            <h2>Image here</h2>
+          </div>
+          <ul>
+            <li>
+              <div className="name_col">
+                <h2>Client Name</h2>
+              </div>
+              <div className="date_col">
+                <h2>Feb3</h2>
+              </div>
+              <div className="amount_collected">
+                <h3>2,300</h3>
+              </div>
+            </li>
+            <li>
+              {" "}
+              <div className="name_col">
+                <h2>Client Name</h2>
+              </div>
+              <div className="date_col">
+                <h2>Feb3</h2>
+              </div>
+              <div className="amount_collected">
+                <h3>2,300</h3>
+              </div>
+            </li>
+            <li>
+              <div className="name_col">
+                <h2>Client Name</h2>
+              </div>
+              <div className="date_col">
+                <h2>Feb3</h2>
+              </div>
+              <div className="amount_collected">
+                <h3>2,300</h3>
+              </div>
+            </li>
+            <li>
+              <div className="name_col">
+                <h2>Client Name</h2>
+              </div>
+              <div className="date_col">
+                <h2>Feb3</h2>
+              </div>
+              <div className="amount_collected">
+                <h3>2,300</h3>
+              </div>
+            </li>
+            <li>
+              <div className="name_col">
+                <h2>Client Name</h2>
+              </div>
+              <div className="date_col">
+                <h2>Feb3</h2>
+              </div>
+              <div className="amount_collected">
+                <h3>2,300</h3>
+              </div>
+            </li>
+            <li>
+              <div className="name_col">
+                <h2>Client Name</h2>
+              </div>
+              <div className="date_col">
+                <h2>Feb3</h2>
+              </div>
+              <div className="amount_collected">
+                <h3>2,300</h3>
+              </div>
+            </li>
+            <li>
+              <div className="name_col">
+                <h2>Client Name</h2>
+              </div>
+              <div className="date_col">
+                <h2>Feb3</h2>
+              </div>
+              <div className="amount_collected">
+                <h3>2,300</h3>
+              </div>
+            </li>
+            <li>
+              <div className="name_col">
+                <h2>Client Name</h2>
+              </div>
+              <div className="date_col">
+                <h2>Feb3</h2>
+              </div>
+              <div className="amount_collected">
+                <h3>2,300</h3>
+              </div>
+            </li>
+            <li>
+              <div className="name_col">
+                <h2>Client Name</h2>
+              </div>
+              <div className="date_col">
+                <h2>Feb3</h2>
+              </div>
+              <div className="amount_collected">
+                <h3>2,300</h3>
+              </div>
+            </li>
+            <li>
+              <div className="name_col">
+                <h2>Client Name</h2>
+              </div>
+              <div className="date_col">
+                <h2>Feb3</h2>
+              </div>
+              <div className="amount_collected">
+                <h3>2,300</h3>
+              </div>
+            </li>
+            <li>
+              <div className="name_col">
+                <h2>Client Name</h2>
+              </div>
+              <div className="date_col">
+                <h2>Feb3</h2>
+              </div>
+              <div className="amount_collected">
+                <h3>2,300</h3>
+              </div>
+            </li>
+            <li>
+              <div className="name_col">
+                <h2>Client Name</h2>
+              </div>
+              <div className="date_col">
+                <h2>Feb3</h2>
+              </div>
+              <div className="amount_collected">
+                <h3>2,300</h3>
+              </div>
+            </li>
+            <li>
+              <div className="name_col">
+                <h2>Client Name</h2>
+              </div>
+              <div className="date_col">
+                <h2>Feb3</h2>
+              </div>
+              <div className="amount_collected">
+                <h3>2,300</h3>
+              </div>
+            </li>
+            <li>
+              <div className="name_col">
+                <h2>Client Name</h2>
+              </div>
+              <div className="date_col">
+                <h2>Feb3</h2>
+              </div>
+              <div className="amount_collected">
+                <h3>2,300</h3>
+              </div>
+            </li>
+            <li>
+              <div className="name_col">
+                <h2>Client Name</h2>
+              </div>
+              <div className="date_col">
+                <h2>Feb3</h2>
+              </div>
+              <div className="amount_collected">
+                <h3>2,300</h3>
+              </div>
+            </li>
+          </ul>
+        </div>
+      </section>
+    </div>
+  );
 }
