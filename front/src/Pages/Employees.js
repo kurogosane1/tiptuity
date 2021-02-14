@@ -5,6 +5,7 @@ import { GrMoney } from "react-icons/gr";
 import { IoPersonOutline } from "react-icons/io5";
 import { Avatar } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
+import Skeleton from "@material-ui/lab/Skeleton";
 
 export default function Employees() {
   const history = useHistory();
@@ -192,7 +193,17 @@ export default function Employees() {
                 );
               })
             ) : (
-              <h2></h2>
+              <>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "53.5vh", paddingTop: "57%" }} />
+                </Skeleton>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "53.5vh", paddingTop: "57%" }} />
+                </Skeleton>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "53.5vh", paddingTop: "57%" }} />
+                </Skeleton>
+              </>
             )}
             <ul className="emp_tips_list">
               {indTips ? (

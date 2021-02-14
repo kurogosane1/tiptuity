@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
+import { Avatar } from "@material-ui/core";
+import Skeleton from "@material-ui/lab/Skeleton";
 import { DataContext } from "../Context/Data";
 import "../style/EmpOverview.css";
 
@@ -18,6 +20,8 @@ export default function EmpOverview() {
   const [totalTips, setTotalTips] = useState();
   //This is where to save the individual data
   const [indEmp, setIndEmp] = useState();
+  //This is if the user has clicked one of the listing names
+  const [clicked, setClicked] = useState();
 
   //Get data to be organized
   //Get the name of the employees
@@ -27,6 +31,7 @@ export default function EmpOverview() {
       return {
         firstName: data.firstName,
         lastName: data.lastName,
+        image: data.image,
       };
     });
     return setNames(Names);
@@ -47,10 +52,30 @@ export default function EmpOverview() {
     setTotalTips(formatter.format(Totals));
   };
 
+  //Clicking to get the name of the actual person
+  const handleClick = (first, last, index) => {
+    setClicked(index);
+    const tips = employee
+      .map((data) => data)
+      .filter((info) => info.firstName === first && info.lastName === last);
+
+    const tipsColl = tips[0].tipsAmount;
+
+    setIndEmp({
+      firstName: tips[0].firstName,
+      lastName: tips[0].lastName,
+      image: tips[0].image,
+      tips: tips[0].tipsAmount,
+    });
+  };
+
   useEffect(() => {
     getOrganized();
     getTotalTips();
+    console.log(names);
   }, []);
+
+  useEffect(() => {}, [indEmp]);
 
   return (
     <div className="overview_container">
@@ -61,241 +86,87 @@ export default function EmpOverview() {
         </div>
         <div className="name_listing">
           <ul>
-            <li>
-              <div className="name_container">
-                <span>Avatar</span>
-                <span>First Name</span>
-                <span>Last Name</span>
-              </div>
-            </li>
-            <li>
-              <div className="name_container">
-                <span>Avatar</span>
-                <span>First Name</span>
-                <span>Last Name</span>
-              </div>
-            </li>
-            <li>
-              <div className="name_container">
-                <span>Avatar</span>
-                <span>First Name</span>
-                <span>Last Name</span>
-              </div>
-            </li>
-            <li>
-              <div className="name_container">
-                <span>Avatar</span>
-                <span>First Name</span>
-                <span>Last Name</span>
-              </div>
-            </li>
-            <li>
-              <div className="name_container">
-                <span>Avatar</span>
-                <span>First Name</span>
-                <span>Last Name</span>
-              </div>
-            </li>
-            <li>
-              <div className="name_container">
-                <span>Avatar</span>
-                <span>First Name</span>
-                <span>Last Name</span>
-              </div>
-            </li>
-            <li>
-              <div className="name_container">
-                <span>Avatar</span>
-                <span>First Name</span>
-                <span>Last Name</span>
-              </div>
-            </li>
-            <li>
-              <div className="name_container">
-                <span>Avatar</span>
-                <span>First Name</span>
-                <span>Last Name</span>
-              </div>
-            </li>
+            {names
+              ? names.map((data, index) => {
+                  const { firstName, lastName, image } = data;
+
+                  return (
+                    <li
+                      key={index}
+                      onClick={() => handleClick(firstName, lastName, index)}>
+                      <div
+                        className={
+                          clicked === index
+                            ? "name_container_clicked"
+                            : "name_container"
+                        }>
+                        <Avatar src={image} />
+                        <span>{firstName}</span>
+                        <span>{lastName}</span>
+                      </div>
+                    </li>
+                  );
+                })
+              : null}
           </ul>
         </div>
       </section>
       <section className="tips_collected">
         <div className="tips_collected_container">
           <div className="emp_over_heading">
-            <h3>First Name</h3>
-            <h3>Last Name</h3>
+            <h3>
+              {indEmp ? (
+                indEmp.firstName
+              ) : (
+                <Skeleton variant="text" width="100%"></Skeleton>
+              )}
+            </h3>
+            <h3>{indEmp ? indEmp.lastName : <Skeleton />}</h3>
           </div>
           <div className="emp_over_image">
-            <h2>Image here</h2>
+            {indEmp ? (
+              <img
+                src={indEmp.image}
+                style={{ height: "200px", width: "200px", borderRadius: "50%" }}
+              />
+            ) : (
+              <Skeleton variant="rect" width="100%">
+                <div style={{ height: "85vh", paddingTop: "57%" }} />
+              </Skeleton>
+            )}
           </div>
           <ul>
-            <li>
-              <div className="name_col">
-                <h2>Client Name</h2>
-              </div>
-              <div className="date_col">
-                <h2>Feb3</h2>
-              </div>
-              <div className="amount_collected">
-                <h3>2,300</h3>
-              </div>
-            </li>
-            <li>
-              {" "}
-              <div className="name_col">
-                <h2>Client Name</h2>
-              </div>
-              <div className="date_col">
-                <h2>Feb3</h2>
-              </div>
-              <div className="amount_collected">
-                <h3>2,300</h3>
-              </div>
-            </li>
-            <li>
-              <div className="name_col">
-                <h2>Client Name</h2>
-              </div>
-              <div className="date_col">
-                <h2>Feb3</h2>
-              </div>
-              <div className="amount_collected">
-                <h3>2,300</h3>
-              </div>
-            </li>
-            <li>
-              <div className="name_col">
-                <h2>Client Name</h2>
-              </div>
-              <div className="date_col">
-                <h2>Feb3</h2>
-              </div>
-              <div className="amount_collected">
-                <h3>2,300</h3>
-              </div>
-            </li>
-            <li>
-              <div className="name_col">
-                <h2>Client Name</h2>
-              </div>
-              <div className="date_col">
-                <h2>Feb3</h2>
-              </div>
-              <div className="amount_collected">
-                <h3>2,300</h3>
-              </div>
-            </li>
-            <li>
-              <div className="name_col">
-                <h2>Client Name</h2>
-              </div>
-              <div className="date_col">
-                <h2>Feb3</h2>
-              </div>
-              <div className="amount_collected">
-                <h3>2,300</h3>
-              </div>
-            </li>
-            <li>
-              <div className="name_col">
-                <h2>Client Name</h2>
-              </div>
-              <div className="date_col">
-                <h2>Feb3</h2>
-              </div>
-              <div className="amount_collected">
-                <h3>2,300</h3>
-              </div>
-            </li>
-            <li>
-              <div className="name_col">
-                <h2>Client Name</h2>
-              </div>
-              <div className="date_col">
-                <h2>Feb3</h2>
-              </div>
-              <div className="amount_collected">
-                <h3>2,300</h3>
-              </div>
-            </li>
-            <li>
-              <div className="name_col">
-                <h2>Client Name</h2>
-              </div>
-              <div className="date_col">
-                <h2>Feb3</h2>
-              </div>
-              <div className="amount_collected">
-                <h3>2,300</h3>
-              </div>
-            </li>
-            <li>
-              <div className="name_col">
-                <h2>Client Name</h2>
-              </div>
-              <div className="date_col">
-                <h2>Feb3</h2>
-              </div>
-              <div className="amount_collected">
-                <h3>2,300</h3>
-              </div>
-            </li>
-            <li>
-              <div className="name_col">
-                <h2>Client Name</h2>
-              </div>
-              <div className="date_col">
-                <h2>Feb3</h2>
-              </div>
-              <div className="amount_collected">
-                <h3>2,300</h3>
-              </div>
-            </li>
-            <li>
-              <div className="name_col">
-                <h2>Client Name</h2>
-              </div>
-              <div className="date_col">
-                <h2>Feb3</h2>
-              </div>
-              <div className="amount_collected">
-                <h3>2,300</h3>
-              </div>
-            </li>
-            <li>
-              <div className="name_col">
-                <h2>Client Name</h2>
-              </div>
-              <div className="date_col">
-                <h2>Feb3</h2>
-              </div>
-              <div className="amount_collected">
-                <h3>2,300</h3>
-              </div>
-            </li>
-            <li>
-              <div className="name_col">
-                <h2>Client Name</h2>
-              </div>
-              <div className="date_col">
-                <h2>Feb3</h2>
-              </div>
-              <div className="amount_collected">
-                <h3>2,300</h3>
-              </div>
-            </li>
-            <li>
-              <div className="name_col">
-                <h2>Client Name</h2>
-              </div>
-              <div className="date_col">
-                <h2>Feb3</h2>
-              </div>
-              <div className="amount_collected">
-                <h3>2,300</h3>
-              </div>
-            </li>
+            {indEmp ? (
+              indEmp.tips.map((data) => {
+                const { tip, client, date } = data;
+                let d = new Date(date);
+                return (
+                  <li className="ind_emp_tips">
+                    <div className="name_col">
+                      <h3>{client}</h3>
+                    </div>
+                    <div className="date_col">
+                      <span>{d.toString()}</span>
+                    </div>
+                    <div className="amount_collected">
+                      <h3>{formatter.format(tip)}</h3>
+                    </div>
+                  </li>
+                );
+              })
+            ) : (
+              <li className="ind_emp_tips">
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
+              </li>
+            )}
           </ul>
         </div>
       </section>
