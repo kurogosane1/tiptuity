@@ -87,14 +87,40 @@
 
 .tips_received {
   grid-area: tipss;
+  box-sizing: border-box;
+  padding: 1rem;
   width: 100%;
-  height: 60vh;
+  height: 70vh;
+  border-radius: 1rem;
   background: #f5f5f7;
   box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
 }
 /*============individual layout settings ==================*/
 /*=============getting tips section setup==================*/
 
+.tips_received > ul {
+  list-style: none;
+  box-sizing: border-box;
+  padding: 1rem;
+  max-height: 65vh;
+  overflow: auto;
+}
+.tips_received>ul::-webkit-scrollbar{
+  display: hidden;
+}
+.individual_tips {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  grid-gap: 2rem;
+  box-sizing: border-box;
+  padding: 2rem;
+  margin: 1rem 0;
+  align-items: center;
+  justify-content: space-evenly;
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
+}
 /*============Media Query ==================*/
 @media only screen and (max-width: 600px) {
   .tips_container {
