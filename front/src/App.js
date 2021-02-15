@@ -5,6 +5,7 @@ import View from "./Layout/View";
 import { BrowserRouter as Router } from "react-router-dom";
 import Data from "./Context/Data";
 
+
 function App() {
   const [hide, setHide] = useState(false);
 

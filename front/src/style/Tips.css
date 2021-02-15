@@ -1,0 +1,111 @@
+/*============main tips container ===============*/
+
+.tips_container {
+  width: 100%;
+  /* height: 97vh; */
+  display: grid;
+  grid-template-columns: repeat(auto-fit, min-max(256px, 1fr));
+  grid-template-rows: auto;
+  grid-template-areas:
+    "total date highest"
+    "tipss tipss tipss";
+  align-items: center;
+  grid-gap: 1rem;
+}
+
+/*============individual layout settings ==================*/
+.tips_stats {
+  grid-area: total;
+  width: 100%;
+  padding: 2rem;
+  grid-area: total;
+  background: #f5f5f7;
+  border-radius: 10px;
+  box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
+  text-align: centers;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.tips_stats_container {
+  margin-top: 1rem;
+  grid: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  text-align: centers;
+}
+
+.date_tip {
+  grid-area: date;
+  width: 100%;
+  border-radius: 10px;
+  padding: 2rem;
+  grid-area: date;
+  background: #f5f5f7;
+  box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
+  text-align: centers;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.date_tip_container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-betwee;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.highest_tip {
+  grid-area: highest;
+  width: 100%;
+  padding: 2rem;
+  grid-area: highest;
+  border-radius: 10px;
+  background: #f5f5f7;
+  box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
+  text-align: centers;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.highest_tip_container {
+  margin-top: 1rem;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.tips_received {
+  grid-area: tipss;
+  width: 100%;
+  height: 60vh;
+  background: #f5f5f7;
+  box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
+}
+/*============individual layout settings ==================*/
+/*=============getting tips section setup==================*/
+
+/*============Media Query ==================*/
+@media only screen and (max-width: 600px) {
+  .tips_container {
+    /* grid-template-columns: 1fr; */
+    grid-template-areas:
+      "total"
+      "date"
+      "highest"
+      "tipss";
+  }
+  .tips_received {
+    height: 100%;
+  }
+}

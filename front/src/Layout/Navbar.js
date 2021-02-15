@@ -1,6 +1,7 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
 import "../style/Navbar.css";
+import "../App.css";
 import "boxicons";
 import logo from "../Assets/Logo.svg";
 import {

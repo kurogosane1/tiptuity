@@ -4,8 +4,10 @@ import Clients from "../Pages/Clients";
 import Employees from "../Pages/Employees";
 import EmpOverview from "../Pages/EmpOverview";
 import Stats from "../Pages/Stats";
-import Tips from "../Pages/Tips";
+import Tips from "../Pages/Tips/Tips";
 import "../style/View.css";
+import "../App.css";
+import TopNavBar from "../Layout/TopNavbar";
 
 export default function View() {
   return (
@@ -21,7 +23,7 @@ export default function View() {
           <Employees />
         </Route>
         <Route path="/EmpOverview">
-          <EmpOverview/>
+          <EmpOverview />
         </Route>
         <Route path="/tips">
           <Tips />

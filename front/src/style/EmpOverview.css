@@ -1,8 +1,10 @@
 /*=========page=========*/
 .overview_container {
+  /* grid-area: bodys; */
   display: grid;
   grid-template-columns: auto 1fr;
   grid-gap: 1rem;
+  width: 90%;
 }
 
 /*===================Employee Listing===========================*/
@@ -81,6 +83,7 @@
 /*======================Tips Collected Section=================*/
 .tips_collected {
   box-sizing: border-box;
+  width: 100%;
   padding: 1rem;
   border-radius: 1rem;
   background: #f5f5f7;

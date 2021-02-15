@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Avatar } from "@material-ui/core";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { DataContext } from "../Context/Data";
+import "../App.css";
 import "../style/EmpOverview.css";
 
 export default function EmpOverview() {
@@ -130,9 +131,29 @@ export default function EmpOverview() {
                 style={{ height: "200px", width: "200px", borderRadius: "50%" }}
               />
             ) : (
-              <Skeleton variant="rect" width="100%">
-                <div style={{ height: "85vh", paddingTop: "57%" }} />
-              </Skeleton>
+              <>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
+              </>
             )}
           </div>
           <ul>
@@ -156,6 +177,24 @@ export default function EmpOverview() {
               })
             ) : (
               <li className="ind_emp_tips">
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
+                <Skeleton variant="rect" width="100%">
+                  <div style={{ height: "85vh", paddingTop: "57%" }} />
+                </Skeleton>
                 <Skeleton variant="rect" width="100%">
                   <div style={{ height: "85vh", paddingTop: "57%" }} />
                 </Skeleton>

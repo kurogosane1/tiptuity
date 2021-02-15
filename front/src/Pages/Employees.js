@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DataContext } from "../Context/Data";
+import "../App.css";
 import "../style/Employee.css";
 import { GrMoney } from "react-icons/gr";
 import { IoPersonOutline } from "react-icons/io5";
