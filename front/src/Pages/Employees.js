@@ -28,9 +28,18 @@ export default function Employees() {
       let tips_amount = tips_information.map((data, index) =>
         parseFloat(data[index].tip)
       );
+      let totalTips = employee.map((data) => {
+        const { tipsAmount } = data;
+        let TotalAcc = tipsAmount
+          .map((data) => data.tip)
+          .reduce((acc, curr) => acc + curr, 0);
+        return TotalAcc;
+      });
+      const largest = totalTips.reduce((acc, cur) => acc + cur, 0);
+
       let total = tips_amount.reduce((acc, curr) => acc + curr, 0);
       let Num_employees = employee.length;
-      setTotalTips(total);
+      setTotalTips(largest);
       setTotEmp(Num_employees);
     } else {
       getFaker();
@@ -54,6 +63,7 @@ export default function Employees() {
     });
 
     //Now we are going to check who has the highest numbers
+
     const largest_tips = tips_data
       .sort((a, b) => {
         return b.total_Tips - a.total_Tips;
