@@ -164,13 +164,17 @@ export default function EmpOverview() {
                 return (
                   <li className="ind_emp_tips">
                     <div className="name_col">
-                      <h3>{client}</h3>
+                      <h3 style={{ textAlign: "center" }}>{client}</h3>
                     </div>
                     <div className="date_col">
-                      <span>{d.toString()}</span>
+                      <span style={{ textAlign: "center" }}>
+                        {d.toString()}
+                      </span>
                     </div>
                     <div className="amount_collected">
-                      <h3>{formatter.format(tip)}</h3>
+                      <h3 style={{ textAlign: "center" }}>
+                        {formatter.format(tip)}
+                      </h3>
                     </div>
                   </li>
                 );

@@ -196,13 +196,32 @@ export default function Employees() {
             ) : (
               <>
                 <Skeleton variant="rect" width="100%">
-                  <div style={{ height: "53.5vh", paddingTop: "57%" }} />
+                  <div
+                    style={{
+                      height: "53.5vh",
+                      width: "100%",
+                      paddingTop: "57%",
+                    }}
+                  />
                 </Skeleton>
                 <Skeleton variant="rect" width="100%">
-                  <div style={{ height: "53.5vh", paddingTop: "57%" }} />
+                  <div
+                    style={{
+                      height: "53.5vh",
+                      width: "100%",
+                      paddingTop: "57%",
+                    }}
+                  />
                 </Skeleton>
+
                 <Skeleton variant="rect" width="100%">
-                  <div style={{ height: "53.5vh", paddingTop: "57%" }} />
+                  <div
+                    style={{
+                      height: "53.5vh",
+                      width: "100%",
+                      paddingTop: "57%",
+                    }}
+                  />
                 </Skeleton>
               </>
             )}
