@@ -1,0 +1,101 @@
+/*=====================Main page Layout===========================*/
+.clients {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, min-max(156px, 1fr));
+  grid-template-areas:
+    "stats1"
+    "stats2"
+    "stats3"
+    "clients_list";
+  grid-gap: 2rem;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/*=====================Similiar Background===========================*/
+.top_client,
+.client_amount,
+.num_clients {
+  box-sizing: border-box;
+  padding: 1rem;
+  background: #f5f5f7;
+  border-radius: 10px;
+  box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.top_client > div,
+.client_amount > div,
+.num_clients > div {
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+  text-align: center;
+}
+
+.top_client > h5,
+.client_amount > h5,
+.num_clients > h5 {
+  border-bottom: solid 1px grey;
+  margin-bottom: 1rem;
+}
+
+.top_client > div > h2,
+.client_amount > div > h2,
+.num_clients > div > h2 {
+  text-align: center;
+  margin-left: 1rem;
+}
+
+/*=====================list of clients===========================*/
+.amounts_by_clients,
+.clients_details {
+  box-sizing: border-box;
+  padding: 1rem;
+  background: #f5f5f7;
+  border-radius: 10px;
+  box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
+}
+
+.amounts_by_clients_container {
+  max-height: 65vh;
+  overflow: auto;
+}
+.clients_details {
+  max-height: 65vh;
+  overflow: auto;
+}
+
+.individual_client {
+  border-radius: 1rem;
+  background: #ffffff;
+  box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
+}
+
+@media only screen and (min-width: 600px) {
+  .clients {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, min-max(156px, 1fr));
+    grid-template-areas:
+      "stats1 stats2 stats3"
+      "clients_list clientDetails clientDetails";
+  }
+
+  .top_client {
+    grid-area: stats1;
+  }
+  .client_amount {
+    grid-area: stats2;
+  }
+  .num_clients {
+    grid-area: stats3;
+  }
+  .amounts_by_clients {
+    grid-area: clients_list;
+  }
+  .clients_details {
+    grid-area: clientDetails;
+  }
+}
