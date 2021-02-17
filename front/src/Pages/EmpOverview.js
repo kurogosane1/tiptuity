@@ -4,8 +4,11 @@ import Skeleton from "@material-ui/lab/Skeleton";
 import { DataContext } from "../Context/Data";
 import "../App.css";
 import "../style/EmpOverview.css";
+import { useHistory } from "react-router-dom";
 
 export default function EmpOverview() {
+  const history = useHistory();
+
   //Formatter
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -55,19 +58,48 @@ export default function EmpOverview() {
 
   //Clicking to get the name of the actual person
   const handleClick = (first, last, index) => {
-    setClicked(index);
-    const tips = employee
-      .map((data) => data)
-      .filter((info) => info.firstName === first && info.lastName === last);
+    if (window.innerWidth > 600) {
+      setClicked(index);
+      const tips = employee
+        .map((data) => data)
+        .filter((info) => info.firstName === first && info.lastName === last);
 
-    const tipsColl = tips[0].tipsAmount;
+      const tipsColl = tips[0].tipsAmount;
 
-    setIndEmp({
-      firstName: tips[0].firstName,
-      lastName: tips[0].lastName,
-      image: tips[0].image,
-      tips: tips[0].tipsAmount,
-    });
+      setIndEmp({
+        firstName: tips[0].firstName,
+        lastName: tips[0].lastName,
+        image: tips[0].image,
+        tips: tips[0].tipsAmount,
+      });
+    } else {
+      setClicked(index);
+      setClicked(index);
+      const tips = employee
+        .map((data) => data)
+        .filter((info) => info.firstName === first && info.lastName === last);
+
+      const tipsColl = tips[0].tipsAmount;
+
+      setIndEmp({
+        firstName: tips[0].firstName,
+        lastName: tips[0].lastName,
+        image: tips[0].image,
+        tips: tips[0].tipsAmount,
+      });
+
+      history.push({
+        pathname: "/Employee",
+        state: {
+          indEmp: {
+            firstName: tips[0].firstName,
+            lastName: tips[0].lastName,
+            image: tips[0].image,
+            tips: tips[0].tipsAmount,
+          },
+        },
+      });
+    }
   };
 
   useEffect(() => {
@@ -102,8 +134,8 @@ export default function EmpOverview() {
                             : "name_container"
                         }>
                         <Avatar src={image} />
-                        <span>{firstName}</span>
-                        <span>{lastName}</span>
+                        <span style={{ textAlign: "center" }}>{firstName}</span>
+                        <span style={{ textAlign: "center" }}>{lastName}</span>
                       </div>
                     </li>
                   );

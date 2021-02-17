@@ -137,3 +137,14 @@
   margin-bottom: 1rem;
   border-bottom: solid 0.5px grey;
 }
+
+@media only screen and (max-width: 600px) {
+  .overview_container {
+    width: 100%;
+    grid-template-columns: 1fr;
+  }
+
+  .tips_collected {
+    display: none;
+  }
+}

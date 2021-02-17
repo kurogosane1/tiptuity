@@ -8,6 +8,7 @@ import Tips from "../Pages/Tips/Tips";
 import "../style/View.css";
 import "../App.css";
 import TopNavBar from "../Layout/TopNavbar";
+import Employee from "../Pages/IndividualEmp/Employee";
 
 export default function View() {
   return (
@@ -28,6 +29,11 @@ export default function View() {
         <Route path="/tips">
           <Tips />
         </Route>
+        {window.innerWidth <= 600 ? (
+          <Route path="/Employee">
+            <Employee />
+          </Route>
+        ) : null}
       </Switch>
     </div>
   );

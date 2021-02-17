@@ -195,4 +195,9 @@
   .emp_tips {
     display: none;
   }
+
+  .emp_tips_collected {
+    width: auto;
+    height: auto;
+  }
 }
