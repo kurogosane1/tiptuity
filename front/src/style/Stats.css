@@ -1,0 +1,31 @@
+.stats {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  grid-template-rows: auto;
+  grid-gap: 20px;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 90vh;
+}
+.stats > div {
+  text-align: center;
+  width: 100%;
+  height: 100%;
+  background: #f5f5f7;
+  border-radius: 10px;
+  box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
+}
+
+/*=======Aligning the stats page ===================*/
+@media only screen and (min-width: 764px) {
+  .stats_info4 {
+    grid-column: 1/3;
+  }
+}
+
+@media only screen and (max-width: 764px) {
+  .stats {
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  }
+}

@@ -50,28 +50,34 @@ export default function Navbar({ hide }) {
       <header className={hide ? "topNav" : "topNav-hide"}>
         <List className="main-heading">
           {hide ? (
-            <ListItem
-              button
-              className="nav_buttons"
-              style={{ backgroundColor: "transparent" }}>
-              <ListItemIcon>
-                <i className="fa fa-qrcode fa-3x" aria-hidden="true"></i>
-              </ListItemIcon>
-              <ListItemText
-                primary="TipTuity"
-                className="main-heading-text"
-                classes={{ primary: classes.ListItemText }}
-              />
-            </ListItem>
+            <>
+              <ListItem
+                button
+                className="nav_buttons "
+                style={{ backgroundColor: "transparent" }}>
+                <ListItemIcon>
+                  <i className="fa fa-qrcode fa-3x" aria-hidden="true"></i>
+                </ListItemIcon>
+                <ListItemText
+                  primary="TipTuity"
+                  className="main-heading-text"
+                  classes={{ primary: classes.ListItemText }}
+                />
+              </ListItem>
+              <i className="fa fa-chevron-left fa-2x abso" />
+            </>
           ) : (
-            <ListItem
-              button
-              className="nav_buttons"
-              style={{ backgroundColor: "transparent" }}>
-              <ListItemIcon className="nav_buttons_hidden">
-                <i className="fa fa-qrcode fa-3x" aria-hidden="true"></i>
-              </ListItemIcon>
-            </ListItem>
+            <>
+              <ListItem
+                button
+                className="nav_buttons outside"
+                style={{ backgroundColor: "transparent" }}>
+                <ListItemIcon className="nav_buttons_hidden">
+                  <i className="fa fa-qrcode fa-3x" aria-hidden="true"></i>
+                </ListItemIcon>
+              </ListItem>
+              <i className={"fa fa-chevron-left fa-2x abso-hide"} />
+            </>
           )}
         </List>
 

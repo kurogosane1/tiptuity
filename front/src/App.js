@@ -5,7 +5,6 @@ import View from "./Layout/View";
 import { BrowserRouter as Router } from "react-router-dom";
 import Data from "./Context/Data";
 
-
 function App() {
   const [hide, setHide] = useState(false);
 
@@ -13,7 +12,7 @@ function App() {
     <Data>
       <Router>
         <div className="App">
-          <Navbar hide={hide} />
+          <Navbar hide={hide} setHide={setHide} />
           <i
             className={hide ? "fa fa-chevron-left" : "fa fa-chevron-right col2"}
             aria-hidden="true"

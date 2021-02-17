@@ -1,6 +1,7 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
 
 .topNav {
+  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -19,6 +20,17 @@
   font-family: "Poppins", sans-serif;
 }
 
+.abso {
+  position: absolute;
+  color: #236703;
+  top: -0.3rem;
+  left: 9rem;
+}
+
+.abso:hover {
+  color: #7cea4a;
+}
+
 .topNav-hide {
   display: flex;
   flex-direction: column;
@@ -32,6 +44,23 @@
   border-radius: 1rem;
   box-shadow: 7px 7px 23px #e4e4e6, -7px -7px 23px #ffffff;
   transition: 2s ease-in;
+}
+
+.abso-hide {
+  position: absolute;
+  color: #236703;
+  top: -0.5rem;
+  left: 4.5rem;
+  transform: rotateY(-180deg);
+}
+
+.abso-hide:hover {
+  position: absolute;
+  color: #7cea4a;
+  top: -0.5rem;
+  left: 4.5rem;
+  transition: 1s;
+  transform: rotateY(-180deg);
 }
 
 .fa-building,
@@ -74,4 +103,65 @@
   transition: 1s ease;
   color: #7cea4a;
   background-color: transparent;
+}
+
+@media only screen and (max-width: 600px) {
+  .topNav {
+    transform: translateX(0%);
+    animation: show 1s ease-in-out;
+    z-index: 20;
+    /* overflow: hidden; */
+    /* visibility: hidden; */
+  }
+  .topNav-hide {
+    animation: hide 1s ease-in-out;
+    /* transform: translateX(-100%); */
+    display: none;
+  }
+
+  .abso {
+    position: absolute;
+    /* color: #236703; */
+    color: red;
+    top: 0rem;
+    left: 9rem;
+    /* z-index: inherit; */
+  }
+
+  .abso:hover {
+    color: #7cea4a;
+  }
+
+  @keyframes hide {
+    0% {
+      transform: translateX(0%);
+      opacity: 1;
+      transition: ease;
+    }
+
+    100% {
+      transform: translateX(-100%);
+      opacity: 0;
+      /* width: 0; */
+      /* height: 0; */
+      
+    }
+  }
+  @keyframes show {
+    0% {
+      transform: translateX(-100%);
+      opacity: 0;
+      /* transition: ease; */
+    }
+    50% {
+      transform: translateX(-50%);
+      opacity: 0.5;
+      /* transition: ease; */
+    }
+    100% {
+      transform: translateX(0%);
+      opacity: 1;
+      /* display: block; */
+    }
+  }
 }

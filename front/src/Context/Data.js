@@ -9,10 +9,19 @@ export default function Data(props) {
 
   let data = [];
   let tips = [];
+  let clients =[];
+
+  const getClient = ()=>{
+    for (let i=1; i<=100; i++){
+      let clientName = faker.company.companyName();
+      let client_address = faker.address.streetAddress();
+
+    }
+  }
 
   const getFaker = () => {
     for (let i = 1; i <= 100; i++) {
-      let firstName = faker.name.findName();
+      let firstName = faker.name.firstName();
       let lastName = faker.name.lastName();
       let email = faker.internet.email();
       let id = faker.random.uuid();

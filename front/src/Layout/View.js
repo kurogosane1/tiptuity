@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import Clients from "../Pages/Clients/Clients";
 import Employees from "../Pages/Employees";
 import EmpOverview from "../Pages/EmpOverview";
-import Stats from "../Pages/Stats";
+import Stats from "../Pages/Stats/Stats";
 import Tips from "../Pages/Tips/Tips";
 import "../style/View.css";
 import "../App.css";
