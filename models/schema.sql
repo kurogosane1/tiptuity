@@ -3,6 +3,11 @@ CREATE DATABASE IF NOT EXISTS tips_db;
 -- we are telling the system to use burger_db
 USE tips_db;
 
+--- Need to create a Client Table 
+--- Connect the employees table to Clients table
+--- Edit your tips table to make matching with client
+
+
 CREATE TABLE IF NOT EXISTS employees
 (
     employee_id INT(30)AUTO_INCREMENT NOT NULL PRIMARY KEY,
@@ -10,7 +15,11 @@ CREATE TABLE IF NOT EXISTS employees
     last_name VARCHAR(30) NOT NULL,
     email VARCHAR(60),
     employee_address VARCHAR(90),
-    date_joined DATE
+    date_joined DATE,
+    client_assigned:VARCHAR(256) NOT NULL,
+    
+    
+    -- FORIEGN KEY (client_assigned)
 );
 
 -- this the tips table to show the collected amount--
