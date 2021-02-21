@@ -9,6 +9,7 @@ export default function Data(props) {
   //This is the data that will be shared with the entire
   const [employee, setEmployee] = useState([{}]);
   const [client, setClient] = useState();
+  const [tipped,setTipped] = useState();
 
   let data = [];
   let tips = [];
@@ -18,7 +19,10 @@ export default function Data(props) {
     axios.get("/api").then((response) => {
       console.log(response);
       const { Employees, clients, tips } = response.data;
+      console.log(tips);
+      setEmployee([...Employees]);
       setClient([...clients]);
+      setTipped([...tips]);
     });
   };
 
@@ -63,8 +67,8 @@ export default function Data(props) {
 
   useEffect(() => {}, [employee]);
   useEffect(() => {
-    console.log(client);
-  }, [client]);
+    console.log(tipped);
+  }, [tipped]);
 
   return (
     <DataContext.Provider value={{ employee, getFaker: getFaker, client }}>

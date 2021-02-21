@@ -2,6 +2,7 @@ const sequelize = require("../Config/Connection");
 const { DataTypes } = require("sequelize");
 const Clients = require("../Models/Client");
 const Employee = require("../Models/Employee");
+const Sample = require("../Data_samples/Tip_Samples");
 
 const Tip = sequelize.define("Tip", {
   id: {
@@ -24,12 +25,12 @@ const Tip = sequelize.define("Tip", {
   },
 });
 
-Tip.sync({ force: true, logging: false });
-
-//Associations
-// Employee.hasMany(Tip, { foreignKey: { name: "id" } });
-// Clients.hasMany(Tip, { foreignKey: { name: "id" } });
 Tip.belongsTo(Clients, { foreignKey: { name: "client_id" } });
 Tip.belongsTo(Employee, { foreignKey: { name: "emp_id" } });
 
+
+const check = Sample.then((Data) => Data);
+Tip.sync().then(() => {
+  Tip.bulkCreate(check);
+});
 module.exports = Tip;

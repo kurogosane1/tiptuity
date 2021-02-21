@@ -15,7 +15,7 @@ app.use(bodyParser.json());
 //General routes
 app.use("/api", require("./Router/Route"));
 
-//Enabling sequelize;
+//Enabling sequelize and starting the server;
 sequelize
   .authenticate()
   .then(() => {
