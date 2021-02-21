@@ -1,23 +1,26 @@
 import React, { useState, useEffect, createContext } from "react";
 import faker from "faker";
+import axios from "axios";
+// import { getDatabaseName } from "../../../Config/Connection";
 
 export const DataContext = createContext();
 
 export default function Data(props) {
   //This is the data that will be shared with the entire
   const [employee, setEmployee] = useState([{}]);
+  const [client, setClient] = useState();
 
   let data = [];
   let tips = [];
-  let clients =[];
+  let clients = [];
 
-  const getClient = ()=>{
-    for (let i=1; i<=100; i++){
-      let clientName = faker.company.companyName();
-      let client_address = faker.address.streetAddress();
-
-    }
-  }
+  const GetData = () => {
+    axios.get("/api").then((response) => {
+      console.log(response);
+      const { Employees, clients, tips } = response.data;
+      setClient([...clients]);
+    });
+  };
 
   const getFaker = () => {
     for (let i = 1; i <= 100; i++) {
@@ -35,7 +38,7 @@ export default function Data(props) {
         tips.push({
           tip,
           client,
-          date
+          date,
         });
       }
       data.push({
@@ -54,13 +57,17 @@ export default function Data(props) {
 
   useEffect(() => {
     getFaker();
+    GetData();
     console.log(employee);
   }, []);
 
   useEffect(() => {}, [employee]);
+  useEffect(() => {
+    console.log(client);
+  }, [client]);
 
   return (
-    <DataContext.Provider value={{ employee, getFaker: getFaker }}>
+    <DataContext.Provider value={{ employee, getFaker: getFaker, client }}>
       {props.children}
     </DataContext.Provider>
   );

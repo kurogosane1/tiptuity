@@ -8,7 +8,7 @@ import "../../style/Clients.css";
 
 export default function Clients() {
   //getting the date from the employee section
-  const { employee } = useContext(DataContext);
+  const { employee, client } = useContext(DataContext);
   //This is where the name of the of the clients are stored;
   const [clients, setClients] = useState();
   //This is to sort out the date for sorting things out

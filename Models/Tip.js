@@ -12,17 +12,11 @@ const Tip = sequelize.define("Tip", {
   },
   client_id: {
     type: DataTypes.UUID,
-    // references: {
-    //   model: Clients,
-    //   key: "id",
-    // },
+    allowNull: false,
   },
   emp_id: {
     type: DataTypes.UUID,
-    // references: {
-    //   model: Employee,
-    //   key: "id",
-    // },
+    allowNull: false,
   },
   tip_amount: {
     type: DataTypes.FLOAT,

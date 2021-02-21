@@ -55,9 +55,47 @@ module.exports.AddClient = async (req, res) => {
   }
 };
 //Adding new tips for the user
-module.exports.AddTip = async (req, res)=>{
-    //destructuing the data
-    const {client_id,emp_id,tip_amount} = req.body;
-    Tip.create({client_id,emp_id,tip_amount});
-    
-}
+module.exports.AddTip = async (req, res) => {
+  //destructuing the data
+  const { client_id, emp_id, tip_amount } = req.body;
+  await Tip.create({ client_id, emp_id, tip_amount }).then((response) => {
+    let id = response.id;
+    //Sending a confirmation response to get the response
+    res.status(200).json({
+      message: "Success",
+      payment_number: id,
+      success_message: "Thank you for the Tip Payment",
+    });
+  });
+};
+//Sending all the users information
+module.exports.Getuser = async () => {
+  //Save the data to send to the front end
+  const data = await Employee.findAll();
+  return data;
+};
+//Getting all the Tips information
+module.exports.GetTips = async () => {
+  //Save the send data to send to the front end
+  const data = await Tip.findAll();
+  return data;
+};
+//Getting all the Client information
+module.exports.GetClients = async () => {
+  //Save and send the data to send to the front end;
+  const data = await Clients.findAll();
+  return data;
+};
+//Getting everything to present in the front end
+module.exports.GetAll = async (req, res) => {
+  //Getting all the data and storing them to variables
+  const Emp = await Employee.findAll();
+  const clients = await Clients.findAll();
+  const tips = await Tip.findAll();
+
+  res.status(200).json({
+    Employees: Emp,
+    clients,
+    tips,
+  });
+};
