@@ -11,101 +11,107 @@ import Skeleton from "@material-ui/lab/Skeleton";
 export default function Employees() {
   const history = useHistory();
 
-  const { employee, getFaker } = useContext(DataContext);
+  const { employee, client, tipped } = useContext(DataContext);
+
+  //Employee tip payment data
+  const [emp, setEmp] = useState();
   const [totTips, setTotalTips] = useState();
-  const [totEmp, setTotEmp] = useState();
   const [topfives, setTop5] = useState();
   const [clicked, setClicked] = useState();
   const [selection, setSelection] = useState();
   const [selData, setSelData] = useState();
   const [indTips, setIndTips] = useState();
 
-  //this is the tips collected in total;
-  const totalTips = () => {
-    if (employee) {
-      let tips_data = employee.map((data) => data.tipsAmount);
-      let tips_information = tips_data.map((data) => data);
-      let tips_amount = tips_information.map((data, index) =>
-        parseFloat(data[index].tip)
-      );
-      let totalTips = employee.map((data) => {
-        const { tipsAmount } = data;
-        let TotalAcc = tipsAmount
-          .map((data) => data.tip)
-          .reduce((acc, curr) => acc + curr, 0);
-        return TotalAcc;
-      });
-      const largest = totalTips.reduce((acc, cur) => acc + cur, 0);
+  //Getting all the data organized
+  const GetDataOrganized = () => {
+    const Employees = employee.map((data) => {
+      //get out all the variables
+      const {
+        id,
+        firstname,
+        lastname,
+        image,
+        streetaddress,
+        email,
+        isAdmin,
+      } = data;
 
-      let total = tips_amount.reduce((acc, curr) => acc + curr, 0);
-      let Num_employees = employee.length;
-      setTotalTips(largest);
-      setTotEmp(Num_employees);
-    } else {
-      getFaker();
-    }
-  };
+      let Tip_data = tipped
+        .filter((info) => info.emp_id === id)
+        .map((data) => {
+          return data.tip_amount;
+        });
+      let ClientInfo = tipped
+        .filter((info) => info.emp_id === id)
+        .map((data) => data.client_id);
+      let client_id = ClientInfo[0];
+      let Client_Name = client
+        .filter((info) => info.id === client_id)
+        .map((data) => data.businessname);
+      let tip_date = tipped
+        .filter((info) => info.emp_id === id)
+        .map((data) => data.createdAt);
 
-  const findTopFive = () => {
-    //First lets get the data sorted out
-    let tips_data = employee.map((data) => {
-      const firstName = data.firstName;
-      const lastName = data.lastName;
-      const tipsArray = data.tipsAmount;
-      const tipsTotal = tipsArray
-        .map((data) => parseFloat(data.tip))
-        .reduce((acc, curr) => acc + curr, 0);
+      const date = tip_date[0];
+      const tip = Tip_data[0]; // Received the tip amount
+      const Client = Client_Name[0]; //Client name is now received
+
       return {
-        firstName,
-        lastName,
-        total_Tips: tipsTotal,
+        id,
+        firstname,
+        lastname,
+        image,
+        streetaddress,
+        email,
+        isAdmin,
+        tip,
+        Client,
+        date,
       };
     });
 
-    //Now we are going to check who has the highest numbers
+    //Getting the total Tips
+    const TotalTip = Employees.reduce((acc, curr) => acc + curr.tip, 0);
 
-    const largest_tips = tips_data
-      .sort((a, b) => {
-        return b.total_Tips - a.total_Tips;
-      })
-      .filter((data, index) => index < 5);
-    setTop5([...largest_tips]);
+    //Getting the TopFive employees with the highest Tips;
+    const TopFives = Employees.sort((a, b) => b.tip - a.tip).filter(
+      (data, index) => index < 5
+    );
+
+    setEmp([...Employees]);
+    setTop5([...TopFives]);
+    setTotalTips(TotalTip);
   };
 
-  //Get the data for the selection
+  //This is to get the data after the selection has been made
   const getSelection = () => {
     if (selection) {
-      const information = employee
-        .map((data) => data)
-        .filter(
-          (data) =>
-            data.firstName === selection.first &&
-            data.lastName === selection.last
-        );
-      const setTips = information[0].tipsAmount;
+      const information = emp.filter(
+        (info) =>
+          info.firstname === selection.first && info.lastname === selection.last
+      );
+      // console.log(information);
       setSelData(information);
-      setIndTips([...setTips]);
+      setIndTips([...information]);
     }
   };
 
   //This is after a click has been made
-  const handleclick = (index, firstName, lastName) => {
+  const handleclick = (index, firstname, lastname) => {
     setClicked(index);
     setSelection({
-      first: firstName,
-      last: lastName,
+      first: firstname,
+      last: lastname,
     });
   };
 
   useEffect(() => {
-    totalTips();
-    findTopFive();
+    GetDataOrganized();
   }, []);
 
   useEffect(() => {
     getSelection();
-  }, [selection, selData, indTips]);
-  useEffect(() => {}, [selData, indTips]);
+  }, [selection]);
 
   //Formatter
   const formatter = new Intl.NumberFormat("en-US", {
@@ -127,11 +133,11 @@ export default function Employees() {
             color={"#5eb735"}
             style={{ color: "#5eb735" }}
           />
-          <h1>{totEmp}</h1>
+          <h1>{employee.length}</h1>
         </div>
         <div className="emp_tips_collected three">
           <GrMoney size={45} />
-          <h1>{formatter.format(totTips)}</h1>
+          <h1>{topfives ? formatter.format(topfives[0].tip) : 0}</h1>
         </div>
       </div>
       <div className="emp_container_list">
@@ -142,7 +148,8 @@ export default function Employees() {
               <span>
                 Employees with the largest collection of tips over the years
               </span>
-              <button onClick={() => history.push("/EmpOverview")}>
+              <button
+                onClick={() => history.push("/EmpOverview", { Employee: emp })}>
                 View All Employees
               </button>
             </div>
@@ -150,7 +157,7 @@ export default function Employees() {
               <ul className="topFive_list">
                 {topfives
                   ? topfives.map((data, index) => {
-                      const { firstName, lastName, total_Tips } = data;
+                      const { firstname, lastname, tip } = data;
 
                       return (
                         <li className="topFive_emp" key={index}>
@@ -161,11 +168,11 @@ export default function Employees() {
                                 : "topFive_emp_details"
                             }
                             onClick={() => {
-                              handleclick(index, firstName, lastName);
+                              handleclick(index, firstname, lastname);
                             }}>
                             <div className="topFive_emp_names">
-                              <h3>{firstName}</h3>
-                              <span>{lastName}</span>
+                              <h3>{firstname}</h3>
+                              <span>{lastname}</span>
                             </div>
                             <div className="topFive_emp_amount">
                               <GrMoney
@@ -173,7 +180,7 @@ export default function Employees() {
                                 color={"#5eb735"}
                                 style={{ color: "#5eb735" }}
                               />
-                              <h4>{formatter.format(total_Tips)}</h4>
+                              <h4>{formatter.format(tip)}</h4>
                             </div>
                           </div>
                         </li>
@@ -190,12 +197,12 @@ export default function Employees() {
           <div className="topFive_tips_coll">
             {selData ? (
               selData.map((data, index) => {
-                const { firstName, lastName, image, tipsAmount } = data;
+                const { firstname, lastname, image, tip } = data;
                 return (
                   <div key={index}>
                     <div className="emp_heading">
-                      <h2 style={{ textAlign: "center" }}>{firstName}</h2>
-                      <h2 style={{ textAlign: "center" }}>{lastName}</h2>
+                      <h2 style={{ textAlign: "center" }}>{firstname}</h2>
+                      <h2 style={{ textAlign: "center" }}>{lastname}</h2>
                     </div>
                     <div className="emp_img">
                       <Avatar src={image} />
@@ -243,7 +250,7 @@ export default function Employees() {
                   return (
                     <li className="emp_tips_so_far" key={index}>
                       <div>
-                        <h2>{data.client}</h2>
+                        <h2>{data.Client}</h2>
                       </div>
                       <div>{d.toString()}</div>
                       <div>
@@ -253,12 +260,20 @@ export default function Employees() {
                   );
                 })
               ) : (
-                <h2 style={{ maxHeight: "53.5vh" }}></h2>
+                <h2
+                  style={{
+                    maxHeight: "53.5vh",
+                    height: "100%",
+                    width: "100%",
+                  }}></h2>
               )}
             </ul>
           </div>
         </div>
       </div>
     </div>
+    // <div>
+    //   <h2>This is the employee secion</h2>
+    // </div>
   );
 }

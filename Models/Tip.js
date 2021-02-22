@@ -25,12 +25,11 @@ const Tip = sequelize.define("Tip", {
   },
 });
 
-Tip.belongsTo(Clients, { foreignKey: { name: "client_id" } });
-Tip.belongsTo(Employee, { foreignKey: { name: "emp_id" } });
-
-
 const check = Sample.then((Data) => Data);
 Tip.sync().then(() => {
   Tip.bulkCreate(check);
 });
+Tip.belongsTo(Clients, { foreignKey: { name: "client_id" } });
+Tip.belongsTo(Employee, { foreignKey: { name: "emp_id" } });
+
 module.exports = Tip;

@@ -12,12 +12,13 @@ router.route("/").get(GetAll);
 router
   .route("/post")
   .post(async (req, res) => {
-    const data = await Tip.bulkCreate(Sample, { returning: true });
+    const samples = await tip_sample.then((data) => data);
+    const data = await Tip.bulkCreate(samples, { returning: true });
     res.json(data);
   })
   .get(async (req, res) => {
-    const samples = await tip_sample.then(data=>data);
-    const result = await Tip.bulkCreate(samples,{returning:true});
+    const samples = await tip_sample.then((data) => data);
+    const result = await Tip.bulkCreate(samples, { returning: true });
     res.json(result);
   });
 module.exports = router;

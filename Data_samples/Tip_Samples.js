@@ -1,13 +1,13 @@
 const Clients = require("../Models/Client");
 const Employee = require("../Models/Employee");
 const faker = require("faker");
-const Tip = require("../Models/Tip")
+const Tip = require("../Models/Tip");
 
 const Data = async () => {
   let Sample = [];
   //Getting the employee data
   const Emp = await Employee.findAll();
-//   console.log(`This is Emp ${Emp[0].id}`);
+  //   console.log(`This is Emp ${Emp[0].id}`);
   //Getting the Client data
   const Cl = await Clients.findAll();
 
@@ -22,9 +22,9 @@ const Data = async () => {
       tip_amount,
     });
   }
-  
+
   return Sample;
 };
-// console.log(Data());
+
 const tip_sample = Data();
 module.exports = tip_sample;
