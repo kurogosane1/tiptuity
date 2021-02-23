@@ -18,61 +18,6 @@ export default function Tips() {
   // //This is the earlies date
   const [date, setDate] = useState();
 
-  // //Formatter
-  // const formatter = new Intl.NumberFormat("en-US", {
-  //   style: "currency",
-  //   currency: "USD",
-  //   minimumFractionDigits: 2,
-  // });
-
-  // //Sorting the tips first in a function
-  // function sort() {
-  //   //first lets sort the data in a user
-  //   const sorted = employee.map((data, index) => {
-  //     //Now lets sort the tips by pulling it out
-  //     const { firstName, lastName, tipsAmount } = data;
-  //     const largest = Math.max(tipsAmount[index].tip);
-
-  //     //This is the sorting the tips to the largest tips
-  //     const totalTips = tipsAmount
-  //       .map((data) => data.tip)
-  //       .reduce((acc, curr) => acc + curr, 0);
-  //     const sortedTips = tipsAmount.sort((a, b) => {
-  //       return new Date(a.date) - new Date(b.date);
-  //     });
-  //     const Dates = tipsAmount.map((data) => data.date);
-  //     return {
-  //       firstName,
-  //       lastName,
-  //       sortedTips,
-  //       largest,
-  //       totalTips,
-  //       Dates,
-  //     };
-  //   });
-
-  //   let seperateLarge = sorted.map((data) => data.largest);
-  //   let Total = sorted
-  //     .map((data) => data.totalTips)
-  //     .reduce((acc, curr) => acc + curr, 0);
-  //   let seperateDate = sorted
-  //     .map((data) => data.Dates)
-  //     .sort((a, b) => {
-  //       return new Date(a.Dates) - new Date(b.Dates);
-  //     });
-
-  //   const LargestTip = Math.max(...seperateLarge);
-  //   setLargeTip(LargestTip);
-  //   setTotal(Total);
-  //   setSorted(sorted);
-  //   setDate(seperateDate[0]);
-  // }
-
-  //when the page loads
-  // useEffect(() => {
-  //   sort();
-  // }, []);
-
   const Sorted = () => {
     const Emp_data = employee.map((data) => {
       //Extracting the data to organize
