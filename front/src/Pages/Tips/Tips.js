@@ -157,9 +157,9 @@ export default function Tips() {
           {sorted ? (
             sorted.map((data, index) => {
               const { firstname, lastname } = data;
-              let firstTipDate = sorted[0].date;
-              let firstTipAmount = sorted[0].tip;
-              let client = sorted[0].Client;
+              let firstTipDate = data.date;
+              let firstTipAmount = data.tip;
+              let client = data.Client;
               return (
                 <li key={index}>
                   <div className="individual_tips">
