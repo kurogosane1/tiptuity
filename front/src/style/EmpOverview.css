@@ -148,8 +148,8 @@
   font-family: "Poppins";
   border: none;
   border-radius: 32px;
-  background: linear-gradient(45deg, #ffffff, #ddddde);
-  box-shadow: 6px -5px 12px #626263, -6px 6px 12px #ffffff;
+  background: linear-gradient(145deg, #ffffff, #ddddde);
+  box-shadow: 13px 13px 26px #a9a9aa, -13px -13px 26px #ffffff;
 }
 .buttons-Overview:active {
   padding: 1rem;

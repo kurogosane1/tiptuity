@@ -24,13 +24,17 @@ export default function Data(props) {
     GetData();
   }, []);
 
+  useEffect(() => {
+    GetData();
+  }, [tipped]);
+
   useEffect(() => {}, [employee]);
   useEffect(() => {
-    console.log(tipped);
+    // console.log(tipped);
   }, [tipped]);
 
   return (
-    <DataContext.Provider value={{ employee, client, tipped }}>
+    <DataContext.Provider value={{ employee, client, tipped, GetData }}>
       {props.children}
     </DataContext.Provider>
   );

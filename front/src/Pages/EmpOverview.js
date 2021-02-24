@@ -5,6 +5,9 @@ import { DataContext } from "../Context/Data";
 import "../App.css";
 import "../style/EmpOverview.css";
 import { useHistory, useLocation } from "react-router-dom";
+import { Dialog, useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
+import { AddEmployee } from "./AddEmployee";
 
 export default function EmpOverview() {
   const history = useHistory();
@@ -25,7 +28,11 @@ export default function EmpOverview() {
   const [indEmp, setIndEmp] = useState();
   //This is if the user has clicked one of the listing names
   const [clicked, setClicked] = useState();
+  //For the Dialog/Modal to open or close
+  const [opened, setIsOpened] = useState(false);
 
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
   //Get the data to be changed
   const setData = () => {
     const { state } = location;
@@ -57,16 +64,29 @@ export default function EmpOverview() {
 
   useEffect(() => {
     setData();
+    const { state } = location;
+    const info = state.Employee.filter(
+      (info) => info.lastname === "Tinging"
+    ).map((data) => data.tip);
+    console.log(typeof info);
+    console.log(info);
   }, []);
 
   useEffect(() => {}, [indEmp]);
+  useEffect(() => {
+    setData();
+  }, [employee]);
 
   return (
     <div className="overview_container">
       <section className="emp_over_list">
         <div className="emp_over_info">
           <h4>Names of all employees</h4>
-          <button className="buttons-Overview">Add More Employees</button>
+          <button
+            className="buttons-Overview"
+            onClick={() => setIsOpened(true)}>
+            Add More Employees
+          </button>
           <button className="buttons-Overview" onClick={() => history.goBack()}>
             Go Back
           </button>
@@ -199,6 +219,12 @@ export default function EmpOverview() {
           </ul>
         </div>
       </section>
+      <Dialog
+        fullScreen={fullScreen}
+        open={opened}
+        onClose={() => setIsOpened(false)}>
+        <AddEmployee closeDialog={setIsOpened} />
+      </Dialog>
     </div>
   );
 }

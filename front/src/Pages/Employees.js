@@ -53,7 +53,7 @@ export default function Employees() {
         .map((data) => data.createdAt);
 
       const date = tip_date[0];
-      const tip = Tip_data[0]; // Received the tip amount
+      const tip = !Tip_data[0] ? 0 : Tip_data[0]; // Received the tip amount
       const Client = Client_Name[0]; //Client name is now received
 
       return {
@@ -71,7 +71,16 @@ export default function Employees() {
     });
 
     //Getting the total Tips
-    const TotalTip = Employees.reduce((acc, curr) => acc + curr.tip, 0);
+    const TotalTip = Employees.reduce((acc, curr) => {
+      if (curr.tip === NaN || curr.tip === "" || curr.tip === null) {
+        curr.tip = 0;
+        console.log("a null or NaN or blank was found");
+        return acc + curr.tip;
+      } else {
+        console.log("It came here");
+        return acc + curr.tip;
+      }
+    }, 0);
 
     //Getting the TopFive employees with the highest Tips;
     const TopFives = Employees.sort((a, b) => b.tip - a.tip).filter(
@@ -113,6 +122,10 @@ export default function Employees() {
     getSelection();
   }, [selection]);
 
+  useEffect(() => {
+    GetDataOrganized();
+  }, [employee]);
+
   //Formatter
   const formatter = new Intl.NumberFormat("en-US", {
     style: "currency",
@@ -149,7 +162,9 @@ export default function Employees() {
                 Employees with the largest collection of tips over the years
               </span>
               <button
-                onClick={() => history.push("/EmpOverview", { Employee: emp })}>
+                onClick={() =>
+                  history.push("/api/EmpOverview", { Employee: emp })
+                }>
                 View All Employees
               </button>
             </div>

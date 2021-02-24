@@ -21,4 +21,24 @@ router
     const result = await Tip.bulkCreate(samples, { returning: true });
     res.json(result);
   });
+
+//Adding and getting employees
+router.route("/AddEmployee").post(async (req, res) => {
+  const { firstname, lastname, streetaddress, email, isAdmin } = req.body;
+
+  console.log(req.body);
+
+  const result = await Employee.create(
+    {
+      firstname,
+      lastname,
+      streetaddress,
+      email,
+      isAdmin,
+    },
+    { returning: true }
+  );
+
+  res.json({ message: "Successfully added user", data: result });
+});
 module.exports = router;

@@ -1,5 +1,6 @@
 import React from "react";
 import { Switch, Route } from "react-router-dom";
+import { AddEmployee } from "../../Pages/AddEmployee";
 import { Front } from "../../Pages/Front_Page/Front";
 import { Login } from "../../Pages/Login/Login";
 import Index from "../Dashboard/Index";
@@ -19,7 +20,10 @@ export function Emp_Switch() {
           <Emp_Payment />
         </Route>
         <Route path="/api">
-            <Index/>
+          <Index />
+        </Route>
+        <Route path="/AddEmployee">
+          <AddEmployee style={{ minHeight: "100vh" }} />
         </Route>
       </Switch>
     </div>

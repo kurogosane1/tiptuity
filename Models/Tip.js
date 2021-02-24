@@ -21,7 +21,8 @@ const Tip = sequelize.define("Tip", {
   },
   tip_amount: {
     type: DataTypes.FLOAT,
-    allowNull: false,
+    // allowNull: false,
+    defaultValue: 0,
   },
 });
 
