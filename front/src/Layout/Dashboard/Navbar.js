@@ -1,9 +1,9 @@
 import React from "react";
 import { useHistory } from "react-router-dom";
-import "../style/Navbar.css";
-import "../App.css";
+import "../../style/Navbar.css";
+import "../../App.css";
 import "boxicons";
-import logo from "../Assets/Logo.svg";
+import logo from "../../Assets/Logo.svg";
 import {
   List,
   ListItem,
@@ -26,22 +26,22 @@ export default function Navbar({ hide }) {
     {
       text: "Stats",
       icons: <i className="fa fa-line-chart fa-2x" aria-hidden="true"></i>,
-      onClick: () => history.push("/"),
+      onClick: () => history.push("/api"),
     },
     {
       text: "Tips",
       icons: <i className="fa fa-money fa-2x" aria-hidden="true"></i>,
-      onClick: () => history.push("/tips"),
+      onClick: () => history.push("/api/tips"),
     },
     {
       text: "Employees",
       icons: <i className="fa fa-user fa-2x" aria-hidden="true"></i>,
-      onClick: () => history.push("/Employees"),
+      onClick: () => history.push("/api/Employees"),
     },
     {
       text: "Clients",
       icons: <i className="fa fa-building fa-2x" aria-hidden="true"></i>,
-      onClick: () => history.push("/Clients"),
+      onClick: () => history.push("/api/Clients"),
     },
   ];
 

@@ -95,7 +95,6 @@ export default function Clients() {
   };
 
   useEffect(() => {
-    // getData();
     Sorted();
     console.log(Employee);
   }, []);
