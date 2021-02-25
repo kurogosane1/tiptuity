@@ -4,8 +4,10 @@ const router = express.Router();
 const Clients = require("../Models/Client");
 const Employee = require("../Models/Employee");
 const Tip = require("../Models/Tip");
+const qrcode = require("../Models/EmpQr");
 const { GetAll } = require("../Controller/Main");
 const tip_sample = require("../Data_samples/Tip_Samples");
+const { response } = require("express");
 
 //General Route
 router.route("/").get(GetAll);
@@ -34,18 +36,42 @@ router.route("/AddEmployee").post(async (req, res) => {
   });
   console.log(Check);
   if (Check.length === 0) {
-    await Employee.create({
+    const Person = await Employee.create({
       firstname,
       lastname,
       streetaddress,
       email,
       isAdmin,
-    });
+    }).then((data) => data.id);
     const Employees = await Employee.findAll();
 
-    res.json({ message: "Successfully added user", data: Employees });
+    res.json({
+      message: "Successfully added user",
+      data: Employees,
+      id: Person,
+    });
   } else {
     res.json({ message: "Employee already exists" });
   }
 });
+
+router.route("/QRcodeCreate").post(async (req, res) => {
+  console.log(req.body);
+  console.log(typeof req.body);
+  console.log(req.body.id);
+  const { id, QR } = req.body;
+
+  const test = await qrcode.findAll();
+  const result = await qrcode.create(
+    {
+      emp_id: id,
+      QRcode: QR,
+    },
+
+    { response: true }
+  );
+  console.log(result);
+  res.json({ message: result });
+});
+
 module.exports = router;

@@ -56,7 +56,7 @@ export default function EmpOverview() {
       });
       setIndEmp([...information]);
 
-      history.push("/Employee", {
+      history.push("/api/Employee", {
         Data: information,
       });
     }

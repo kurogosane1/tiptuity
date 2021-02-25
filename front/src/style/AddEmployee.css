@@ -5,6 +5,7 @@
   border-radius: 10px;
   display: grid;
   grid-template-columns: 1fr;
+  grid-gap: 1rem;
   grid-template-rows: auto;
   justify-content: center;
   align-items: center;

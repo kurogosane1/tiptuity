@@ -1,5 +1,6 @@
 const sequelize = require("../Config/Connection");
 const { DataTypes } = require("sequelize");
+const Employee = require("./Employee");
 
 const qrcode = sequelize.define("QR", {
   id: {
@@ -9,11 +10,15 @@ const qrcode = sequelize.define("QR", {
     primaryKey: true,
   },
   QRcode: {
-    type: DataTypes.TEXT,
+    type: DataTypes.STRING,
+    allowNull: false,
+  },
+  emp_id: {
+    type: DataTypes.UUID,
     allowNull: false,
   },
 });
 
 qrcode.sync();
-
+qrcode.belongsTo(Employee, { foreignKey: { name: "emp_id" } });
 module.exports = qrcode;
