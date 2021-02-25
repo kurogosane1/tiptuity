@@ -19,46 +19,29 @@ export default function Tips() {
   const [date, setDate] = useState();
 
   const Sorted = () => {
-    const Emp_data = employee.map((data) => {
-      //Extracting the data to organize
-      const {
-        id,
-        firstname,
-        lastname,
-        image,
-        streetaddress,
-        email,
-        isAdmin,
-      } = data;
-      let Tip_data = tipped
-        .filter((info) => info.emp_id === id)
-        .map((data) => {
-          return {
-            tip: data.tip_amount,
-            Client_id: data.client_id,
-            date: data.createdAt,
-          };
-        });
-      //Destructuring the data
-      const { tip, Client_id, date } = Tip_data[0];
-      let ClientInfo = client
-        .filter((info) => info.id === Client_id)
-        .map((data) => data.businessname);
-      //Getting the business name
-      const Client = ClientInfo[0];
-
+    const Emp_data = tipped.map((data) => {
+      const { client_id, emp_id, tip_amount, createdAt, id } = data;
+      let Emp = employee
+        .filter((info) => info.id === emp_id)
+        .map((data) => data);
+      const { firstname, lastname, streetaddress, email, image } = Emp[0];
+      let client_info = client
+        .filter((info) => info.id === client_id)
+        .map((data) => data);
+      const { businessname, businessAddress, businessImage } = client_info[0];
       return {
         id,
         firstname,
         lastname,
-        image,
         streetaddress,
         email,
-        isAdmin,
-        tip,
-        Client_id,
-        Client,
-        date,
+        image,
+        businessAddress,
+        businessImage,
+        Client: businessname,
+        Client_id: client_id,
+        tip: tip_amount,
+        date: createdAt,
       };
     });
     //Getting the TotalTips

@@ -64,12 +64,6 @@ export default function EmpOverview() {
 
   useEffect(() => {
     setData();
-    const { state } = location;
-    const info = state.Employee.filter(
-      (info) => info.lastname === "Tinging"
-    ).map((data) => data.tip);
-    console.log(typeof info);
-    console.log(info);
   }, []);
 
   useEffect(() => {}, [indEmp]);
@@ -164,11 +158,11 @@ export default function EmpOverview() {
           </div>
           <ul>
             {indEmp ? (
-              indEmp.map((data) => {
+              indEmp.map((data, index) => {
                 const { tip, Client, date } = data;
                 let d = new Date(date);
                 return (
-                  <li className="ind_emp_tips">
+                  <li className="ind_emp_tips" key={index}>
                     <div className="name_col">
                       <h3 style={{ textAlign: "center" }}>{Client}</h3>
                     </div>

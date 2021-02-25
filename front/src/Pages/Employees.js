@@ -72,14 +72,7 @@ export default function Employees() {
 
     //Getting the total Tips
     const TotalTip = Employees.reduce((acc, curr) => {
-      if (curr.tip === NaN || curr.tip === "" || curr.tip === null) {
-        curr.tip = 0;
-        console.log("a null or NaN or blank was found");
-        return acc + curr.tip;
-      } else {
-        console.log("It came here");
-        return acc + curr.tip;
-      }
+      return acc + curr.tip;
     }, 0);
 
     //Getting the TopFive employees with the highest Tips;
@@ -112,6 +105,7 @@ export default function Employees() {
       first: firstname,
       last: lastname,
     });
+    getSelection();
   };
 
   useEffect(() => {
@@ -120,11 +114,8 @@ export default function Employees() {
 
   useEffect(() => {
     getSelection();
+    console.log("this is working right now");
   }, [selection]);
-
-  useEffect(() => {
-    GetDataOrganized();
-  }, [employee]);
 
   //Formatter
   const formatter = new Intl.NumberFormat("en-US", {

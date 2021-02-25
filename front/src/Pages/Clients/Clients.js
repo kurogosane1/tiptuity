@@ -37,55 +37,57 @@ export default function Clients() {
 
   //Get data sorted out
   const Sorted = () => {
-    const Employees = employee.map((data) => {
+    let Employees = tipped.map((data) => {
       //get out all the variables
+      const { id, client_id, emp_id, tip_amount, createdAt } = data;
+      //Get the employee data
+      const Emp_data = employee
+        .filter((info) => info.id === emp_id)
+        .map((data) => data);
+      //Destructure employee data
       const {
-        id,
         firstname,
         lastname,
-        image,
         streetaddress,
         email,
         isAdmin,
-      } = data;
-      let Tip_data = tipped
-        .filter((info) => info.emp_id === id)
-        .map((data) => {
-          return {
-            tip: data.tip_amount,
-            Client_id: data.client_id,
-            date: data.createdAt,
-          };
-        });
-      //Destructuring the data
-      const { tip, Client_id, date } = Tip_data[0];
-      let Client_info = client
-        .filter((info) => info.id === Client_id)
+        image,
+      } = Emp_data;
+
+      const Client_info = client
+        .filter((info) => info.id === client_id)
         .map((data) => {
           return {
             name: data.businessname,
             address: data.businessAddress,
-            Bus_Image: data.businessImage,
+            Bus_image: data.businessImage,
           };
         });
-      console.log(Client_info);
+
+      const tip_id = id;
+      const Client_id = client_id;
+      const ids = emp_id;
+      const tip = tip_amount;
+      const date = createdAt;
       const Client = Client_info[0].name;
       const Client_Address = Client_info[0].address;
-      const Client_Img = Client_info[0].Bus_Image;
+      const Client_Img = Client_info[0].Bus_image;
+
       return {
-        id,
+        ids,
         firstname,
         lastname,
-        image,
         streetaddress,
         email,
         isAdmin,
-        tip,
+        image,
+        tip_id,
         Client_id,
+        tip,
+        date,
         Client,
         Client_Address,
         Client_Img,
-        date,
       };
     });
     //Sort the data by largest tips
@@ -96,12 +98,9 @@ export default function Clients() {
 
   useEffect(() => {
     Sorted();
-    console.log(Employee);
   }, []);
 
-  useEffect(() => {
-    console.log(indEmp);
-  }, [indEmp]);
+  useEffect(() => {}, [indEmp]);
 
   return (
     <div className="clients">
@@ -163,7 +162,7 @@ export default function Clients() {
             (acc, curr) => acc + curr.tip_amount,
             0
           );
-          console.log(Client_Img);
+
           return (
             <div className="clients_details" key={index}>
               <img src={Client_Img} alt=" mockup" width="570" height="700" />

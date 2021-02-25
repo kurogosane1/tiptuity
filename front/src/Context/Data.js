@@ -34,7 +34,7 @@ export default function Data(props) {
   }, [tipped]);
 
   return (
-    <DataContext.Provider value={{ employee, client, tipped, GetData }}>
+    <DataContext.Provider value={{ employee, client, tipped, GetData, setEmployee }}>
       {props.children}
     </DataContext.Provider>
   );

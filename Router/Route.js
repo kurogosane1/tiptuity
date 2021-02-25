@@ -28,17 +28,24 @@ router.route("/AddEmployee").post(async (req, res) => {
 
   console.log(req.body);
 
-  const result = await Employee.create(
-    {
+  //Check if they are actually already registered
+  const Check = await Employee.findAll({
+    where: { firstname, lastname, streetaddress, email },
+  });
+  console.log(Check);
+  if (Check.length === 0) {
+    await Employee.create({
       firstname,
       lastname,
       streetaddress,
       email,
       isAdmin,
-    },
-    { returning: true }
-  );
+    });
+    const Employees = await Employee.findAll();
 
-  res.json({ message: "Successfully added user", data: result });
+    res.json({ message: "Successfully added user", data: Employees });
+  } else {
+    res.json({ message: "Employee already exists" });
+  }
 });
 module.exports = router;

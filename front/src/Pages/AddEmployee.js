@@ -6,7 +6,8 @@ import { DataContext } from "../Context/Data";
 
 //This is where we will implement adding new employees
 export function AddEmployee({ closeDialog }) {
-  const { GetData } = useContext(DataContext);
+  const { GetData, setEmployee } = useContext(DataContext);
+  const [alert, setAlert] = useState();
 
   const [user, setUser] = useState({
     firstname: "",
@@ -16,9 +17,9 @@ export function AddEmployee({ closeDialog }) {
     isAdmin: true,
   });
 
-  const create_emp = (e) => {
+  const create_emp = async (e) => {
     e.preventDefault();
-    axios
+    const data = await axios
       .post("/api/AddEmployee", {
         firstname: user.firstname,
         lastname: user.lastname,
@@ -26,14 +27,25 @@ export function AddEmployee({ closeDialog }) {
         email: user.email,
         isAdmin: user.isAdmin === "True" ? true : false,
       })
-      .then((response) => console.log(response));
-    GetData();
-    closeDialog(false);
+      .then((response) => {
+        console.log(response);
+        if (response.data.data) {
+          return response.data;
+        } else {
+          return response.data;
+        }
+      });
+    if (!data.data) {
+      setAlert(data.message);
+    } else {
+      setEmployee([...data.data]);
+      closeDialog(false);
+    }
   };
 
   //For any change
   const handleChange = (e) => {
-    console.log(e.target.value);
+    setAlert();
     setUser({
       ...user,
       [e.target.name]: e.target.value,
@@ -46,6 +58,9 @@ export function AddEmployee({ closeDialog }) {
       <span>Fill Out the information below to add new Employee</span>
       <span style={{ textAlign: "center", color: "red", fontWeight: "bold" }}>
         Click anywhere outside to cancel or close window
+      </span>
+      <span style={{ textAlign: "center", color: "red", fontWeight: "bold" }}>
+        {alert ? alert : null}
       </span>
       <form onSubmit={create_emp}>
         <div className="Input_areas">
