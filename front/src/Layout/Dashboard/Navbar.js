@@ -64,7 +64,7 @@ export default function Navbar({ hide }) {
                   classes={{ primary: classes.ListItemText }}
                 />
               </ListItem>
-              <i className="fa fa-chevron-left fa-2x abso" />
+              <i className="fa fa-chevron-left fa-2x abso" id="abso" />
             </>
           ) : (
             <>
@@ -140,7 +140,7 @@ export default function Navbar({ hide }) {
           )}
         </List>
       </header>
-      <div className="menu"></div>
+      <div className="menu" id="menu"></div>
     </>
   );
 }

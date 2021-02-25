@@ -11,9 +11,8 @@ export function AddEmployee({ closeDialog }) {
   const { url } = useRouteMatch();
   const { GetData, setEmployee } = useContext(DataContext);
   const [alert, setAlert] = useState();
-  const [qrcode, setQRCODE] = useState();
   const [success, setSuccess] = useState();
-  const [qrs, setQRS] = useState();
+  
 
   const [user, setUser] = useState({
     firstname: "",
@@ -34,7 +33,6 @@ export function AddEmployee({ closeDialog }) {
         isAdmin: user.isAdmin === "True" ? true : false,
       })
       .then((response) => {
-        console.log(response);
         if (response.data.data) {
           return response.data;
         } else {
@@ -45,42 +43,16 @@ export function AddEmployee({ closeDialog }) {
       setAlert(data.message);
     } else {
       setEmployee([...data.data]);
-      setQRCODE(
-        <QRCode
-          value={`http://192.168.166.129:3000/tiptuity/${data.id}`}
-          size={400}
-          renderAs="svg"
-        />
-      );
       setSuccess(data.message);
-      console.log(data.id);
-      AddQRCode(data.id);
       setTimeout(() => {
         closeDialog(false);
       }, 3000);
     }
   };
 
-  //Adding new Employee QRcode to database
-  const AddQRCode = async (id) => {
-    //window size
-    const width = window.innerWidth <= 600 ? 128 : 400;
-    //Lets create the QR code first
-    const QR = JSON.stringify(
-      <QRCode value={`/api/Emp/${id}`} value={width} renderAs="svg" />
-    );
-    const result = await axios
-      .post("/api/QRcodeCreate", { id, QR })
-      .then((response) => response.data);
-    console.log(result);
-    console.log(JSON.parse(result.message.QRcode));
-    setQRS(result.message.QRcode);
-  };
-
   //For any change
   const handleChange = (e) => {
     setAlert();
-    console.log(url);
     setUser({
       ...user,
       [e.target.name]: e.target.value,
@@ -88,7 +60,6 @@ export function AddEmployee({ closeDialog }) {
   };
 
   useEffect(() => {
-    console.log(url);
     setAlert();
     setSuccess();
   }, []);
@@ -165,7 +136,6 @@ export function AddEmployee({ closeDialog }) {
           </div>
         </form>
       </div>
-      <div>{qrcode ? qrcode : null}</div>
     </div>
   );
 }

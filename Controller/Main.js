@@ -37,8 +37,6 @@ module.exports.AddEmp = async (req, res) => {
 module.exports.AddClient = async (req, res) => {
   //First to de-structure the body
   const { businessname, businessAddress, businessImage } = req.body;
-  businessImage =
-    "https://image.freepik.com/free-vector/business-logo-design_1057-540.jpg?4";
 
   //Check to see if the Client already exists;
   const check = await Clients.findOne({
@@ -47,9 +45,12 @@ module.exports.AddClient = async (req, res) => {
 
   //Take action to the result
   if (!check) {
-    Clients.create({ businessname, businessAddress, businessAddress }).catch(
-      (err) => err.message
+    const result = await Clients.create(
+      { businessname, businessAddress, businessImage },
+      { response: true }
     );
+
+    res.json({ message: "Successfully added Client", data: result });
   } else {
     res.status(500).json({ message: "Client already exists" });
   }

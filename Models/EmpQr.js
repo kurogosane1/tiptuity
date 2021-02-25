@@ -10,7 +10,7 @@ const qrcode = sequelize.define("QR", {
     primaryKey: true,
   },
   QRcode: {
-    type: DataTypes.STRING,
+    type: DataTypes.BLOB,
     allowNull: false,
   },
   emp_id: {

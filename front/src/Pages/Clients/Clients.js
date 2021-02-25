@@ -127,7 +127,7 @@ export default function Clients() {
       </div>
       <div className="amounts_by_clients">
         <h4 style={{ textAlign: "center" }}>Number of Clients listed</h4>
-        <button style={{ margin: "0 auto" }}>Add more clients</button>
+        <button className="Add_client">Add more clients</button>
         <ul className="amounts_by_clients_container">
           {client ? (
             client.map((data, index) => {
@@ -165,7 +165,7 @@ export default function Clients() {
 
           return (
             <div className="clients_details" key={index}>
-              <img src={Client_Img} alt=" mockup" width="570" height="700" />
+              <img src={Client_Img} alt=" mockup" width="500" height="600" />
               <div className="client_information">
                 <div>
                   <label htmlFor="">Client Name: </label>

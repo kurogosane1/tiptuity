@@ -5,7 +5,7 @@ const Clients = require("../Models/Client");
 const Employee = require("../Models/Employee");
 const Tip = require("../Models/Tip");
 const qrcode = require("../Models/EmpQr");
-const { GetAll } = require("../Controller/Main");
+const { GetAll, AddClient } = require("../Controller/Main");
 const tip_sample = require("../Data_samples/Tip_Samples");
 const { response } = require("express");
 
@@ -55,23 +55,5 @@ router.route("/AddEmployee").post(async (req, res) => {
   }
 });
 
-router.route("/QRcodeCreate").post(async (req, res) => {
-  console.log(req.body);
-  console.log(typeof req.body);
-  console.log(req.body.id);
-  const { id, QR } = req.body;
-
-  const test = await qrcode.findAll();
-  const result = await qrcode.create(
-    {
-      emp_id: id,
-      QRcode: QR,
-    },
-
-    { response: true }
-  );
-  console.log(result);
-  res.json({ message: result });
-});
-
+router.route("/api/Clients/AddClient").post(AddClient);
 module.exports = router;
