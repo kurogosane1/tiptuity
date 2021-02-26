@@ -100,3 +100,20 @@ module.exports.GetAll = async (req, res) => {
     tips,
   });
 };
+//Delete the Client from the database
+module.exports.DeleteClient = async (req, res) => {
+  console.log(req.body);
+  const { id, tip_id } = req.body;
+  //Check if the id was given to you or not
+  if (id) {
+    await Tip.destroy({ where: { id: tip_id } });
+    // await other.destroy();
+    await Clients.destroy({ where: { id } });
+    
+
+    res.json({ message: "Client has been destroyed" });
+  } else {
+    res.json({ message: "No Identifier found" });
+  }
+};
+

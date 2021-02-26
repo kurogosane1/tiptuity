@@ -5,7 +5,7 @@ const Clients = require("../Models/Client");
 const Employee = require("../Models/Employee");
 const Tip = require("../Models/Tip");
 const qrcode = require("../Models/EmpQr");
-const { GetAll, AddClient } = require("../Controller/Main");
+const { GetAll, AddClient, DeleteClient } = require("../Controller/Main");
 const tip_sample = require("../Data_samples/Tip_Samples");
 const { response } = require("express");
 
@@ -42,12 +42,11 @@ router.route("/AddEmployee").post(async (req, res) => {
       streetaddress,
       email,
       isAdmin,
-    }).then((data) => data.id);
-    const Employees = await Employee.findAll();
+    });
 
     res.json({
       message: "Successfully added user",
-      data: Employees,
+      data: Person,
       id: Person,
     });
   } else {
@@ -56,4 +55,5 @@ router.route("/AddEmployee").post(async (req, res) => {
 });
 
 router.route("/api/Clients/AddClient").post(AddClient);
+router.route("/Client").delete(DeleteClient);
 module.exports = router;

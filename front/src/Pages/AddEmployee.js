@@ -9,10 +9,9 @@ import { DialogActions } from "@material-ui/core";
 //This is where we will implement adding new employees
 export function AddEmployee({ closeDialog }) {
   const { url } = useRouteMatch();
-  const { GetData, setEmployee } = useContext(DataContext);
+  const { setEmployee, employee } = useContext(DataContext);
   const [alert, setAlert] = useState();
   const [success, setSuccess] = useState();
-  
 
   const [user, setUser] = useState({
     firstname: "",
@@ -42,7 +41,7 @@ export function AddEmployee({ closeDialog }) {
     if (!data.data) {
       setAlert(data.message);
     } else {
-      setEmployee([...data.data]);
+      setEmployee([...employee, ...data.data]);
       setSuccess(data.message);
       setTimeout(() => {
         closeDialog(false);

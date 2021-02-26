@@ -5,6 +5,7 @@ import { IoPersonOutline } from "react-icons/io5";
 import { Skeleton } from "@material-ui/lab";
 import "../../App.css";
 import "../../style/Clients.css";
+import axios from "axios";
 
 export default function Clients() {
   //getting the date from the employee section
@@ -96,6 +97,25 @@ export default function Clients() {
     setEmployee([...LargestClient]);
   };
 
+  //Delete Client
+  const DeleteClient = async (id, tip_id) => {
+    const result = await axios
+      .delete("/api/Client", { data: { id, tip_id } })
+      .then((response) => {
+        console.log(response);
+        return response;
+      });
+    console.log(result);
+  };
+
+  //Update Client
+  const UpdateClient = async (id) => {
+    const result = await axios
+      .put("/Client", { id })
+      .then((response) => response);
+    console.log(result);
+  };
+
   useEffect(() => {
     Sorted();
   }, []);
@@ -155,7 +175,13 @@ export default function Clients() {
       </div>
       {indEmp ? (
         indEmp.map((data, index) => {
-          const { Client_id, Client, Client_Address, Client_Img } = data;
+          const {
+            Client_id,
+            Client,
+            Client_Address,
+            Client_Img,
+            tip_id,
+          } = data;
           const tips = tipped.filter((info) => info.client_id === Client_id);
 
           const Total_tips = tips.reduce(
@@ -182,7 +208,9 @@ export default function Clients() {
               </div>
               <div className="modification">
                 <button>Edit Client</button>
-                <button>Delete Client</button>
+                <button onClick={() => DeleteClient(Client_id, tip_id)}>
+                  Delete Client
+                </button>
               </div>
             </div>
           );
