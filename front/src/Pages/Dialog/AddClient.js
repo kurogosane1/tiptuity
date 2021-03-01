@@ -1,9 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import axios from "axios";
+import { Widget } from "@uploadcare/react-widget";
+import dotenv from "dotenv";
+import { GrAction } from "react-icons/gr";
 
-export function AddClient({ client, setClient }) {
+dotenv.config();
+
+export function AddClient({ client, setClient, closeDialog }) {
   const [message, setMessage] = useState();
   const [alert, setAlert] = useState();
+  const widgetApi = useRef();
 
   const [businessname, setBusinessName] = useState();
   const [businessAddress, setBusinessAddress] = useState();
@@ -15,24 +21,18 @@ export function AddClient({ client, setClient }) {
       .post("/api/Client", {
         businessname,
         businessAddress,
-        businessAddress,
+        businessImage,
       })
       .then((response) => response);
-    console.log(data);
-    setClient([...client, data]);
+    setClient([...client, data.data.data]);
+    setTimeout(() => {
+      closeDialog(false);
+    }, 3000);
   };
 
-  useEffect(() => {
-    console.log(businessname);
-  }, [businessname]);
-
-  useEffect(() => {
-    console.log(businessImage);
-  }, [businessAddress]);
-
-  useEffect(() => {
-    console.log(businessImage);
-  }, [businessImage]);
+  const handleImage = (e) => {
+    setBusinessImage(e.cdnUrl);
+  };
 
   return (
     <div className="AddingNew">
@@ -70,13 +70,12 @@ export function AddClient({ client, setClient }) {
             />
           </div>
           <div className="Input_areas">
-            <label htmlFor="">Logo Image if none</label>
-            <input
-              type="file"
-              name={businessImage}
-              onChange={(e) => {
-                setBusinessImage(e.target.files[0]);
-              }}
+            <Widget
+              style={{ display: "none" }}
+              ref={widgetApi}
+              publicKey={process.env.REACT_APP_UPLOADCARE_PUBLIC_KEY}
+              tabs="file"
+              onChange={handleImage}
             />
           </div>
           <div className="Input_areas">
