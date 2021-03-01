@@ -6,19 +6,28 @@ import { Skeleton } from "@material-ui/lab";
 import "../../App.css";
 import "../../style/Clients.css";
 import axios from "axios";
+import { Dialog, useMediaQuery } from "@material-ui/core";
+import { useTheme } from "@material-ui/core/styles";
+import { AddClient } from "../Dialog/AddClient";
 
 export default function Clients() {
   //getting the date from the employee section
-  const { employee, client, tipped } = useContext(DataContext);
+  const { employee, client, tipped, setClient } = useContext(DataContext);
   // Store Client/Employee information
   const [Employee, setEmployee] = useState();
   //Store the individual
   const [indEmp, setIndEmp] = useState();
   //clicked index
   const [clicked, setClicked] = useState();
+  //For the Dialog/Modal to open or close
+  const [opened, setIsOpened] = useState(false);
+
+  const theme = useTheme();
+  const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
   //Getting the data sorted out
   const handleClick = (index, id) => {
+    console.log(index, id);
     setClicked(index);
     Individual(id);
   };
@@ -26,6 +35,7 @@ export default function Clients() {
   //Store the Individual Data
   const Individual = (id) => {
     const individual = Employee.filter((info) => info.Client_id === id);
+    console.log(individual);
     setIndEmp([...individual]);
   };
 
@@ -36,7 +46,61 @@ export default function Clients() {
     minimumFractionDigits: 2,
   });
 
-  //Get data sorted out
+  // const Sorted = () => {
+  //   const Employees = client.map((data) => {
+  //     const { id, businessname, businessAddress, businessImage } = data;
+  //     const Client_id = id;
+
+  //     //Get the tipped information and to see if there are tips
+  //     let Tips = tipped
+  //       .filter((info) => info.client_id === Client_id)
+  //       .map((data) => data);
+  //     // console.log(Tips[0].tip_amount);
+  //     const tip = Tips[0].tip_amount ? Tips[0].tip_amount : 0;
+  //     const tip_id = Tips[0].id ? Tips[0].id : 0;
+  //     const emp_id = Tips[0].emp_id ? Tips[0].emp_id : 0;
+  //     const date = Tips[0].createdAt ? Tips[0].createdAt : 0;
+  //     const Client = businessname;
+  //     const Client_Address = businessAddress;
+  //     const Client_Img = businessImage;
+
+  //     //Get the employee data to match
+  //     const Emp_data = employee
+  //       .filter((info) => info.id === emp_id)
+  //       .map((data) => data);
+  //     const firstname = Emp_data[0].firstname ? Emp_data[0].firstname : "";
+  //     const lastname = Emp_data[0].lastname ? Emp_data[0].lastname : "";
+  //     const streetaddress = Emp_data[0].streetaddress
+  //       ? Emp_data[0].streetaddress
+  //       : "";
+  //     const email = Emp_data[0].email ? Emp_data[0].email : "";
+  //     const isAdmin = Emp_data[0].isAdmin ? Emp_data[0].isAdmin : "";
+  //     const image = Emp_data[0].image ? Emp_data[0].image : "";
+
+  //     return {
+  //       tip,
+  //       tip_id,
+  //       emp_id,
+  //       date,
+  //       Client_id,
+  //       Client,
+  //       Client_Address,
+  //       Client_Img,
+  //       firstname,
+  //       lastname,
+  //       streetaddress,
+  //       email,
+  //       isAdmin,
+  //       image,
+  //     };
+  //   });
+  //   //Sort the data by largest tips
+  //   const LargestClient = Employees.sort((a, b) => b.tip - a.tip);
+  //   //Get the Client information along with tips
+  //   setEmployee([...LargestClient]);
+  // };
+
+  // Get data sorted out
   const Sorted = () => {
     let Employees = tipped.map((data) => {
       //get out all the variables
@@ -65,11 +129,11 @@ export default function Clients() {
           };
         });
 
-      const tip_id = id;
+      const tip_id = id ? id : null;
       const Client_id = client_id;
-      const ids = emp_id;
-      const tip = tip_amount;
-      const date = createdAt;
+      const ids = emp_id ? emp_id : null;
+      const tip = tip_amount ? tip_amount : 0;
+      const date = createdAt ? createdAt : null;
       const Client = Client_info[0].name;
       const Client_Address = Client_info[0].address;
       const Client_Img = Client_info[0].Bus_image;
@@ -147,7 +211,13 @@ export default function Clients() {
       </div>
       <div className="amounts_by_clients">
         <h4 style={{ textAlign: "center" }}>Number of Clients listed</h4>
-        <button className="Add_client">Add more clients</button>
+        <button
+          className="Add_client"
+          onClick={() => {
+            setIsOpened(true);
+          }}>
+          Add more clients
+        </button>
         <ul className="amounts_by_clients_container">
           {client ? (
             client.map((data, index) => {
@@ -191,7 +261,12 @@ export default function Clients() {
 
           return (
             <div className="clients_details" key={index}>
-              <img src={Client_Img} alt=" mockup" width="500" height="600" />
+              <img
+                src={Client_Img ? Client_Img : ""}
+                alt=" mockup"
+                width="500"
+                height="600"
+              />
               <div className="client_information">
                 <div>
                   <label htmlFor="">Client Name: </label>
@@ -242,6 +317,12 @@ export default function Clients() {
           </div>
         </div>
       )}
+      <Dialog
+        fullScreen={fullScreen}
+        open={opened}
+        onClose={() => setIsOpened(false)}>
+        <AddClient client={client} setClient={setClient} />
+      </Dialog>
     </div>
   );
 }

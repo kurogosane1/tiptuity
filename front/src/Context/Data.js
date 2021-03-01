@@ -24,9 +24,9 @@ export default function Data(props) {
     GetData();
   }, []);
 
-  useEffect(() => {
-    GetData();
-  }, [tipped]);
+  // useEffect(() => {
+  //   GetData();
+  // }, [tipped]);
 
   useEffect(() => {}, [employee]);
   useEffect(() => {
@@ -34,7 +34,8 @@ export default function Data(props) {
   }, [tipped]);
 
   return (
-    <DataContext.Provider value={{ employee, client, tipped, GetData, setEmployee }}>
+    <DataContext.Provider
+      value={{ employee, client, tipped, GetData, setEmployee, setClient }}>
       {props.children}
     </DataContext.Provider>
   );

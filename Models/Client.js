@@ -18,7 +18,7 @@ const Clients = sequelize.define("Clients", {
     allowNull: false,
   },
   businessImage: {
-    type: DataTypes.STRING,
+    type: DataTypes.BLOB("long"),
   },
 });
 

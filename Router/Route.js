@@ -54,6 +54,67 @@ router.route("/AddEmployee").post(async (req, res) => {
   }
 });
 
-router.route("/api/Clients/AddClient").post(AddClient);
-router.route("/Client").delete(DeleteClient);
+router.route("/Client").delete(DeleteClient).post(AddClient);
+
 module.exports = router;
+
+
+// const Sorted = () => {
+//   let Employees = tipped.map((data) => {
+//     //get out all the variables
+//     const { id, client_id, emp_id, tip_amount, createdAt } = data;
+//     //Get the employee data
+//     const Emp_data = employee
+//       .filter((info) => info.id === emp_id)
+//       .map((data) => data);
+//     //Destructure employee data
+//     const {
+//       firstname,
+//       lastname,
+//       streetaddress,
+//       email,
+//       isAdmin,
+//       image,
+//     } = Emp_data;
+
+//     const Client_info = client
+//       .filter((info) => info.id === client_id)
+//       .map((data) => {
+//         return {
+//           name: data.businessname,
+//           address: data.businessAddress,
+//           Bus_image: data.businessImage,
+//         };
+//       });
+
+//     const tip_id = id;
+//     const Client_id = client_id;
+//     const ids = emp_id;
+//     const tip = tip_amount;
+//     const date = createdAt;
+//     const Client = Client_info[0].name;
+//     const Client_Address = Client_info[0].address;
+//     const Client_Img = Client_info[0].Bus_image;
+
+//     return {
+//       ids,
+//       firstname,
+//       lastname,
+//       streetaddress,
+//       email,
+//       isAdmin,
+//       image,
+//       tip_id,
+//       Client_id,
+//       tip,
+//       date,
+//       Client,
+//       Client_Address,
+//       Client_Img,
+//     };
+//   });
+//   //Sort the data by largest tips
+//   const LargestClient = Employees.sort((a, b) => b.tip - a.tip);
+//   //Get the Client information along with tips
+//   setEmployee([...LargestClient]);
+// };
