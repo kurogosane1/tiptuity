@@ -2,6 +2,7 @@ const sequelize = require("../Config/Connection");
 const { DataTypes } = require("sequelize");
 const Sample = require("../Data_samples/Client_sample");
 
+
 const Clients = sequelize.define("Clients", {
   id: {
     type: DataTypes.UUID,

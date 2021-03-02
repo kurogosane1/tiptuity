@@ -130,7 +130,6 @@ module.exports.UpdateIndClient = async (req, res) => {
   const { id } = req.params;
   const { businessname, businessAddress, businessImage } = req.body;
 
-  console.log(req.body);
   const result = await Clients.update(
     { businessname, businessAddress, businessImage },
     { where: { id } }
@@ -138,8 +137,14 @@ module.exports.UpdateIndClient = async (req, res) => {
 
   const results = await Clients.findAll({ where: { id } });
 
-  console.log(`This is the result:` + result);
   if (result.length > 0) {
     res.json({ message: "Successfully Updated the Client", data: results });
   }
+};
+//Getting the tips information with the employees and clients related to them
+module.exports.GetTipEmpCli = async (req, res) => {
+  //This is to get all the tips with Employee and Client information
+  const result = await Tip.findAll({ include: [Employee, Clients] });
+
+  res.json({ data: result });
 };

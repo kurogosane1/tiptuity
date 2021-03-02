@@ -1,4 +1,5 @@
 import React, { useContext, useEffect, useState } from "react";
+import axios from "axios";
 import "../../style/Tips.css";
 import { GiMoneyStack } from "react-icons/gi";
 import { MdDateRange } from "react-icons/md";
@@ -18,42 +19,53 @@ export default function Tips() {
   // //This is the earlies date
   const [date, setDate] = useState();
 
-  const Sorted = () => {
-    const Emp_data = tipped.map((data) => {
-      const { client_id, emp_id, tip_amount, createdAt, id } = data;
-      let Emp = employee
-        .filter((info) => info.id === emp_id)
-        .map((data) => data);
-      const { firstname, lastname, streetaddress, email, image } = Emp[0];
-      let client_info = client
-        .filter((info) => info.id === client_id)
-        .map((data) => data);
-      const { businessname, businessAddress, businessImage } = client_info[0];
-      return {
-        id,
+  const Sorted = async () => {
+    const result = await axios
+      .get("/api/Employees")
+      .then((response) => response.data.data);
+
+    //Getting the employees data sorted
+    const employees = result.map((data) => {
+      const { client_id, tip_amount, createdAt, Client, Employee } = data;
+      const { businessname } = Client;
+      const {
         firstname,
         lastname,
         streetaddress,
         email,
+        isAdmin,
         image,
-        businessAddress,
-        businessImage,
+      } = Employee;
+      // console.log(createdAt);
+      return {
+        id: Employee.id,
+        firstname,
+        lastname,
+        image,
+        streetaddress,
+        email,
+        isAdmin,
+        tip: tip_amount,
         Client: businessname,
         Client_id: client_id,
-        tip: tip_amount,
         date: createdAt,
       };
     });
-    //Getting the TotalTips
-    const TotalTips = Emp_data.reduce((acc, curr) => acc + curr.tip, 0);
-    //Getting the data sorted out with the highest Tips
-    const Employees = Emp_data.sort((a, b) => b.tip - a.tip);
-    //Getting the data sorted out with the earliest date
-    const Sorted = Emp_data.sort((a, b) => {
-      return new Date(a.date) - new Date(b.date);
+    //To get the total tips
+    const totalTip = employees.reduce((acc, curr) => {
+      return acc + curr.tip;
+    }, 0);
+    //Sorting highest Tip from employees data
+    const Employees = employees.sort((a, b) => {
+      return b.tip - a.tip;
     });
+    //Getting the data sorted
+    const Sorted = employees.sort((a, b) => {
+      return new Date(b.date) - new Date(a.date);
+    });
+
     setEmployee([...Employees]);
-    setTotalTips(TotalTips);
+    setTotalTips(totalTip);
     setDate(Sorted[0].date);
     setSorted([...Sorted]);
   };

@@ -12,6 +12,7 @@ const {
   AddEmp,
   FindClient,
   UpdateIndClient,
+  GetTipEmpCli,
 } = require("../Controller/Main");
 const tip_sample = require("../Data_samples/Tip_Samples");
 const { response } = require("express");
@@ -31,6 +32,13 @@ router
     res.json(result);
   });
 
+router.route("/post/api").get(async (req, res) => {
+  const post = await Tip.findAll({ include: [Clients, Employee] });
+  res.json(post);
+});
+
+//Getting the data with Tips and Employee information
+router.route("/Employees").get(GetTipEmpCli);
 //Adding and getting employees
 router.route("/AddEmployee").post(AddEmp);
 //Adding,Deleting and Updating Client

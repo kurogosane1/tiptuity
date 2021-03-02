@@ -42,17 +42,17 @@ export default function EmpOverview() {
   };
 
   //Clicking to get the name of the actual person
-  const handleClick = (first, last, index) => {
+  const handleClick = (first, last, index, id) => {
     if (window.innerWidth > 600) {
       setClicked(index);
       let information = names.filter((info) => {
-        return info.firstname === first && info.lastname === last;
+        return info.id === id;
       });
       setIndEmp([...information]);
     } else {
       setClicked(index);
       let information = names.filter((info) => {
-        return info.firstname === first && info.lastname === last;
+        return info.id === id;
       });
       setIndEmp([...information]);
 
@@ -87,14 +87,16 @@ export default function EmpOverview() {
         </div>
         <div className="name_listing">
           <ul>
-            {names
-              ? names.map((data, index) => {
-                  const { firstname, lastname, image } = data;
+            {employee
+              ? employee.map((data, index) => {
+                  const { firstname, lastname, image, id } = data;
 
                   return (
                     <li
                       key={index}
-                      onClick={() => handleClick(firstname, lastname, index)}>
+                      onClick={() =>
+                        handleClick(firstname, lastname, index, id)
+                      }>
                       <div
                         className={
                           clicked === index

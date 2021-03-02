@@ -11,7 +11,7 @@ const Data = async () => {
   //Getting the Client data
   const Cl = await Clients.findAll();
 
-  for (let i = 0; i < Emp.length; i++) {
+  for (let i = 0; i < Employee.length; i++) {
     let client_id = Cl[i].id;
     let emp_id = Emp[i].id;
     let tip_amount = parseFloat(faker.finance.amount());

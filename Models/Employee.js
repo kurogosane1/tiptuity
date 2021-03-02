@@ -1,6 +1,6 @@
 const sequelize = require("../Config/Connection");
 const { DataTypes } = require("sequelize");
-
+// const Tip = require("./Tip");
 //import sample to process
 const Sample = require("../Data_samples/Employee");
 

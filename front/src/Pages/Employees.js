@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import { DataContext } from "../Context/Data";
+import axios from "axios";
 import "../App.css";
 import "../style/Employee.css";
 import { GrMoney } from "react-icons/gr";
@@ -16,105 +17,89 @@ export default function Employees() {
   //Employee tip payment data
   const [emp, setEmp] = useState();
   const [totTips, setTotalTips] = useState();
+  //This will hold those with tips
+  const [empTips, setEmpTips] = useState();
   const [topfives, setTop5] = useState();
   const [clicked, setClicked] = useState();
   const [selection, setSelection] = useState();
   const [selData, setSelData] = useState();
   const [indTips, setIndTips] = useState();
 
-  //Getting all the data organized
-  const GetDataOrganized = () => {
-    const Employees = employee.map((data) => {
-      //get out all the variables
+  //Getting the Data sorted and organized v2
+  const getDataOrganized = async () => {
+    const result = await axios
+      .get("/api/Employees")
+      .then((response) => response.data.data);
+
+    const employees = result.map((data) => {
+      const { client_id, tip_amount, createdAt, Client, Employee } = data;
+      const { businessname } = Client;
       const {
-        id,
         firstname,
         lastname,
-        image,
         streetaddress,
         email,
         isAdmin,
-      } = data;
-
-      let Tip_data = tipped
-        .filter((info) => info.emp_id === id)
-        .map((data) => {
-          return data.tip_amount;
-        });
-      let ClientInfo = tipped
-        .filter((info) => info.emp_id === id)
-        .map((data) => data.client_id);
-      let client_id = ClientInfo[0];
-      let Client_Name = client
-        .filter((info) => info.id === client_id)
-        .map((data) => data.businessname);
-      let tip_date = tipped
-        .filter((info) => info.emp_id === id)
-        .map((data) => data.createdAt);
-
-      const date = tip_date[0];
-      const tip = !Tip_data[0] ? 0 : Tip_data[0]; // Received the tip amount
-      const Client = Client_Name[0]; //Client name is now received
-
+        image,
+      } = Employee;
+      // console.log(createdAt);
       return {
-        id,
+        id: Employee.id,
         firstname,
         lastname,
         image,
         streetaddress,
         email,
         isAdmin,
-        tip,
-        Client,
-        date,
+        tip: tip_amount,
+        Client: businessname,
+        Client_id: client_id,
+        date: createdAt,
       };
     });
-
-    //Getting the total Tips
-    const TotalTip = Employees.reduce((acc, curr) => {
+    //To get the total tips
+    const totalTip = employees.reduce((acc, curr) => {
       return acc + curr.tip;
     }, 0);
+    //To get the topfive tips
+    const top5 = employees
+      .sort((a, b) => b.tip - a.tip)
+      .filter((data, index) => index < 5);
 
-    //Getting the TopFive employees with the highest Tips;
-    const TopFives = Employees.sort((a, b) => b.tip - a.tip).filter(
-      (data, index) => index < 5
-    );
-
-    setEmp([...Employees]);
-    setTop5([...TopFives]);
-    setTotalTips(TotalTip);
+    setEmp([...employee]);
+    setEmpTips([...employees]);
+    setTop5([...top5]);
+    setTotalTips(totalTip);
   };
 
   //This is to get the data after the selection has been made
   const getSelection = () => {
     if (selection) {
-      const information = emp.filter(
-        (info) =>
-          info.firstname === selection.first && info.lastname === selection.last
-      );
-      // console.log(information);
-      setSelData(information);
+      const information = empTips.filter((info) => info.id === selection.id);
+      const data = information.filter((data, index) => index < 1);
+      setSelData(data);
       setIndTips([...information]);
     }
   };
 
   //This is after a click has been made
-  const handleclick = (index, firstname, lastname) => {
+  const handleclick = (index, firstname, lastname, id) => {
     setClicked(index);
     setSelection({
       first: firstname,
       last: lastname,
+      id,
     });
     getSelection();
   };
 
   useEffect(() => {
-    GetDataOrganized();
+    // GetDataOrganized();
+    getDataOrganized();
   }, []);
 
   useEffect(() => {
     getSelection();
-    console.log("this is working right now");
   }, [selection]);
 
   //Formatter
@@ -154,7 +139,7 @@ export default function Employees() {
               </span>
               <button
                 onClick={() =>
-                  history.push("/api/EmpOverview", { Employee: emp })
+                  history.push("/api/EmpOverview", { Employee: empTips })
                 }>
                 View All Employees
               </button>
@@ -163,7 +148,7 @@ export default function Employees() {
               <ul className="topFive_list">
                 {topfives
                   ? topfives.map((data, index) => {
-                      const { firstname, lastname, tip } = data;
+                      const { firstname, lastname, tip, id } = data;
 
                       return (
                         <li className="topFive_emp" key={index}>
@@ -174,7 +159,7 @@ export default function Employees() {
                                 : "topFive_emp_details"
                             }
                             onClick={() => {
-                              handleclick(index, firstname, lastname);
+                              handleclick(index, firstname, lastname, id);
                             }}>
                             <div className="topFive_emp_names">
                               <h3>{firstname}</h3>
