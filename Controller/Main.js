@@ -14,23 +14,23 @@ module.exports.AddEmp = async (req, res) => {
   } = req.body;
 
   //First to check if the user already exists
-  const check = await Employee.findOne({ where: { firstname, lastname } });
+  const check = await Employee.findAll({ where: { firstname, lastname } });
 
-  if (check) {
-    res.send({ message: "Employee already exists" });
+  if (check.length === 0) {
+    res.json({ message: "Employee already exists" });
   } else {
     //If we don't have the Employee then we add it to the user
-    await Employee.create({
+    const Person = await Employee.create({
       firstname,
       lastname,
       streetaddress,
       email,
-      isAdmin: false,
-      image:
-        "https://www.biowritingservice.com/wp-content/themes/tuborg/images/Executive%20Bio%20Sample%20Photo.png",
+      isAdmin,
+      image,
     }).catch((err) => {
       res.status(500).json({ message: error.message });
     });
+    res.json({ message: "Successfully Added User", data: Person, id: Person });
   }
 };
 //Adding Clients to the list
@@ -109,11 +109,13 @@ module.exports.DeleteClient = async (req, res) => {
     await Tip.destroy({ where: { id: tip_id } });
     // await other.destroy();
     await Clients.destroy({ where: { id } });
-    
 
     res.json({ message: "Client has been destroyed" });
   } else {
     res.json({ message: "No Identifier found" });
   }
 };
+//Updating the Client Information 
+module.exports.UpdateClient = async (req, res) =>{
 
+}

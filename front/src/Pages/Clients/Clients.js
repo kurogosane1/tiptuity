@@ -1,4 +1,5 @@
 import React, { useContext, useState, useEffect } from "react";
+import { useHistory } from "react-router-dom";
 import { DataContext } from "../../Context/Data";
 import { GrMoney } from "react-icons/gr";
 import { IoPersonOutline } from "react-icons/io5";
@@ -9,9 +10,11 @@ import axios from "axios";
 import { Dialog, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { AddClient } from "../Dialog/AddClient";
+
 require("dotenv").config();
 
 export default function Clients() {
+  const history = useHistory();
   //getting the date from the employee section
   const { employee, client, tipped, setClient } = useContext(DataContext);
   // Store Client/Employee information
@@ -22,6 +25,8 @@ export default function Clients() {
   const [clicked, setClicked] = useState();
   //For the Dialog/Modal to open or close
   const [opened, setIsOpened] = useState(false);
+  //For the Update Dialog to open or close
+  const [nowOpen, setNowOpen] = useState(false);
 
   const theme = useTheme();
   const fullScreen = useMediaQuery(theme.breakpoints.down("sm"));
@@ -131,146 +136,163 @@ export default function Clients() {
   useEffect(() => {}, [indEmp]);
 
   return (
-    <div className="clients">
-      <div className="top_client">
-        <h5 style={{ textAlign: "center" }}>Most tips received from</h5>
-        <div>
-          <GrMoney size={45} style={{ color: "#5eb735" }} />
-          <h2>{Employee ? Employee[0].Client : "Biggest Client"}</h2>
+    <>
+      <div className="clients">
+        <div className="top_client">
+          <h5 style={{ textAlign: "center" }}>Most tips received from</h5>
+          <div>
+            <GrMoney size={45} style={{ color: "#5eb735" }} />
+            <h2>{Employee ? Employee[0].Client : "Biggest Client"}</h2>
+          </div>
         </div>
-      </div>
-      <div className="client_amount">
-        <h5>Highest Tip received from Client</h5>
-        <div>
-          <GrMoney size={45} style={{ color: "#5eb735" }} />
-          <h2>{Employee ? Employee[0].tip : "Highest Amount from Client"}</h2>
+        <div className="client_amount">
+          <h5>Highest Tip received from Client</h5>
+          <div>
+            <GrMoney size={45} style={{ color: "#5eb735" }} />
+            <h2>{Employee ? Employee[0].tip : "Highest Amount from Client"}</h2>
+          </div>
         </div>
-      </div>
-      <div className="num_clients">
-        <h5 style={{ textAlign: "center" }}>Number of Clients</h5>
-        <div>
-          <IoPersonOutline size={45} />
-          <h2>{client ? client.length : <Skeleton />}</h2>
+        <div className="num_clients">
+          <h5 style={{ textAlign: "center" }}>Number of Clients</h5>
+          <div>
+            <IoPersonOutline size={45} />
+            <h2>{client ? client.length : <Skeleton />}</h2>
+          </div>
         </div>
-      </div>
-      <div className="amounts_by_clients">
-        <h4 style={{ textAlign: "center" }}>Number of Clients listed</h4>
-        <button
-          className="Add_client"
-          onClick={() => {
-            setIsOpened(true);
-          }}>
-          Add more clients
-        </button>
-        <ul className="amounts_by_clients_container">
-          {client ? (
-            client.map((data, index) => {
-              const { businessname, id } = data;
-              return (
-                <li key={index}>
-                  <div
-                    className={
-                      clicked === index
-                        ? "individual_client_clicked"
-                        : "individual_client"
-                    }
-                    onClick={() => handleClick(index, id)}>
-                    <h5 style={{ textAlign: "center", fontSize: "20px" }}>
-                      {businessname}
-                    </h5>
+        <div className="amounts_by_clients">
+          <h4 style={{ textAlign: "center" }}>Number of Clients listed</h4>
+          <button
+            className="Add_client"
+            onClick={() => {
+              setIsOpened(true);
+            }}>
+            Add more clients
+          </button>
+          <ul className="amounts_by_clients_container">
+            {client ? (
+              client.map((data, index) => {
+                const { businessname, id } = data;
+                return (
+                  <li key={index}>
+                    <div
+                      className={
+                        clicked === index
+                          ? "individual_client_clicked"
+                          : "individual_client"
+                      }
+                      onClick={() => handleClick(index, id)}>
+                      <h5 style={{ textAlign: "center", fontSize: "20px" }}>
+                        {businessname}
+                      </h5>
+                    </div>
+                  </li>
+                );
+              })
+            ) : (
+              <Skeleton />
+            )}
+          </ul>
+        </div>
+        {indEmp ? (
+          indEmp.map((data, index) => {
+            const {
+              Client_id,
+              Client,
+              Client_Address,
+              Client_Img,
+              tip_id,
+            } = data;
+            const tips = tipped.filter((info) => info.client_id === Client_id);
+
+            const Total_tips = tips.reduce(
+              (acc, curr) => acc + curr.tip_amount,
+              0
+            );
+
+            return (
+              <div className="clients_details" key={index}>
+                <img
+                  src={Client_Img ? Client_Img : ""}
+                  alt=" mockup"
+                  width="500"
+                  height="600"
+                />
+                <div className="client_information">
+                  <div>
+                    <label htmlFor="">Client Name: </label>
+                    <span>{Client}</span>
                   </div>
-                </li>
-              );
-            })
-          ) : (
-            <Skeleton />
-          )}
-        </ul>
+                  <div>
+                    <label htmlFor="">Address: </label>
+                    <span>{Client_Address}</span>
+                  </div>
+                  <div>
+                    <label htmlFor="">Tips Collected So Far: </label>
+                    <span>{formatter.format(Total_tips)}</span>
+                  </div>
+                </div>
+                <div className="modification">
+                  <button
+                    onClick={() => {
+                      history.push("/api/UpdateClient", {
+                        id: Client_id,
+                      });
+                    }}>
+                    Edit Client
+                  </button>
+                  <button onClick={() => DeleteClient(Client_id, tip_id)}>
+                    Delete Client
+                  </button>
+                </div>
+              </div>
+            );
+          })
+        ) : (
+          <div className="clients_details">
+            <img
+              src="https://www.creativeboom.com/uploads/articles/96/96236a5db32aeec1a1ecf03c866c2b2ef3424912_1620.jpeg"
+              alt=" mockup"
+              width="700"
+              height="700"
+            />
+            <div className="client_information">
+              <div>
+                <Skeleton style={{ width: "100%" }} />
+              </div>
+              <div>
+                <Skeleton style={{ width: "100%" }} />
+                <Skeleton style={{ width: "100%" }} />
+              </div>
+              <div>
+                <Skeleton style={{ width: "100%" }} />
+                <Skeleton style={{ width: "100%" }} />
+              </div>
+            </div>
+            <div className="modification">
+              <Skeleton style={{ width: "100%" }} />
+              <Skeleton style={{ width: "100%" }} />
+            </div>
+          </div>
+        )}
+
+        {/* <UpdateClient
+          id="Update_Client"
+          client={client}
+          closeDialog={setIsOpen}
+        /> */}
       </div>
-      {indEmp ? (
-        indEmp.map((data, index) => {
-          const {
-            Client_id,
-            Client,
-            Client_Address,
-            Client_Img,
-            tip_id,
-          } = data;
-          const tips = tipped.filter((info) => info.client_id === Client_id);
-
-          const Total_tips = tips.reduce(
-            (acc, curr) => acc + curr.tip_amount,
-            0
-          );
-
-          return (
-            <div className="clients_details" key={index}>
-              <img
-                src={Client_Img ? Client_Img : ""}
-                alt=" mockup"
-                width="500"
-                height="600"
-              />
-              <div className="client_information">
-                <div>
-                  <label htmlFor="">Client Name: </label>
-                  <span>{Client}</span>
-                </div>
-                <div>
-                  <label htmlFor="">Address: </label>
-                  <span>{Client_Address}</span>
-                </div>
-                <div>
-                  <label htmlFor="">Tips Collected So Far: </label>
-                  <span>{formatter.format(Total_tips)}</span>
-                </div>
-              </div>
-              <div className="modification">
-                <button>Edit Client</button>
-                <button onClick={() => DeleteClient(Client_id, tip_id)}>
-                  Delete Client
-                </button>
-              </div>
-            </div>
-          );
-        })
-      ) : (
-        <div className="clients_details">
-          <img
-            src="https://www.creativeboom.com/uploads/articles/96/96236a5db32aeec1a1ecf03c866c2b2ef3424912_1620.jpeg"
-            alt=" mockup"
-            width="700"
-            height="700"
-          />
-          <div className="client_information">
-            <div>
-              <Skeleton style={{ width: "100%" }} />
-            </div>
-            <div>
-              <Skeleton style={{ width: "100%" }} />
-              <Skeleton style={{ width: "100%" }} />
-            </div>
-            <div>
-              <Skeleton style={{ width: "100%" }} />
-              <Skeleton style={{ width: "100%" }} />
-            </div>
-          </div>
-          <div className="modification">
-            <Skeleton style={{ width: "100%" }} />
-            <Skeleton style={{ width: "100%" }} />
-          </div>
-        </div>
-      )}
       <Dialog
         fullScreen={fullScreen}
         open={opened}
         onClose={() => setIsOpened(false)}>
         <AddClient
+          id="Add_Client"
+          open={opened}
           client={client}
           setClient={setClient}
           closeDialog={setIsOpened}
         />
       </Dialog>
-    </div>
+    </>
   );
 }

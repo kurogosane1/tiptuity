@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from "react";
+import React, { useState, useRef } from "react";
 import axios from "axios";
 import { Widget } from "@uploadcare/react-widget";
 import dotenv from "dotenv";

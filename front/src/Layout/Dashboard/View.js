@@ -9,6 +9,7 @@ import "../../style/View.css";
 import "../../App.css";
 import TopNavBar from "../../Layout/TopNavbar";
 import Employee from "../../Pages/IndividualEmp/Employee";
+import UpdateClient from "../../Pages/Dialog/UpdateClient";
 
 export default function View() {
   return (
@@ -19,6 +20,9 @@ export default function View() {
         </Route>
         <Route path="/api/Clients">
           <Clients />
+        </Route>
+        <Route path="/api/UpdateClient">
+          <UpdateClient />
         </Route>
         <Route path="/api/Employees">
           <Employees />
