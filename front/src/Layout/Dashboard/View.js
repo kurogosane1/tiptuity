@@ -10,6 +10,7 @@ import "../../App.css";
 import TopNavBar from "../../Layout/TopNavbar";
 import Employee from "../../Pages/IndividualEmp/Employee";
 import UpdateClient from "../../Pages/Dialog/UpdateClient";
+import IndClient from "../../Pages/IndClient/IndClient";
 
 export default function View() {
   return (
@@ -36,6 +37,11 @@ export default function View() {
         {window.innerWidth <= 600 ? (
           <Route path="/api/Employee">
             <Employee />
+          </Route>
+        ) : null}
+        {window.innerWidth <= 600 ? (
+          <Route path="/api/Client">
+            <IndClient />
           </Route>
         ) : null}
       </Switch>

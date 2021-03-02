@@ -115,7 +115,31 @@ module.exports.DeleteClient = async (req, res) => {
     res.json({ message: "No Identifier found" });
   }
 };
-//Updating the Client Information 
-module.exports.UpdateClient = async (req, res) =>{
+//Updating the Client Information
+module.exports.FindClient = async (req, res) => {
+  const { id } = req.params;
+  const result = await Clients.findAll({ where: { id } });
+  if (result.length > 0) {
+    res.json({ data: result, message: "Successfully found information" });
+  } else {
+    res.json({ message: "Client is not found" });
+  }
+};
+//Updaing Individual Client
+module.exports.UpdateIndClient = async (req, res) => {
+  const { id } = req.params;
+  const { businessname, businessAddress, businessImage } = req.body;
 
-}
+  console.log(req.body);
+  const result = await Clients.update(
+    { businessname, businessAddress, businessImage },
+    { where: { id } }
+  );
+
+  const results = await Clients.findAll({ where: { id } });
+
+  console.log(`This is the result:` + result);
+  if (result.length > 0) {
+    res.json({ message: "Successfully Updated the Client", data: results });
+  }
+};

@@ -1,0 +1,8 @@
+@media only screen and (max-width: 600px) {
+  .clients_details {
+    display: none;
+  }
+  .clients_detailss {
+    width: 20%;
+  }
+}

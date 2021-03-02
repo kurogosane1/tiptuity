@@ -41,6 +41,10 @@ export default function Clients() {
   const Individual = (id) => {
     const individual = Employee.filter((info) => info.Client_id === id);
     setIndEmp([...individual]);
+
+    if (window.innerWidth < 600) {
+      history.push("/api/Client", { Data: individual });
+    }
   };
 
   //Formatter

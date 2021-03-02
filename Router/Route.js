@@ -10,6 +10,8 @@ const {
   AddClient,
   DeleteClient,
   AddEmp,
+  FindClient,
+  UpdateIndClient,
 } = require("../Controller/Main");
 const tip_sample = require("../Data_samples/Tip_Samples");
 const { response } = require("express");
@@ -33,5 +35,7 @@ router
 router.route("/AddEmployee").post(AddEmp);
 //Adding,Deleting and Updating Client
 router.route("/Client").delete(DeleteClient).post(AddClient);
+//Getting,Updating Client
+router.route("/Client/:id").get(FindClient).put(UpdateIndClient);
 
 module.exports = router;
