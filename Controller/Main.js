@@ -93,11 +93,13 @@ module.exports.GetAll = async (req, res) => {
   const Emp = await Employee.findAll();
   const clients = await Clients.findAll();
   const tips = await Tip.findAll();
+  const TipsEmp = await Tip.findAll({ include: [Clients, Employee] });
 
   res.status(200).json({
     Employees: Emp,
     clients,
     tips,
+    TipsEmp,
   });
 };
 //Delete the Client from the database

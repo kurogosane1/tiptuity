@@ -10,17 +10,18 @@ export default function Data(props) {
   const [employee, setEmployee] = useState();
   const [client, setClient] = useState();
   const [tipped, setTipped] = useState();
+  const [empTip, setEmpTip] = useState();
 
   const GetData = () => {
     axios.get("/api").then((response) => {
-      const { Employees, clients, tips } = response.data;
+      const { Employees, clients, tips, TipsEmp } = response.data;
+      console.log(TipsEmp);
       setEmployee([...Employees]);
       setClient([...clients]);
       setTipped([...tips]);
+      setEmpTip([...TipsEmp]);
     });
   };
-
-  
 
   useEffect(() => {
     GetData();
@@ -37,7 +38,15 @@ export default function Data(props) {
 
   return (
     <DataContext.Provider
-      value={{ employee, client, tipped, GetData, setEmployee, setClient }}>
+      value={{
+        employee,
+        client,
+        tipped,
+        GetData,
+        setEmployee,
+        setClient,
+        empTip,
+      }}>
       {props.children}
     </DataContext.Provider>
   );
