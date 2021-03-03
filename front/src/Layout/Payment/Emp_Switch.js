@@ -2,7 +2,7 @@ import React from "react";
 import { Switch, Route } from "react-router-dom";
 import { AddEmployee } from "../../Pages/AddEmployee";
 import { Front } from "../../Pages/Front_Page/Front";
-import { Login } from "../../Pages/Login/Login";
+import { Login } from "../../Pages/Front_Page/Login/Login";
 import Index from "../Dashboard/Index";
 import { Emp_Payment } from "./Emp_Payment";
 
@@ -14,7 +14,7 @@ export function Emp_Switch() {
           <Front />
         </Route>
         <Route exact path="/Login">
-          <Login />
+          <Login style={{ minHeight: "100vh" }} />
         </Route>
         <Route path={`/tiptuity/:id`}>
           <Emp_Payment />

@@ -49,3 +49,7 @@ body {
 .main-views {
   margin-top: 2rem;
 }
+.views_payment {
+  min-height: 100vh;
+  min-width: 100vw;
+}

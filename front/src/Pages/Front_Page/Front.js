@@ -1,9 +1,11 @@
-import React from 'react'
+import React from "react";
+import { Nav } from "../Front_Page/Navbar/Nav";
 
 export function Front() {
-    return (
-        <div>
-         <h2>This is the front section</h2>   
-        </div>
-    )
+  return (
+    <div>
+      <Nav />
+      <h2>This is the front section</h2>
+    </div>
+  );
 }
