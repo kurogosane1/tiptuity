@@ -27,15 +27,6 @@ export default function Data(props) {
     GetData();
   }, []);
 
-  // useEffect(() => {
-  //   GetData();
-  // }, [tipped]);
-
-  useEffect(() => {}, [employee]);
-  useEffect(() => {
-    // console.log(tipped);
-  }, [tipped]);
-
   return (
     <DataContext.Provider
       value={{
