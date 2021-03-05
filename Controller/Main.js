@@ -150,3 +150,17 @@ module.exports.GetTipEmpCli = async (req, res) => {
 
   res.json({ data: result });
 };
+//Getting the single employee information for payment
+module.exports.GetEmployeeInfo = async (req, res) => {
+  console.log(req.params);
+  const { id } = req.params;
+  if (id) {
+    const result = await Employee.findAll({ where: { id } }).then(
+      (response) => response
+    );
+
+    res.status(200).json({ data: result });
+  } else {
+    res.json({ message: "No User Found" });
+  }
+};

@@ -13,6 +13,7 @@ const {
   FindClient,
   UpdateIndClient,
   GetTipEmpCli,
+  GetEmployeeInfo,
 } = require("../Controller/Main");
 const tip_sample = require("../Data_samples/Tip_Samples");
 const { response } = require("express");
@@ -45,5 +46,6 @@ router.route("/AddEmployee").post(AddEmp);
 router.route("/Client").delete(DeleteClient).post(AddClient);
 //Getting,Updating Client
 router.route("/Client/:id").get(FindClient).put(UpdateIndClient);
-
+//Getting the individual Employee information for payment
+router.route("/Employee/:id").get(GetEmployeeInfo);
 module.exports = router;
