@@ -152,7 +152,7 @@ export default function Stats() {
             ? topFives.map((data, index) => {
                 const { Client, tip, id } = data;
                 return (
-                  <li className="topFive_emp1" key={id}>
+                  <li className="topFive_emp1" key={index}>
                     <div className="">
                       <h3>{Client}</h3>
                     </div>
@@ -210,7 +210,7 @@ export default function Stats() {
             ? topFives.map((data, index) => {
                 const { firstname, lastname, tip, id } = data;
                 return (
-                  <li className="topFive_emp1" key={id}>
+                  <li className="topFive_emp1" key={index}>
                     <div className="">
                       <h3>{firstname}</h3>
                       <span style={{ marginLeft: "1rem" }}>{lastname}</span>

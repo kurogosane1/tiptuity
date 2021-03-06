@@ -75,11 +75,8 @@
 .nav_buttons {
   width: 100%;
   color: #236703;
-  /* padding-right: 1rem; */
-  /* margin-left: 1rem; */
 }
 .nav_buttons_icons {
-  /* padding-right: 1rem; */
   margin-left: 2rem;
 }
 .nav_buttons_hidden {
@@ -88,10 +85,6 @@
 .nav_buttons_hidden2 {
   margin-left: 1.5rem;
 }
-/* .nav_buttons:hover {
-  transition: 1s ease;
-  color: #7cea4a;
-} */
 
 .fa-building:hover,
 .fa-user:hover,

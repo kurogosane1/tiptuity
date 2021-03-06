@@ -12,10 +12,9 @@ export default function Data(props) {
   const [tipped, setTipped] = useState();
   const [empTip, setEmpTip] = useState();
 
-  const GetData = () => {
-    axios.get("/api").then((response) => {
+  const GetData = async () => {
+    await axios.get("/api").then((response) => {
       const { Employees, clients, tips, TipsEmp } = response.data;
-      console.log(TipsEmp);
       setEmployee([...Employees]);
       setClient([...clients]);
       setTipped([...tips]);

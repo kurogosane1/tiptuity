@@ -14,9 +14,9 @@ const {
   UpdateIndClient,
   GetTipEmpCli,
   GetEmployeeInfo,
+  GetEmp_Tip,
 } = require("../Controller/Main");
 const tip_sample = require("../Data_samples/Tip_Samples");
-const { response } = require("express");
 
 //General Route
 router.route("/").get(GetAll);
@@ -48,4 +48,7 @@ router.route("/Client").delete(DeleteClient).post(AddClient);
 router.route("/Client/:id").get(FindClient).put(UpdateIndClient);
 //Getting the individual Employee information for payment
 router.route("/Employee/:id").get(GetEmployeeInfo);
+//Getting the data for employee information
+router.route("/EmpOverview/:id").get(GetEmp_Tip);
+
 module.exports = router;

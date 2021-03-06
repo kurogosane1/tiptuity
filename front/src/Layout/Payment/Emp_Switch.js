@@ -4,8 +4,15 @@ import { AddEmployee } from "../../Pages/AddEmployee";
 import { Front } from "../../Pages/Front_Page/Front";
 import { Login } from "../../Pages/Front_Page/Login/Login";
 import { Ind_Emp } from "../../Pages/Payment/Ind_Emp";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 import Index from "../Dashboard/Index";
 export function Emp_Switch() {
+  //This is for stripe to work with this
+  const stripePromise = loadStripe(
+    process.env.REACT_APP_Stripe_PUBLISHIBLE_KEY
+  );
+
   return (
     <div className="views_payment">
       <Switch>
@@ -16,7 +23,9 @@ export function Emp_Switch() {
           <Login style={{ minHeight: "100vh" }} />
         </Route>
         <Route path={"/api/Employee/:id"}>
-          <Ind_Emp />
+          <Elements stripe={stripePromise}>
+            <Ind_Emp />
+          </Elements>
         </Route>
         <Route path="/api">
           <Index />

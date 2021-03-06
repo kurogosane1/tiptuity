@@ -1,29 +1,19 @@
 const sequelize = require("../Config/Connection");
 const { DataTypes } = require("sequelize");
-const Sample = require("../Data_samples/Client_sample");
 
-const Clients = sequelize.define("Clients", {
+const User = sequelize.define("User", {
   id: {
     type: DataTypes.UUID,
     defaultValue: DataTypes.UUIDV4,
     allowNull: false,
     primaryKey: true,
   },
-  businessname: {
+  email: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  businessAddress: {
+  password: {
     type: DataTypes.STRING,
     allowNull: false,
   },
-  businessImage: {
-    type: DataTypes.STRING,
-  },
 });
-
-Clients.sync({ logging: false }).then(() => {
-  Clients.bulkCreate(Sample);
-});
-
-module.exports = Clients;

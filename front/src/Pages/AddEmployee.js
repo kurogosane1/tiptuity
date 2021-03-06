@@ -32,16 +32,18 @@ export function AddEmployee({ closeDialog }) {
         isAdmin: user.isAdmin === "True" ? true : false,
       })
       .then((response) => {
-        if (response.data.data) {
+        console.log(response);
+        if (response.data) {
           return response.data;
         } else {
           return response.data;
         }
       });
+    console.log(data);
     if (!data.data) {
       setAlert(data.message);
     } else {
-      setEmployee([...employee, ...data.data]);
+      setEmployee([...employee, data.data]);
       setSuccess(data.message);
       setTimeout(() => {
         closeDialog(false);

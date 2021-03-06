@@ -8,6 +8,7 @@ import { useHistory, useLocation } from "react-router-dom";
 import { Dialog, useMediaQuery } from "@material-ui/core";
 import { useTheme } from "@material-ui/core/styles";
 import { AddEmployee } from "./AddEmployee";
+import axios from "axios";
 
 export default function EmpOverview() {
   const history = useHistory();
@@ -37,29 +38,65 @@ export default function EmpOverview() {
   const setData = () => {
     const { state } = location;
     const Employee = state.Employee;
-
     setNames([...Employee]);
   };
 
   //Clicking to get the name of the actual person
-  const handleClick = (first, last, index, id) => {
-    if (window.innerWidth > 600) {
+  const handleClick = async (first, last, index, id) => {
+    // e.preventDefault();
+    const result = await axios
+      .get(`/api/EmpOverview/${id}`)
+      .then((result) => result);
+    console.log(result);
+
+    if (result.data.message === "No Tip found") {
       setClicked(index);
-      let information = names.filter((info) => {
-        return info.id === id;
-      });
-      setIndEmp([...information]);
+      console.log(result.data.data[0]);
+      let info = {
+        id: result.data.data[0].id,
+        firstname: result.data.data[0].firstname,
+        lastname: result.data.data[0].lastname,
+        image: result.data.data[0].image,
+        streetaddress: result.data.data[0].streetaddress,
+        email: result.data.data[0].email,
+        isAdmin: result.data.data[0].isAdmin,
+        tip: 0,
+        Client: "No Tip Found",
+        Client_id: "No Tip Found",
+        date: result.data.data[0].createdAt,
+      };
+      return window.innerWidth > 600
+        ? setIndEmp([info])
+        : history.push("/api/Employee", { Data: [info] });
+      console.log(indEmp);
     } else {
       setClicked(index);
       let information = names.filter((info) => {
         return info.id === id;
       });
-      setIndEmp([...information]);
-
-      history.push("/api/Employee", {
-        Data: information,
-      });
+      return window.innerWidth > 600
+        ? setIndEmp([...information])
+        : history.push("/api/Employee", { Data: information });
     }
+    // console.log(first, last, index, id);
+    // if (window.innerWidth > 600) {
+    //   setClicked(index);
+    //   let information = names.filter((info) => {
+    //     return info.id === id;
+    //   });
+    //   console.log(information);
+    //   setIndEmp([...information]);
+    // } else {
+    //   setClicked(index);
+    //   let information = names.filter((info) => {
+    //     return info.id === id;
+    //   });
+    //   setIndEmp([...information]);
+
+    //   history.push("/api/Employee", {
+    //     Data: information,
+    //   });
+    // }
   };
 
   useEffect(() => {
@@ -94,8 +131,8 @@ export default function EmpOverview() {
                   return (
                     <li
                       key={index}
-                      onClick={() =>
-                        handleClick(firstname, lastname, index, id)
+                      onClick={(e) =>
+                        handleClick(firstname, lastname, index, id, e)
                       }>
                       <div
                         className={
@@ -166,16 +203,18 @@ export default function EmpOverview() {
                 return (
                   <li className="ind_emp_tips" key={index}>
                     <div className="name_col">
-                      <h3 style={{ textAlign: "center" }}>{Client}</h3>
+                      <h3 style={{ textAlign: "center" }}>
+                        {Client ? Client : "No Tip Received"}
+                      </h3>
                     </div>
                     <div className="date_col">
                       <span style={{ textAlign: "center" }}>
-                        {d.toString()}
+                        {d ? d.toString() : "No Tip Received"}
                       </span>
                     </div>
                     <div className="amount_collected">
                       <h3 style={{ textAlign: "center" }}>
-                        {formatter.format(tip)}
+                        {tip ? formatter.format(tip) : "No Tip received"}
                       </h3>
                     </div>
                   </li>

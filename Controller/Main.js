@@ -17,20 +17,23 @@ module.exports.AddEmp = async (req, res) => {
   const check = await Employee.findAll({ where: { firstname, lastname } });
 
   if (check.length === 0) {
-    res.json({ message: "Employee already exists" });
-  } else {
     //If we don't have the Employee then we add it to the user
-    const Person = await Employee.create({
-      firstname,
-      lastname,
-      streetaddress,
-      email,
-      isAdmin,
-      image,
-    }).catch((err) => {
+    const Person = await Employee.create(
+      {
+        firstname,
+        lastname,
+        streetaddress,
+        email,
+        isAdmin,
+        image,
+      },
+      { response: true }
+    ).catch((err) => {
       res.status(500).json({ message: error.message });
     });
     res.json({ message: "Successfully Added User", data: Person, id: Person });
+  } else {
+    res.json({ message: "Employee already exists" });
   }
 };
 //Adding Clients to the list
@@ -54,38 +57,6 @@ module.exports.AddClient = async (req, res) => {
   } else {
     res.status(500).json({ message: "Client already exists" });
   }
-};
-//Adding new tips for the user
-module.exports.AddTip = async (req, res) => {
-  //destructuing the data
-  const { client_id, emp_id, tip_amount } = req.body;
-  await Tip.create({ client_id, emp_id, tip_amount }).then((response) => {
-    let id = response.id;
-    //Sending a confirmation response to get the response
-    res.status(200).json({
-      message: "Success",
-      payment_number: id,
-      success_message: "Thank you for the Tip Payment",
-    });
-  });
-};
-//Sending all the users information
-module.exports.Getuser = async () => {
-  //Save the data to send to the front end
-  const data = await Employee.findAll();
-  return data;
-};
-//Getting all the Tips information
-module.exports.GetTips = async () => {
-  //Save the send data to send to the front end
-  const data = await Tip.findAll();
-  return data;
-};
-//Getting all the Client information
-module.exports.GetClients = async () => {
-  //Save and send the data to send to the front end;
-  const data = await Clients.findAll();
-  return data;
 };
 //Getting everything to present in the front end
 module.exports.GetAll = async (req, res) => {
@@ -162,5 +133,20 @@ module.exports.GetEmployeeInfo = async (req, res) => {
     res.status(200).json({ data: result });
   } else {
     res.json({ message: "No User Found" });
+  }
+};
+//Getting the single information of Employee and tips information in case there is one
+module.exports.GetEmp_Tip = async (req, res) => {
+  const { id } = req.params;
+  const result = await Tip.findAll({
+    include: [{ model: Employee, where: { id } }, { model: Clients }],
+  });
+  if (result.length === 0) {
+    const data = await Employee.findAll({ where: { id } });
+    console.log("No tip found and so individual data");
+    console.log(`Line 58 ${data}`);
+    res.json({ message: "No Tip found", data });
+  } else {
+    res.json({ message: "Tip found ", data: result });
   }
 };

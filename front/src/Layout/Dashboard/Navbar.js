@@ -56,7 +56,10 @@ export default function Navbar({ hide }) {
                 className="nav_buttons "
                 style={{ backgroundColor: "transparent" }}>
                 <ListItemIcon>
-                  <i className="fa fa-qrcode fa-3x" aria-hidden="true"></i>
+                  <i
+                    className="fa fa-qrcode"
+                    aria-hidden="true"
+                    style={{ fontSize: "3rem" }}></i>
                 </ListItemIcon>
                 <ListItemText
                   primary="TipTuity"
@@ -64,7 +67,7 @@ export default function Navbar({ hide }) {
                   classes={{ primary: classes.ListItemText }}
                 />
               </ListItem>
-              <i className="fa fa-chevron-left fa-2x abso" id="abso" />
+              {/* <i className="fa fa-chevron-left abso" id="abso" /> */}
             </>
           ) : (
             <>
@@ -73,10 +76,13 @@ export default function Navbar({ hide }) {
                 className="nav_buttons outside"
                 style={{ backgroundColor: "transparent" }}>
                 <ListItemIcon className="nav_buttons_hidden">
-                  <i className="fa fa-qrcode fa-3x" aria-hidden="true"></i>
+                  <i
+                    className="fa fa-qrcode"
+                    aria-hidden="true"
+                    style={{ fontSize: "3rem" }}></i>
                 </ListItemIcon>
               </ListItem>
-              <i className={"fa fa-chevron-left fa-2x abso-hide"} />
+              {/* <i className={"fa fa-chevron-left abso-hide"} /> */}
             </>
           )}
         </List>

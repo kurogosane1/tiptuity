@@ -33,5 +33,6 @@ Tip.sync().then(() => {
 
 Tip.belongsTo(Clients, { foreignKey: { name: "client_id" } });
 Tip.belongsTo(Employee, { foreignKey: { name: "emp_id" } });
+// Employee.hasMany(Tip);
 
 module.exports = Tip;

@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 4500;
 const sequelize = require("./Config/Connection");
 // const sequelize = require("./config/Connections");
 
@@ -13,6 +13,7 @@ app.use(bodyParser.text());
 app.use(bodyParser.json());
 
 //General routes
+app.use("/", require("./Router/Non_Sec_Route"));
 app.use("/api", require("./Router/Route"));
 
 //Enabling sequelize and starting the server;

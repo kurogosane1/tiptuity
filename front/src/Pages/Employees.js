@@ -122,7 +122,7 @@ export default function Employees() {
             color={"#5eb735"}
             style={{ color: "#5eb735" }}
           />
-          <h1>{employee.length}</h1>
+          <h1>{employee ? employee.length : 0}</h1>
         </div>
         <div className="emp_tips_collected three">
           <GrMoney size={45} />

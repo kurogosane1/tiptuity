@@ -8,6 +8,7 @@
 }
 .payment_container {
   box-sizing: border-box;
+  /* width: 70%; */
   padding: 5rem;
   height: autos;
   background: #f5f5f7;
@@ -20,8 +21,8 @@
 }
 .payment_emp_img {
   border-radius: 50%;
-  height: 250px;
-  width: 250px;
+  height: 150px;
+  width: 150px;
 }
 .payment_input_areas {
   display: flex;
@@ -43,4 +44,205 @@
   font-family: "Poppins", sans-serif;
   color: #2f2f31;
   font-size: 16px;
+}
+
+.payment_input_areas > input:focus {
+  border-radius: 9px;
+  background: #f5f5f7;
+  box-shadow: inset 13px 13px 26px #d0d0d2, inset -13px -13px 26px #ffffff;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  outline: none;
+  color: #171718;
+  font-size: 16px;
+}
+
+.city {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 1fr);
+  grid-template-rows: auto;
+  justify-content: center;
+  grid-gap: 16px;
+  align-items: center;
+}
+.city
+  :is(.column1 > input, .column2 > input, .column3 > input, .column4
+    > input, .column5 > input) {
+  text-align: center;
+}
+.column1 {
+  grid-column: 1/2;
+  grid-row: 1/2;
+}
+.column2 {
+  grid-column: 2/3;
+  grid-row: 1/2;
+}
+.column3 {
+  grid-column: 1/3;
+}
+
+.column3 > input {
+  width: 100%;
+}
+.column5 > input {
+  width: 100%;
+  text-align: center;
+}
+
+.tipAmount {
+  grid-column: 1/3;
+  align-self: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.tipAmount > button {
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  /* width: auto; */
+  outline: none;
+  color: #2f2f31;
+  font-family: "Poppins";
+  border: none;
+  border-radius: 32px;
+  font-size: 12px;
+  font-weight: 500;
+  background: linear-gradient(145deg, #ffffff, #ddddde);
+  box-shadow: 13px 13px 26px #a9a9aa, -13px -13px 26px #ffffff;
+}
+.tipAmount > button:active {
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  /* width: auto; */
+  outline: none;
+  color: #f5f5f7;
+  font-family: "Poppins";
+  border: none;
+  border-radius: 32px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #5eb735;
+  box-shadow: inset 19px 19px 39px #56a831, inset -19px -19px 39px #66c639;
+}
+
+.tipAmount > input {
+  padding: 15px 3rem;
+  border-radius: 9px;
+  border: none;
+  border-radius: 9px;
+  background: linear-gradient(145deg, #ddddde, #ffffff);
+  box-shadow: 13px 13px 26px #d0d0d2, -13px -13px 26px #ffffff;
+  font-family: "Poppins", sans-serif;
+  color: #2f2f31;
+  font-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  margin: 0;
+}
+
+.tipAmount
+  :is(input::-webkit-inner-spin-button, input::-webkit-outer-spin-button) {
+  display: none;
+}
+.tipAmount > input:focus {
+  border-radius: 9px;
+  background: #f5f5f7;
+  box-shadow: inset 13px 13px 26px #d0d0d2, inset -13px -13px 26px #ffffff;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  outline: none;
+  color: #171718;
+  font-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.StripeElement {
+  padding: 15px 3rem;
+  border-radius: 9px;
+  border: none;
+  border-radius: 9px;
+  width: 500px;
+  background: linear-gradient(145deg, #ddddde, #ffffff);
+  box-shadow: 13px 13px 26px #d0d0d2, -13px -13px 26px #ffffff;
+  font-family: "Poppins", sans-serif;
+  color: #2f2f31;
+  font-size: 16px;
+}
+.StripeElement:focus {
+  border-radius: 9px;
+  background: #f5f5f7;
+  box-shadow: inset 13px 13px 26px #d0d0d2, inset -13px -13px 26px #ffffff;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  outline: none;
+  color: #171718;
+  font-size: 16px;
+}
+.payment_processing > button {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+  /* width: 100%; */
+  outline: none;
+  color: #2f2f31;
+  font-family: "Poppins";
+  font-size: 1rem;
+  border: none;
+  border-radius: 32px;
+  background: linear-gradient(145deg, #ffffff, #ddddde);
+  box-shadow: 13px 13px 26px #a9a9aa, -13px -13px 26px #ffffff;
+}
+.payment_processing > button:active {
+  padding: 1rem;
+  /* margin-top: 2rem; */
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+  /* width: 50%; */
+  outline: none;
+  color: #f5f5f7;
+  font-family: "Poppins";
+  font-size: 1rem;
+  border: none;
+  border-radius: 32px;
+  background: #5eb735;
+  box-shadow: inset 19px 19px 39px #56a831, inset -19px -19px 39px #66c639;
+}
+
+@media only screen and (max-width: 600px) {
+  .city {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+  .column1,
+  .column2,
+  .column3,
+  .column4,
+  .column5 {
+    grid-column: 1/2;
+    grid-row: auto;
+  }
+  .column1 > input,
+  .column2 > input,
+  .column3 > input,
+  .column4 > input,
+  .column5 > input {
+    width: 100%;
+  }
+  .StripeElement {
+    width: auto;
+  }
 }
