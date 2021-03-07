@@ -105,8 +105,6 @@ export function Ind_Emp({ match }) {
               onChange={(e) => CheckingZipCode(e)}
               min="1"
               max="5"
-              // value={zipcode}
-              // onKeyDown={(e) => CheckingZipCode(e)}
             />
           </div>
           <div className="tipAmount">
@@ -124,13 +122,10 @@ export function Ind_Emp({ match }) {
             <h2>{alert ? alert : null}</h2>
           </div>
         </div>
-
         <div className="credit_card_inf" style={{ width: "100%" }}>
           <label htmlFor="" style={{ textAlign: "center" }}>
             Credit Card Information
           </label>
-
-          {/* This is where the credit card information will be provided */}
           <Card />
         </div>
         <div className="payment_processing">

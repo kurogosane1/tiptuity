@@ -13,8 +13,8 @@ app.use(bodyParser.text());
 app.use(bodyParser.json());
 
 //General routes
-app.use("/", require("./Router/Non_Sec_Route"));
-app.use("/api", require("./Router/Route"));
+app.use("/", require("./Router/Non_Sec_Route")); //For non-protected Routes
+app.use("/api", require("./Router/Route")); //For Protected Routes
 
 //Enabling sequelize and starting the server;
 sequelize
