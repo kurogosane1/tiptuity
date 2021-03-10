@@ -1,6 +1,6 @@
 const sequelize = require("../Config/Connection");
 const { DataTypes } = require("sequelize");
-const Sample = require("../Data_samples/Client_sample");
+const Samples = require("../Data_samples/Client_sample");
 
 const Clients = sequelize.define("Clients", {
   id: {
@@ -22,8 +22,8 @@ const Clients = sequelize.define("Clients", {
   },
 });
 
-Clients.sync({ logging: false }).then(() => {
-  Clients.bulkCreate(Sample);
+Clients.sync({ force: true, logging: false }).then(() => {
+  Clients.bulkCreate(Samples);
 });
 
 module.exports = Clients;

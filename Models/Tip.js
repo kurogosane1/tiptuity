@@ -26,10 +26,9 @@ const Tip = sequelize.define("Tip", {
   },
 });
 
-const check = Sample.then((Data) => Data);
-Tip.sync().then(() => {
-  Tip.bulkCreate(check);
-});
+// const Sample = Data();
+// const check = Sample.then((Data) => Data);
+Tip.sync();
 
 Tip.belongsTo(Clients, { foreignKey: { name: "client_id" } });
 Tip.belongsTo(Employee, { foreignKey: { name: "emp_id" } });

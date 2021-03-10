@@ -1,7 +1,7 @@
 const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
-const PORT = process.env.PORT || 4500;
+const PORT = process.env.PORT || 4000;
 const sequelize = require("./Config/Connection");
 // const sequelize = require("./config/Connections");
 

@@ -40,7 +40,7 @@ const Employee = sequelize.define("Employee", {
 
 const sample = Sample();
 
-Employee.sync({ logging: false })
+Employee.sync({ force: true, logging: false })
   .then(() => {
     Employee.bulkCreate(sample);
   })

@@ -37,6 +37,19 @@
       "react-app/jest"
     ]
   },
+  "quokka": {
+    
+    "babel": {
+      "ts": false,
+      "presets": [
+        "react-app"
+      ]
+    },
+    "plugins": [
+      "jsdom-quokka-plugin"
+    ],
+    "autoDetect": true
+  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -49,5 +62,9 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:4500"
+  "devDependencies": {
+    "jsdom-quokka-plugin": "^1.0.16",
+    "@babel/register": "^7.13.8"
+  },
+  "proxy": "http://localhost:4000"
 }

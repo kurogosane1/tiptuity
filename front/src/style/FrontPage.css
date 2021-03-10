@@ -1,6 +1,6 @@
 .Main-Page {
   min-height: 100vh;
-  min-width: 100vw;
+  /* min-width: 100vw;``` */
   display: grid;
   grid-template-columns: 1fr;
   grid-gap: 1rem;
@@ -55,6 +55,8 @@
   margin-right: 4rem;
   grid-row: 1/5;
   height: auto;
+  -webkit-box-shadow: -10px 11px 42px 2px rgba(0, 0, 0, 0.54);
+  box-shadow: -10px 11px 42px 2px rgba(0, 0, 0, 0.54);
 }
 
 .main-body {
@@ -86,6 +88,7 @@
 .pricing_List {
   margin-top: 2rem;
   display: flex;
+  flex-wrap: wrap;
   gap: 3rem;
   justify-content: space-evenly;
   align-items: center;
@@ -103,15 +106,22 @@
   border-radius: 10px;
   background: #e0e0e0;
   box-shadow: 20px 20px 60px #cacaca, -20px -20px 60px #f6f6f6;
+  /* position: relative; */
 }
 li {
   list-style: none;
 }
 
-.pricing_col1,
-.pricing_col2,
-.pricing_col3 {
+.pricing_col1 > div,
+.pricing_col2 > div,
+.pricing_col3 > div {
+  /* position: absolute; */
   /* height: 400px; */
+  display: flex;
+  flex-direction: column;
+  /* flex-wrap: wrap; */
+  justify-content: space-evenly;
+  align-items: center;
 }
 
 @media only screen and (max-width: 600px) {
