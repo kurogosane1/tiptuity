@@ -86,12 +86,13 @@ export function Front() {
       <section className="dashboard">
         <h1>Dashboard</h1>
         <img src={Img} style={{ maxWidth: "1100px", maxHeight: "1000px" }} />
-        <p>Clients can log in and check the tips</p>
-        <p>They can track the trends</p>
-        <p>
-          A complete employee and client management system for businesses who
-          run valet
-        </p>
+        <p>Employers can log in and track the Employee Trends</p>
+        <p>Complete Client history and tips received from what location</p>
+        <p>A complete employee and client management system for businesses</p>
+        <div>
+          <span>Want a demo</span>
+          <button>Click Here</button>
+        </div>
       </section>
       <section className="contact">
         <h2>For further contacting</h2>
