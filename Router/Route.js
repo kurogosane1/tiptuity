@@ -20,31 +20,15 @@ const tip_sample = require("../Data_samples/Tip_Samples");
 
 //General Route
 router.route("/").get(GetAll);
-router
-  .route("/post")
-  // .post(async (req, res) => {
-  //   const samples = await tip_sample
-  //     .then((data) => data)
-  //     .catch((err) => console.log(err));
-  //   const data = await Tip.bulkCreate(samples, {
-  //     returning: true,
-  //   }).catch((err) => console.log(err));
-  //   res.json(data);
-  // })
-  .get(async (req, res) => {
-    console.log(await tip_sample);
-    const samples = await tip_sample
-      .then((data) => data)
-      .catch((err) => console.log(err));
-    console.log(samples);
-    const result = await Tip.bulkCreate(samples, {
-      returning: true,
-    });
-    // const tip_sample = Data();
-    console.log(tip_sample);
-
-    res.json(result);
+router.route("/post").get(async (req, res) => {
+  const samples = await tip_sample
+    .then((data) => data)
+    .catch((err) => console.log(err));
+  const result = await Tip.bulkCreate(samples, {
+    returning: true,
   });
+  res.json(result);
+});
 
 router.route("/post/api").get(async (req, res) => {
   const post = await Tip.findAll({ include: [Clients, Employee] });

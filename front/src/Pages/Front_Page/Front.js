@@ -1,11 +1,14 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { Nav } from "../Front_Page/Navbar/Nav";
 import Iphone from "../../Assets/FrontEnd.svg";
 import QR from "../../Assets/FrontQR.svg";
 import Img from "../../Assets/Dashboard.png";
 import "../../style/FrontPage.css";
+import Footer from "./Footer";
 
 export function Front() {
+  const history = useHistory();
   return (
     <div className="Main-Page">
       <section className="main-header">
@@ -85,18 +88,28 @@ export function Front() {
       </section>
       <section className="dashboard">
         <h1>Dashboard</h1>
-        <img src={Img} style={{ maxWidth: "1100px", maxHeight: "1000px" }} />
-        <p>Employers can log in and track the Employee Trends</p>
-        <p>Complete Client history and tips received from what location</p>
-        <p>A complete employee and client management system for businesses</p>
-        <div>
+        <img
+          src={Img}
+          style={{
+            maxWidth: "90vw",
+            maxHeight: "90vh",
+          }}
+        />
+        <p>
+          Employers can log in and track the Employee Trends. Complete Client
+          history and tips received from what location. A complete employee and
+          client management system for Employers and tracking Tips.
+        </p>
+        <div className="inner-dash">
           <span>Want a demo</span>
-          <button>Click Here</button>
+          <button
+            className="Demo-Button"
+            onClick={() => history.push("/Login")}>
+            Click Here
+          </button>
         </div>
       </section>
-      <section className="contact">
-        <h2>For further contacting</h2>
-      </section>
+      <Footer />
     </div>
   );
 }
