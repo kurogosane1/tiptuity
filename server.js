@@ -6,7 +6,6 @@ const sequelize = require("./Config/Connection");
 const session = require("./Config/Session");
 const passport = require("passport");
 const flash = require("connect-flash");
-// const sequelize = require("./config/Connections");
 
 // BodyParser makes it possible for our server to interpret data sent to it.
 app.use(bodyParser.json());
@@ -17,13 +16,12 @@ app.use(bodyParser.json());
 
 //usesing Sessions
 app.use(session);
+app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
 require("./Controller/Passport")(passport);
-app.use(flash());
 
 //General routes
-// app.use("/", require("./Router/Non_Sec_Route")); //For non-protected Routes
 app.use("/", require("./Router/Route")); //For Protected Routes
 
 //Enabling sequelize and starting the server;

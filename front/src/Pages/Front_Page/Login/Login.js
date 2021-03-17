@@ -11,30 +11,34 @@ export function Login() {
   const history = useHistory();
   //This is if the Guest Login is selected
   function Guest(e) {
-    e.preventDefault();
     setEmail("Guest");
     setPassword("guestpass123");
   }
   //This is toLogUser t0 login
   async function LogUser(e) {
     e.preventDefault();
-    setMess();
+
     const result = await axios
       .post("/Login", { email, password })
       .then((user) => {
         return user.data;
       });
 
-    if (result === "No User Exists") {
+    if (result === "Username or Password are incorrect") {
       setMess(result);
     }
     if (result === "Successfully Authenticated") {
+      setMess();
       history.push("/api");
+    }
+    if (result === "Password is Incorrect") {
+      setMess(result);
     }
   }
 
   useEffect(() => {
     setMess();
+    console.log("The page reloaded again");
     setEmail();
     setPassword();
   }, []);
@@ -45,7 +49,12 @@ export function Login() {
         <div className="headings">
           <h2 style={{ marginBottom: "1rem" }}>User Login</h2>
           <span>Please login to access Dashboard</span>
-          {mess !== null ? <span>{mess}</span> : null}
+          {mess !== null ? (
+            <h2
+              style={{ fontFamily: "Poppins", fontSize: "1rem", color: "red" }}>
+              {mess}
+            </h2>
+          ) : null}
         </div>
         <div className="log_container">
           <form onSubmit={LogUser} className="log_form">

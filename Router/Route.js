@@ -17,6 +17,7 @@ const {
   GetTipEmpCli,
   GetEmployeeInfo,
   GetEmp_Tip,
+  LogUserOut,
 } = require("../Controller/Main");
 const passport = require("passport");
 const tip_sample = require("../Data_samples/Tip_Samples");
@@ -32,16 +33,15 @@ router.route("/Login").post((req, res, next) => {
       failureRedirect: "/Login",
       failureFlash: true,
     },
-    // (err, user, info, req) => {
-    //   console.log("Yay This ran");
-    //   // console.log(user.id);
-    //   // console.log(req);
-    //   console.log(info);
-    // }
     (err, user, info) => {
       if (err) throw err;
-      if (!user) res.send("No User Exists");
-      else {
+      if (!user) res.send("Username or Password are incorrect");
+      if (info.message === "No user Exists") {
+        res.send("No User Exists");
+      }
+      if (info.message === "Password is Incorrect") {
+        res.send("Password is Incorrect");
+      } else {
         req.logIn(user, (err) => {
           if (err) throw err;
           res.send("Successfully Authenticated");
@@ -51,12 +51,13 @@ router.route("/Login").post((req, res, next) => {
     }
   )(req, res, next);
 });
-
+//This is for Logging out user
+router.route("/Logout").get(LogUserOut);
 //General Route
 router.route("/api").get(isLoggedIn, GetAll);
 //Creating a route to check for authentication
 router.route("/api/isAuthenticated").get(isLoggedIn).post(isLoggedIn);
-
+//This is to create a tip sample
 router.route("/api/post").get(async (req, res) => {
   const samples = await tip_sample
     .then((data) => data)

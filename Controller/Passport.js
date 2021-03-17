@@ -28,12 +28,14 @@ module.exports = (passport) => {
         passReqToCallback: true,
       },
       (req, email, password, done) => {
-        console.log("We got here");
         User.findOne({ where: { email } })
           .then((resp) => {
             if (resp.password) {
               bcrypt.compare(password, resp.password, async (err, result) => {
                 if (err) {
+                  console.log(
+                    "This ran inside the error of passwords not matching"
+                  );
                   return done(null, false, {
                     message: "Passwords are Incorrect",
                   });
@@ -43,7 +45,14 @@ module.exports = (passport) => {
 
                   return done(null, resp, req);
                 }
+                if (result === false) {
+                  return done(null, false, {
+                    message: "Password is incorrect",
+                  });
+                }
               });
+            } else {
+              return done(null, false, { message: "No User Exists" });
             }
           })
           .catch((err) => {

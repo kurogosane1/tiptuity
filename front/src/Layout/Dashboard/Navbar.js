@@ -3,6 +3,7 @@ import { useHistory } from "react-router-dom";
 import "../../style/Navbar.css";
 import "../../App.css";
 import "boxicons";
+import axios from "axios";
 import logo from "../../Assets/Logo.svg";
 import {
   List,
@@ -44,6 +45,13 @@ export default function Navbar({ hide }) {
       onClick: () => history.push("/api/Clients"),
     },
   ];
+
+  //Logging User Out
+  const LogUserOut = async () => {
+    console.log("This ran");
+    await axios.get("/Logout");
+    history.push("/Login");
+  };
 
   return (
     <>
@@ -125,7 +133,8 @@ export default function Navbar({ hide }) {
             <ListItem
               button
               className="nav_buttons"
-              style={{ backgroundColor: "transparent" }}>
+              style={{ backgroundColor: "transparent" }}
+              onClick={LogUserOut}>
               <ListItemIcon>
                 <i className="fa fa-sign-out fa-2x" aria-hidden="true"></i>
               </ListItemIcon>
@@ -138,7 +147,8 @@ export default function Navbar({ hide }) {
             <ListItem
               button
               className="nav_buttons"
-              style={{ backgroundColor: "transparent" }}>
+              style={{ backgroundColor: "transparent" }}
+              onClick={LogUserOut}>
               <ListItemIcon className="nav_buttons_icons">
                 <i className="fa fa-sign-out fa-2x" aria-hidden="true"></i>
               </ListItemIcon>

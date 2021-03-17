@@ -15,7 +15,7 @@ const sessionStore = new MySQLStore(options);
 
 module.exports = session({
   store: sessionStore,
-  key: "session",
+  key: process.env.SESSION_KEY,
   resave: false,
   saveUninitialized: false,
   secret: process.env.SESSION_SECRET,

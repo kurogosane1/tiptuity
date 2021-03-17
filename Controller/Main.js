@@ -1,7 +1,7 @@
 const Clients = require("../Models/Client");
 const Employee = require("../Models/Employee");
 const Tip = require("../Models/Tip");
-
+require("dotenv").config();
 //Making sure to add the Employee to the list of employees
 module.exports.AddEmp = async (req, res) => {
   const {
@@ -29,11 +29,21 @@ module.exports.AddEmp = async (req, res) => {
       },
       { response: true }
     ).catch((err) => {
-      res.status(500).json({ message: error.message });
+      res
+        .status(500)
+        .json({ message: error.message, isAuth: req.isAuthenticated() });
     });
-    res.json({ message: "Successfully Added User", data: Person, id: Person });
+    res.json({
+      message: "Successfully Added User",
+      data: Person,
+      id: Person,
+      isAuth: req.isAuthenticated(),
+    });
   } else {
-    res.json({ message: "Employee already exists" });
+    res.json({
+      message: "Employee already exists",
+      isAuth: req.isAuthenticated(),
+    });
   }
 };
 //Adding Clients to the list
@@ -53,9 +63,16 @@ module.exports.AddClient = async (req, res) => {
       { response: true }
     );
 
-    res.json({ message: "Successfully added Client", data: result });
+    res.json({
+      message: "Successfully added Client",
+      data: result,
+      isAuth: req.isAuthenticated(),
+    });
   } else {
-    res.status(500).json({ message: "Client already exists" });
+    res.status(500).json({
+      message: "Client already exists",
+      isAuth: req.isAuthenticated(),
+    });
   }
 };
 //Getting everything to present in the front end
@@ -83,9 +100,12 @@ module.exports.DeleteClient = async (req, res) => {
     // await other.destroy();
     await Clients.destroy({ where: { id } });
 
-    res.json({ message: "Client has been destroyed" });
+    res.json({
+      message: "Client has been destroyed",
+      isAuth: req.isAuthenticated(),
+    });
   } else {
-    res.json({ message: "No Identifier found" });
+    res.json({ message: "No Identifier found", isAuth: req.isAuthenticated() });
   }
 };
 //Updating the Client Information
@@ -93,9 +113,13 @@ module.exports.FindClient = async (req, res) => {
   const { id } = req.params;
   const result = await Clients.findAll({ where: { id } });
   if (result.length > 0) {
-    res.json({ data: result, message: "Successfully found information" });
+    res.json({
+      data: result,
+      message: "Successfully found information",
+      isAuth: req.isAuthenticated(),
+    });
   } else {
-    res.json({ message: "Client is not found" });
+    res.json({ message: "Client is not found", isAuth: req.isAuthenticated() });
   }
 };
 //Updaing Individual Client
@@ -111,7 +135,11 @@ module.exports.UpdateIndClient = async (req, res) => {
   const results = await Clients.findAll({ where: { id } });
 
   if (result.length > 0) {
-    res.json({ message: "Successfully Updated the Client", data: results });
+    res.json({
+      message: "Successfully Updated the Client",
+      data: results,
+      isAuth: req.isAuthenticated(),
+    });
   }
 };
 //Getting the tips information with the employees and clients related to them
@@ -119,7 +147,7 @@ module.exports.GetTipEmpCli = async (req, res) => {
   //This is to get all the tips with Employee and Client information
   const result = await Tip.findAll({ include: [Employee, Clients] });
 
-  res.json({ data: result });
+  res.json({ data: result, isAuth: req.isAuthenticated() });
 };
 //Getting the single employee information for payment
 module.exports.GetEmployeeInfo = async (req, res) => {
@@ -130,9 +158,9 @@ module.exports.GetEmployeeInfo = async (req, res) => {
       (response) => response
     );
 
-    res.status(200).json({ data: result });
+    res.status(200).json({ data: result, isAuth: req.isAuthenticated() });
   } else {
-    res.json({ message: "No User Found" });
+    res.json({ message: "No User Found", isAuth: req.isAuthenticated() });
   }
 };
 //Getting the single information of Employee and tips information in case there is one
@@ -147,6 +175,17 @@ module.exports.GetEmp_Tip = async (req, res) => {
     console.log(`Line 58 ${data}`);
     res.json({ message: "No Tip found", data });
   } else {
-    res.json({ message: "Tip found ", data: result });
+    res.json({
+      message: "Tip found ",
+      data: result,
+      isAuth: req.isAuthenticated(),
+    });
   }
+};
+//This is to Log Users out of the database section
+module.exports.LogUserOut = (req, res) => {
+  req.logout();
+  req.session.destroy();
+  res.clearCookie(process.env.SESSION_KEY);
+  res.json({ isAuth: false });
 };
