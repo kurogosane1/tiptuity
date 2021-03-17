@@ -71,11 +71,11 @@ module.exports.GetAll = async (req, res) => {
     clients,
     tips,
     TipsEmp,
+    isAuth: req.isAuthenticated(),
   });
 };
 //Delete the Client from the database
 module.exports.DeleteClient = async (req, res) => {
-  console.log(req.body);
   const { id, tip_id } = req.body;
   //Check if the id was given to you or not
   if (id) {

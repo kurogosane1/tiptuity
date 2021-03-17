@@ -11,39 +11,45 @@ import TopNavBar from "../../Layout/TopNavbar";
 import Employee from "../../Pages/IndividualEmp/Employee";
 import UpdateClient from "../../Pages/Dialog/UpdateClient";
 import IndClient from "../../Pages/IndClient/IndClient";
+import Protect from "../../Protected/Protect";
 
 export default function View() {
   return (
     <div className="views">
       <Switch>
-        <Route exact path="/api">
-          <Stats />
-        </Route>
-        <Route path="/api/Clients">
+        <Protect exact path="/api" component={Stats} />
+        <Protect path="/api/Clients" component={Clients} />
+        {/* <Route path="/api/Clients">
           <Clients />
-        </Route>
-        <Route path="/api/UpdateClient">
+        </Route> */}
+        <Protect path="/api/Clients" component={UpdateClient} />
+        {/* <Route path="/api/UpdateClient">
           <UpdateClient />
-        </Route>
-        <Route path="/api/Employees">
+        </Route> */}
+        <Protect path="/api/Employees" component={Employees} />
+        {/* <Route path="/api/Employees">
           <Employees />
-        </Route>
-        <Route path="/api/EmpOverview">
+        </Route> */}
+        <Protect path="/api/EmpOverview" component={EmpOverview} />
+        {/* <Route path="/api/EmpOverview">
           <EmpOverview />
-        </Route>
-        <Route path="/api/tips">
+        </Route> */}
+        <Protect path="/api/tips" component={Tips} />
+        {/* <Route path="/api/tips">
           <Tips />
-        </Route>
+        </Route> */}
         {window.innerWidth <= 600 ? (
-          <Route path="/api/Employee">
-            <Employee />
-          </Route>
-        ) : null}
+          <Protect path="/api/Employee" component={Employee} />
+        ) : // <Route path="/api/Employee">
+        //   <Employee />
+        // </Route>
+        null}
         {window.innerWidth <= 600 ? (
-          <Route path="/api/Client">
-            <IndClient />
-          </Route>
-        ) : null}
+          <Protect path="/api/Client" component={IndClient} />
+        ) : // <Route path="/api/Client">
+        //   <IndClient />
+        // </Route>
+        null}
       </Switch>
     </div>
   );

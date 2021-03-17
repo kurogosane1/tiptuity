@@ -1,5 +1,4 @@
 const sequelize = require("../Config/Connection");
-const bcrypt = require("bcryptjs");
 const { DataTypes } = require("sequelize");
 
 const User = sequelize.define("User", {
@@ -23,16 +22,6 @@ const User = sequelize.define("User", {
   },
 });
 
-const Salt = bcrypt.genSaltSync(10);
-const hashPassword = bcrypt.hashSync("password", Salt);
-
-User.sync({ logging: false, force: true })
-  .then(() => {
-    User.bulkCreate({
-      email: "jdoe@email.com",
-      password: hashPassword,
-    });
-  })
-  .catch((err) => err.message);
+User.sync({ logging: false }).catch((err) => err.message);
 
 module.exports = User;

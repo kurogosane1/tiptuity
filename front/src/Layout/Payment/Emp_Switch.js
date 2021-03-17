@@ -7,6 +7,7 @@ import { Ind_Emp } from "../../Pages/Payment/Ind_Emp";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Index from "../Dashboard/Index";
+import Protect from "../../Protected/Protect";
 export function Emp_Switch() {
   //This is for stripe to work with this
   const stripePromise = loadStripe(
@@ -27,12 +28,12 @@ export function Emp_Switch() {
             <Ind_Emp />
           </Elements>
         </Route>
-        <Route path="/api">
+        <Protect path="/api">
           <Index />
-        </Route>
-        <Route path="/AddEmployee">
+        </Protect>
+        <Protect path="/AddEmployee">
           <AddEmployee style={{ minHeight: "100vh" }} />
-        </Route>
+        </Protect>
       </Switch>
     </div>
   );

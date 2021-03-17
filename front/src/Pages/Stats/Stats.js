@@ -26,7 +26,7 @@ import {
 export default function Stats() {
   const history = useHistory();
   //getting the used Data from the backend
-  const { empTip } = useContext(DataContext);
+  const { empTip, GetData } = useContext(DataContext);
   const [empTips, setEmpTips] = useState();
   const [topFives, setTopFives] = useState();
   const [topTens, setTopTens] = useState();
@@ -87,6 +87,8 @@ export default function Stats() {
   };
   //upon loading the page
   useEffect(() => {
+    GetData();
+    console.log("This Ran inside Stats page");
     Sort();
   }, []);
 

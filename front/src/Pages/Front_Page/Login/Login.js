@@ -6,6 +6,7 @@ import "../../../style/Login.css";
 export function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
+  const [mess, setMess] = useState();
 
   const history = useHistory();
   //This is if the Guest Login is selected
@@ -17,19 +18,23 @@ export function Login() {
   //This is toLogUser t0 login
   async function LogUser(e) {
     e.preventDefault();
+    setMess();
     const result = await axios
       .post("/Login", { email, password })
-      .then((response) => console.log(response))
-      .catch((err) => err);
-    console.log(result);
-    if (result.data.message === "Successfully recognized") {
+      .then((user) => {
+        return user.data;
+      });
+
+    if (result === "No User Exists") {
+      setMess(result);
+    }
+    if (result === "Successfully Authenticated") {
       history.push("/api");
-    } else {
-      history.psuh("/Login");
     }
   }
 
   useEffect(() => {
+    setMess();
     setEmail();
     setPassword();
   }, []);
@@ -40,6 +45,7 @@ export function Login() {
         <div className="headings">
           <h2 style={{ marginBottom: "1rem" }}>User Login</h2>
           <span>Please login to access Dashboard</span>
+          {mess !== null ? <span>{mess}</span> : null}
         </div>
         <div className="log_container">
           <form onSubmit={LogUser} className="log_form">

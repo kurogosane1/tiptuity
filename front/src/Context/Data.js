@@ -15,16 +15,16 @@ export default function Data(props) {
   const GetData = async () => {
     await axios.get("/api").then((response) => {
       const { Employees, clients, tips, TipsEmp } = response.data;
+      console.log(response);
       setEmployee([...Employees]);
       setClient([...clients]);
       setTipped([...tips]);
       setEmpTip([...TipsEmp]);
     });
   };
-
-  useEffect(() => {
-    GetData();
-  }, []);
+  // useEffect(() => {
+  //   GetData();
+  // }, []);
 
   return (
     <DataContext.Provider
