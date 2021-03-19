@@ -10,10 +10,27 @@ export function Login() {
 
   const history = useHistory();
   //This is if the Guest Login is selected
-  function Guest(e) {
-    setEmail("Guest");
-    setPassword("guestpass123");
-  }
+  async function Guest(e) {
+    e.preventDefault();
+    setEmail("guest@email.com");
+    setPassword("password");
+    const result = await axios
+      .post("/Login", { email, password })
+      .then((user) => {
+        return user.data;
+      });
+
+    if (result === "Username or Password are incorrect") {
+      setMess(result);
+    }
+    if (result === "Successfully Authenticated") {
+      setMess();
+      history.push("/api");
+    }
+    if (result === "Password is Incorrect") {
+      setMess(result);
+    }
+  };
   //This is toLogUser t0 login
   async function LogUser(e) {
     e.preventDefault();

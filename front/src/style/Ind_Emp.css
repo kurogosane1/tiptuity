@@ -89,6 +89,18 @@
   width: 100%;
   text-align: center;
 }
+/* .column4 > input {
+  width: 30%;
+} */
+.column4 {
+  grid-column: 0/1;
+}
+.column6 {
+  grid-column: 1/2;
+}
+.column5 {
+  grid-column: 2/3;
+}
 
 .tipAmount {
   grid-column: 1/3;

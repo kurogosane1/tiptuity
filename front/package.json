@@ -23,6 +23,7 @@
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.2",
     "recharts": "^2.0.8",
+    "uuid": "^8.3.2",
     "web-vitals": "^1.1.0"
   },
   "scripts": {
@@ -38,7 +39,6 @@
     ]
   },
   "quokka": {
-    
     "babel": {
       "ts": false,
       "presets": [
@@ -63,8 +63,8 @@
     ]
   },
   "devDependencies": {
-    "jsdom-quokka-plugin": "^1.0.16",
-    "@babel/register": "^7.13.8"
+    "@babel/register": "^7.13.8",
+    "jsdom-quokka-plugin": "^1.0.16"
   },
   "proxy": "http://localhost:4000"
 }

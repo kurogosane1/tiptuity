@@ -7,6 +7,7 @@ const Tip = require("../Models/Tip");
 const Users = require("../Models/User");
 const qrcode = require("../Models/EmpQr");
 const bcrypt = require("bcryptjs");
+const stripe = require("stripe")(process.env.SECRET_KEY);
 const {
   GetAll,
   AddClient,
@@ -23,6 +24,7 @@ const passport = require("passport");
 const tip_sample = require("../Data_samples/Tip_Samples");
 const { isLoggedIn, checkNotAuthenticated } = require("../Middleware/auth");
 const User = require("../Models/User");
+require("dotenv").config();
 
 //This is for Login
 router.route("/Login").post((req, res, next) => {
@@ -71,13 +73,21 @@ router.route("/api/post").get(async (req, res) => {
 router.route("/api/getinfo").get(async (req, res) => {
   const Salt = bcrypt.genSaltSync(10);
   const hashPassword = bcrypt.hashSync("password", Salt);
-  const something = {
-    email: "jdoe@email.com",
-    password: hashPassword,
-    isAdmin: true,
-  };
 
-  const result = await User.create(something);
+  const something = [
+    {
+      email: "jdoe@email.com",
+      password: hashPassword,
+      isAdmin: true,
+    },
+    {
+      email: "guest@email.com",
+      password: hashPassword,
+      isAdmin: true,
+    },
+  ];
+
+  const result = await User.bulkCreate(something);
   console.log(result);
 });
 //This is just to add sample Tip post data
@@ -100,7 +110,40 @@ router
   .get(isLoggedIn, FindClient)
   .put(isLoggedIn, UpdateIndClient);
 //Getting the individual Employee information for payment
-router.route("/api/Employee/:id").get(isLoggedIn, GetEmployeeInfo);
+router
+  .route("/api/Employee/:id")
+  .get(GetEmployeeInfo)
+  .post(async (req, res) => {
+    console.log(process.env.SECRET_KEY);
+    const { amount, client_id, emp_id } = req.body;
+    console.log(typeof amount);
+    console.log(req.body);
+    let total = (amount * 100).toFixed();
+    try {
+      const paymentIntent = await stripe.paymentIntents.create({
+        amount: total,
+        currency: "usd",
+        payment_method_types: ["card"],
+      });
+
+      console.log(paymentIntent);
+      res.status(200).send(paymentIntent.client_secret);
+
+      //Create Tips
+      await Tip.create({
+        client_id,
+        emp_id,
+        tip_amount: amount,
+      })
+        .then((response) => {
+          console.log(response);
+          return response;
+        })
+        .catch((err) => res.status(500).json({ message: error.message }));
+    } catch (err) {
+      console.log(err);
+    }
+  });
 //Getting the data for employee information
 router.route("/api/EmpOverview/:id").get(isLoggedIn, GetEmp_Tip);
 

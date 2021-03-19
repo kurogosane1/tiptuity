@@ -6,8 +6,10 @@ import { Login } from "../../Pages/Front_Page/Login/Login";
 import { Ind_Emp } from "../../Pages/Payment/Ind_Emp";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
+import Success from "../../Pages/Payment/Success";
 import Index from "../Dashboard/Index";
 import Protect from "../../Protected/Protect";
+import Failure from "../../Pages/Payment/Failure";
 export function Emp_Switch() {
   //This is for stripe to work with this
   const stripePromise = loadStripe(
@@ -27,6 +29,12 @@ export function Emp_Switch() {
           <Elements stripe={stripePromise}>
             <Ind_Emp />
           </Elements>
+        </Route>
+        <Route path="/Success">
+          <Success />
+        </Route>
+        <Route path="/Failure">
+          <Failure />
         </Route>
         <Protect path="/api">
           <Index />
