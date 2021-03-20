@@ -24,6 +24,15 @@ require("./Controller/Passport")(passport);
 //General routes
 app.use("/", require("./Router/Route")); //For Protected Routes
 
+//This is when to deploy
+if (process.env.NODE_ENV === "production") {
+  app.use(express.static("front/build"));
+
+  app.get("*", (req, res) => {
+    res.sendFile(path.resolve(__dirname, "front", "build", "index.html"));
+  });
+}
+
 //Enabling sequelize and starting the server;
 sequelize
   .authenticate()
