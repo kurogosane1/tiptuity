@@ -6,6 +6,7 @@ const sequelize = require("./Config/Connection");
 const session = require("./Config/Session");
 const passport = require("passport");
 const flash = require("connect-flash");
+const path = require("path");
 
 // BodyParser makes it possible for our server to interpret data sent to it.
 app.use(bodyParser.json());
@@ -15,6 +16,7 @@ app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(bodyParser.json());
 
 //usesing Sessions
+app.set("trust proxy", 1);
 app.use(session);
 app.use(flash());
 app.use(passport.initialize());
