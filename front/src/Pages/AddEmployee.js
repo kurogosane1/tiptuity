@@ -4,7 +4,7 @@ import { useRouteMatch } from "react-router-dom";
 import axios from "axios";
 import QRCode from "qrcode.react";
 import { DataContext } from "../Context/Data";
-import { DialogActions } from "@material-ui/core";
+
 
 //This is where we will implement adding new employees
 export function AddEmployee({ closeDialog }) {
@@ -137,6 +137,7 @@ export function AddEmployee({ closeDialog }) {
           </div>
         </form>
       </div>
+     
     </div>
   );
 }

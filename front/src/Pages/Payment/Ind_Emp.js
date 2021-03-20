@@ -5,6 +5,12 @@ import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import "../../style/Ind_Emp.css";
 import Card from "./Card";
+import {
+  Dialog,
+  DialogActions,
+  DialogContent,
+  DialogTitle,
+} from "@material-ui/core";
 
 //This is an individual employee payment section
 //For paying employees that have not been paid at all
@@ -26,10 +32,17 @@ export function Ind_Emp({ match }) {
   const stripe = useStripe();
   const element = useElements();
 
+  //For Dialog
+  const [open, setOpen] = useState(false);
+
   //Getting the data based on the user information provided to us
   const getData = async () => {
     const result = await axios.get(url).then((response) => response.data.data);
     setEmp(...result);
+  };
+
+  const handleClose = () => {
+    setOpen(!open);
   };
 
   //Verifying the type of input entry made by the user
@@ -108,7 +121,7 @@ export function Ind_Emp({ match }) {
         return history.push("/Success", { data: tip, emp });
       } else {
         setIsProcessing(false);
-        return history.push("/Failure");
+        return history.push("/Failure", { data: tip, emp });
       }
     } catch (err) {
       setIsProcessing(false);
@@ -214,12 +227,43 @@ export function Ind_Emp({ match }) {
           <Card />
         </div>
         <div className="payment_processing">
-          <button disable={isProcessing} onClick={PaymentProcess}>
+          <button
+            disable={isProcessing}
+            onClick={() => {
+              setOpen(true);
+            }}>
             {!isProcessing ? "Process Payment" : "Processing..."}
           </button>
           {/* <button disabled={alert ? true : false}>Process Payment</button> */}
         </div>
       </div>
+      <Dialog
+        onClose={handleClose}
+        aria-labelledby="customized-dialog-title"
+        open={open}>
+        <DialogTitle>{`Please confirm`}</DialogTitle>
+        <DialogContent>
+          <span style={{ textAlign: "center" }}>
+            Please Confirm You agree to pay {emp ? emp.firstname : ""}{" "}
+            {emp ? emp.lastname : ""}{" "}
+          </span>
+          <br />
+          <span style={{ textAlign: "center" }}>
+            Of the amount of {formatter.format(tip)}
+          </span>
+        </DialogContent>
+        <DialogActions>
+          <button
+            className="ActionButton"
+            onClick={PaymentProcess}
+            disabled={tip === 0 ? true : false}>
+            {tip === 0 ? "Cannot Proceed with $0" : "Agree"}
+          </button>
+          <button className="DisagreeButton" onClick={handleClose}>
+            Disagree
+          </button>
+        </DialogActions>
+      </Dialog>
     </div>
   );
 }
