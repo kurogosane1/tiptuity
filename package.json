@@ -6,7 +6,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js",
-    "dev": "node --max-old-space-size=8192 server.js && nodemon server.js"
+    "client-install": "npm install --prefix front",
+    "server": "nodemon server.js",
+    "front": "npm start --prefix front",
+    "dev": "concurrently \"npm run start\" \"npm run front\"",
+    "heroku-postbuild": "NPM_CONFIG_PRODUCTION=false npm install --prefix front && npm run build --prefix front"
   },
   "author": "Syed Saad Khurshid",
   "license": "ISC",
