@@ -11,6 +11,7 @@ const sequelize = new Sequelize(
   { dialect: "mysql" }
 );
 
+console.log(sequelize);
 sequelize.sync({ logging: false });
 
 module.exports = sequelize;
