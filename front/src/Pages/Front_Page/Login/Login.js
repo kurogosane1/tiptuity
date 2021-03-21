@@ -12,10 +12,10 @@ export function Login() {
   //This is if the Guest Login is selected
   async function Guest(e) {
     e.preventDefault();
-    setEmail("jdoe@email.com");
-    setPassword("password");
+    // setEmail("jdoe@email.com");
+    // setPassword("password");
     const result = await axios
-      .post("/Login", { email, password })
+      .post("/Login", { email: "jdoe@email.com", password: "password" })
       .then((user) => {
         return user.data;
       });
@@ -30,7 +30,7 @@ export function Login() {
     if (result === "Password is Incorrect") {
       setMess(result);
     }
-  };
+  }
   //This is toLogUser t0 login
   async function LogUser(e) {
     e.preventDefault();
