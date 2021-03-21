@@ -1,6 +1,7 @@
 const session = require("express-session");
 // const options = require("./MySQLSession");
 const MySQLStore = require("express-mysql-session")(session);
+const mysql = require("mysql2");
 require("dotenv").config();
 
 const options = {
@@ -12,7 +13,9 @@ const options = {
   // process.env.DB_HOST
 };
 
-const sessionStore = new MySQLStore(options);
+const connection = mysql.createConnection(process.env.DB_HOST);
+
+const sessionStore = new MySQLStore(connection);
 //below if connecting to heroku
 // const sessionStore = new MySQLStore(process.env.DB_HOST);
 
