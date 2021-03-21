@@ -18,11 +18,11 @@ app.use(bodyParser.json());
 
 //usesing Sessions
 app.set("trust proxy", 1);
-app.use(session);
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-require("./controller/Passport")(passport);
+app.use(session);
+require("./Controller/Passport")(passport);
 
 //General routes
 app.use("/", require("./Router/Route")); //For Protected Routes

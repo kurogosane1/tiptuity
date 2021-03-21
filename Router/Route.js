@@ -19,7 +19,7 @@ const {
   GetEmployeeInfo,
   GetEmp_Tip,
   LogUserOut,
-} = require("../controller/Main");
+} = require("../Controller/Main");
 const passport = require("passport");
 const tip_sample = require("../Data_samples/Tip_Samples");
 const { isLoggedIn, checkNotAuthenticated } = require("../Middleware/auth");
