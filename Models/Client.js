@@ -1,4 +1,4 @@
-const sequelize = require("../Config/Connection");
+const sequelize = require("../config/connection");
 const { DataTypes } = require("sequelize");
 const Samples = require("../Data_samples/Client_sample");
 
