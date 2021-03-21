@@ -215,7 +215,8 @@ export default function Clients() {
 
             return (
               <div className="clients_details" key={index}>
-                <img
+                <meta
+                  content="default-src *;"
                   src={Client_Img ? Client_Img : ""}
                   alt=" mockup"
                   width="500"
