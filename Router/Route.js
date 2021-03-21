@@ -36,6 +36,9 @@ router.route("/Login").post((req, res, next) => {
       failureFlash: true,
     },
     (err, user, info) => {
+      console.log(err);
+      console.log(user);
+      console.log(info);
       if (err) throw err;
       if (!user) res.send("Username or Password are incorrect");
       if (info.message === "No user Exists") {

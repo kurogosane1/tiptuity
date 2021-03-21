@@ -1,5 +1,5 @@
 const { Sequelize } = require("sequelize");
-const session = require('express-session');
+const session = require("express-session");
 const SequelizeStore = require("connect-session-sequelize")(session.Store);
 require("dotenv").config();
 
@@ -13,21 +13,24 @@ const sequelize = new Sequelize(
   { dialect: "mysql" }
 );
 
-console.log(sequelize);
 sequelize.sync({ logging: false });
 
+// module.exports.myStore = new SequelizeStore({
+//   db: sequelize,
+// });
+
+// module.exports = session({
+//   store: new SequelizeStore({
+//     db: sequelize,
+//   }),
+//   key: process.env.SESSION_KEY,
+//   resave: false,
+//   saveUninitialized: false,
+//   secret: process.env.SESSION_SECRET,
+//   cookie: {
+//     maxAge: 1 * 60 * 60 * 1000,
+//     sameSite: true,
+//     secure: false,
+//   },
+// });
 module.exports = sequelize;
-module.exports = session({
-  store: new SequelizeStore({
-    db: sequelize,
-  }),
-  key: process.env.SESSION_KEY,
-  resave: false,
-  saveUninitialized: false,
-  secret: process.env.SESSION_SECRET,
-  cookie: {
-    maxAge: 1 * 60 * 60 * 1000,
-    sameSite: true,
-    secure: false,
-  },
-});

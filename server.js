@@ -2,13 +2,14 @@ const express = require("express");
 const app = express();
 const bodyParser = require("body-parser");
 const PORT = process.env.PORT || 4500;
-const { sequelize } = require("./config/connection");
-// const session = require("./config/Session");
-const { session } = require("./config/connection");
+const sequelize = require("./config/connection");
+// const session = require("express-session");
+const session = require("./config/Session");
+const { myStore } = require("./config/connection");
 const passport = require("passport");
 const flash = require("connect-flash");
 const path = require("path");
-const cors = require('cors');
+const cors = require("cors");
 
 // BodyParser makes it possible for our server to interpret data sent to it.
 app.use(bodyParser.json());
@@ -22,9 +23,9 @@ app.use(cors());
 //usesing Sessions
 app.set("trust proxy", 1);
 app.use(flash());
+app.use(session);
 app.use(passport.initialize());
 app.use(passport.session());
-app.use(session);
 require("./Controller/Passport")(passport);
 
 //General routes

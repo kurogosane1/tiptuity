@@ -15,7 +15,7 @@ export default function Data(props) {
   const GetData = async () => {
     await axios.get("/api").then((response) => {
       const { Employees, clients, tips, TipsEmp } = response.data;
-      console.log(response);
+      // console.log(response);
       setEmployee([...Employees]);
       setClient([...clients]);
       setTipped([...tips]);
