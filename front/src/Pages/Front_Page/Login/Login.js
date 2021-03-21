@@ -12,7 +12,7 @@ export function Login() {
   //This is if the Guest Login is selected
   async function Guest(e) {
     e.preventDefault();
-    setEmail("guest@email.com");
+    setEmail("jdoe@email.com");
     setPassword("password");
     const result = await axios
       .post("/Login", { email, password })

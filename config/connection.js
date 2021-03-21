@@ -14,23 +14,4 @@ const sequelize = new Sequelize(
 );
 
 sequelize.sync({ logging: false });
-
-// module.exports.myStore = new SequelizeStore({
-//   db: sequelize,
-// });
-
-// module.exports = session({
-//   store: new SequelizeStore({
-//     db: sequelize,
-//   }),
-//   key: process.env.SESSION_KEY,
-//   resave: false,
-//   saveUninitialized: false,
-//   secret: process.env.SESSION_SECRET,
-//   cookie: {
-//     maxAge: 1 * 60 * 60 * 1000,
-//     sameSite: true,
-//     secure: false,
-//   },
-// });
 module.exports = sequelize;
