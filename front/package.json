@@ -66,5 +66,5 @@
     "@babel/register": "^7.13.8",
     "jsdom-quokka-plugin": "^1.0.16"
   },
-  "proxy": "http://localhost:4000"
+  "proxy": "http://localhost:4500"
 }
