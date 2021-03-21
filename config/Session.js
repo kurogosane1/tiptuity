@@ -4,17 +4,17 @@ const MySQLStore = require("express-mysql-session")(session);
 require("dotenv").config();
 
 const options = {
-  // host: process.env.DB_HOST,
+  host: process.env.DB_HOST,
   // port: 3306,
-  // user: process.env.USERNAME,
-  // password: process.env.PASSWORD,
-  // database: process.env.DATABASE_NAME,
+  user: process.env.USERNAME,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE_NAME,
   // process.env.DB_HOST
 };
 
-// const sessionStore = new MySQLStore(options);
+const sessionStore = new MySQLStore(options);
 //below if connecting to heroku
-const sessionStore = new MySQLStore(process.env.DB_HOST);
+// const sessionStore = new MySQLStore(process.env.DB_HOST);
 
 module.exports = session({
   store: sessionStore,
