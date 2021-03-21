@@ -8,6 +8,7 @@ const { session } = require("./config/connection");
 const passport = require("passport");
 const flash = require("connect-flash");
 const path = require("path");
+const cors = require('cors');
 
 // BodyParser makes it possible for our server to interpret data sent to it.
 app.use(bodyParser.json());
@@ -15,6 +16,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(bodyParser.json());
+
+app.use(corr());
 
 //usesing Sessions
 app.set("trust proxy", 1);
