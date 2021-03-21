@@ -12,24 +12,8 @@ export function Login() {
   //This is if the Guest Login is selected
   async function Guest(e) {
     e.preventDefault();
-    // setEmail("jdoe@email.com");
-    // setPassword("password");
-    const result = await axios
-      .post("/Login", { email: "jdoe@email.com", password: "password" })
-      .then((user) => {
-        return user.data;
-      });
-
-    if (result === "Username or Password are incorrect") {
-      setMess(result);
-    }
-    if (result === "Successfully Authenticated") {
-      setMess();
-      history.push("/api");
-    }
-    if (result === "Password is Incorrect") {
-      setMess(result);
-    }
+    setEmail("guest@email.com");
+    setPassword("password");
   }
   //This is toLogUser t0 login
   async function LogUser(e) {
@@ -86,6 +70,7 @@ export function Login() {
                 onChange={(e) => {
                   setEmail(e.target.value);
                 }}
+                value={email}
               />
             </div>
             <div className="input_areas log_pass">
@@ -99,13 +84,14 @@ export function Login() {
                 onChange={(e) => {
                   setPassword(e.target.value);
                 }}
+                value={password}
               />
             </div>
             <div className="input_areas button_area">
               <button type="submit" className="log_button">
                 Login
               </button>
-              <button type="submit" className="guest">
+              <button type="submit" className="guest" onClick={Guest}>
                 Guest Login
               </button>
             </div>

@@ -1,6 +1,8 @@
 const Clients = require("../Models/Client");
 const Employee = require("../Models/Employee");
 const Tip = require("../Models/Tip");
+const Users = require("../Models/User");
+const stripe = require("stripe")(process.env.SECRET_KEY);
 require("dotenv").config();
 //Making sure to add the Employee to the list of employees
 module.exports.AddEmp = async (req, res) => {
@@ -188,4 +190,36 @@ module.exports.LogUserOut = (req, res) => {
   req.session.destroy();
   res.clearCookie(process.env.SESSION_KEY);
   res.json({ isAuth: false });
+};
+//This is for Payment Processing
+module.exports.PaymentProcessing = async (req, res) => {
+  console.log(process.env.SECRET_KEY);
+  const { amount, client_id, emp_id } = req.body;
+  console.log(typeof amount);
+  console.log(req.body);
+  let total = (amount * 100).toFixed();
+  try {
+    const paymentIntent = await stripe.paymentIntents.create({
+      amount: total,
+      currency: "usd",
+      payment_method_types: ["card"],
+    });
+
+    console.log(paymentIntent);
+    res.status(200).send(paymentIntent.client_secret);
+
+    //Create Tips
+    await Tip.create({
+      client_id,
+      emp_id,
+      tip_amount: amount,
+    })
+      .then((response) => {
+        console.log(response);
+        return response;
+      })
+      .catch((err) => res.status(500).json({ message: error.message }));
+  } catch (err) {
+    console.log(err);
+  }
 };
