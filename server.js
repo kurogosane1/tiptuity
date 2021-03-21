@@ -22,7 +22,7 @@ app.use(session);
 app.use(flash());
 app.use(passport.initialize());
 app.use(passport.session());
-require("./Controller/Passport")(passport);
+require("./controller/Passport")(passport);
 
 //General routes
 app.use("/", require("./Router/Route")); //For Protected Routes
