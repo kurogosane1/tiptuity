@@ -17,7 +17,7 @@ app.use(bodyParser.text());
 app.use(bodyParser.json({ type: "application/vnd.api+json" }));
 app.use(bodyParser.json());
 
-app.use(corr());
+app.use(cors());
 
 //usesing Sessions
 app.set("trust proxy", 1);
