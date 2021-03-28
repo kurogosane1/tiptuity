@@ -6,6 +6,7 @@ import QR from "../../Assets/FrontQR.svg";
 import Img from "../../Assets/Dashboard.png";
 import "../../style/FrontPage.css";
 import Footer from "./Footer";
+import QRcode from "qrcode.react";
 
 export function Front() {
   const history = useHistory();
@@ -24,10 +25,31 @@ export function Front() {
       </section>
       <section className="main-body">
         <img src={Iphone} alt="iphones" />
-        <h1>
-          Tiptuity has made it easier for you to pay a tip using your phone and
-          camera and just pay what you feel
-        </h1>
+        <div
+          className="main-body-desc"
+          style={{
+            display: "flex",
+            flexDirection: "column",
+            flexWrap: "wrap",
+            lineHeight: "3rem",
+            justifyContent:'space-evenly',
+            alignItems:'center'
+          }}>
+          <h1>
+            Tiptuity has made it easier for you to pay a tip using your phone
+            and camera and just pay what you feel
+          </h1>
+          <h2>Go ahead Scan the QRcode below</h2>
+          <span>
+            Use card number 4242-4242-4242-4242 and any date and any late date
+            for CVC for demo purpose
+          </span>
+          <QRcode
+            value={`https://tiptuityv2.herokuapp.com/api/Employee/00513b22-5614-4df2-8373-a5bf95f6546f`}
+            renderAs="svg"
+            size={248}
+          />
+        </div>
       </section>
       <section className="pricing">
         <div className="pricing_Information">
