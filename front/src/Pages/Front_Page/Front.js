@@ -6,7 +6,7 @@ import QR from "../../Assets/FrontQR.svg";
 import Img from "../../Assets/Dashboard.png";
 import "../../style/FrontPage.css";
 import Footer from "./Footer";
-import QRcode from "qrcode.react";
+import QRcode from "react-qr-code";
 
 export function Front() {
   const history = useHistory();
@@ -45,8 +45,7 @@ export function Front() {
             for CVC for demo purpose
           </span>
           <QRcode
-            value={`https://tiptuityv2.herokuapp.com/pay/00513b22-5614-4df2-8373-a5bf95f6546f`}
-            renderAs="svg"
+            value="https://tiptuityv2.herokuapp.com/pay/00513b22-5614-4df2-8373-a5bf95f6546f"
             size={248}
           />
         </div>
