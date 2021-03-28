@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { AddEmployee } from "../../Pages/AddEmployee";
 import { Front } from "../../Pages/Front_Page/Front";
 import { Login } from "../../Pages/Front_Page/Login/Login";
-import { Ind_Emp } from "../../Pages/Payment/Ind_Emp";
+import Ind_Emp from "../../Pages/Payment/Ind_Emp";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Success from "../../Pages/Payment/Success";
