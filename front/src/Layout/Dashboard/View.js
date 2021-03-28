@@ -12,6 +12,9 @@ import Employee from "../../Pages/IndividualEmp/Employee";
 import UpdateClient from "../../Pages/Dialog/UpdateClient";
 import IndClient from "../../Pages/IndClient/IndClient";
 import Protect from "../../Protected/Protect";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+import { Ind_Emp } from "../../Pages/Payment/Ind_Emp";
 
 export default function View() {
   return (
@@ -50,6 +53,11 @@ export default function View() {
         //   <IndClient />
         // </Route>
         null}
+        <Route path={"/api/Employee/:id"}>
+          <Elements stripe={stripePromise}>
+            <Ind_Emp />
+          </Elements>
+        </Route>
       </Switch>
     </div>
   );
