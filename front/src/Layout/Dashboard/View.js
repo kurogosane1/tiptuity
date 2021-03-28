@@ -12,56 +12,23 @@ import Employee from "../../Pages/IndividualEmp/Employee";
 import UpdateClient from "../../Pages/Dialog/UpdateClient";
 import IndClient from "../../Pages/IndClient/IndClient";
 import Protect from "../../Protected/Protect";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
-import Ind_Emp from "../../Pages/Payment/Ind_Emp";
 
 export default function View() {
-  const stripePromise = loadStripe(
-    process.env.REACT_APP_Stripe_PUBLISHIBLE_KEY
-  );
-
   return (
     <div className="views">
       <Switch>
         <Protect exact path="/api" component={Stats} />
         <Protect path="/api/Clients" component={Clients} />
-        {/* <Route path="/api/Clients">
-          <Clients />
-        </Route> */}
         <Protect path="/api/Clients" component={UpdateClient} />
-        {/* <Route path="/api/UpdateClient">
-          <UpdateClient />
-        </Route> */}
         <Protect path="/api/Employees" component={Employees} />
-        {/* <Route path="/api/Employees">
-          <Employees />
-        </Route> */}
         <Protect path="/api/EmpOverview" component={EmpOverview} />
-        {/* <Route path="/api/EmpOverview">
-          <EmpOverview />
-        </Route> */}
         <Protect path="/api/tips" component={Tips} />
-        {/* <Route path="/api/tips">
-          <Tips />
-        </Route> */}
         {window.innerWidth <= 600 ? (
           <Protect path="/api/Employee" component={Employee} />
-        ) : // <Route path="/api/Employee">
-        //   <Employee />
-        // </Route>
-        null}
+        ) : null}
         {window.innerWidth <= 600 ? (
           <Protect path="/api/Client" component={IndClient} />
-        ) : // <Route path="/api/Client">
-        //   <IndClient />
-        // </Route>
-        null}
-        <Route path={"/api/Employee/:id"}>
-          <Elements stripe={stripePromise}>
-            <Ind_Emp />
-          </Elements>
-        </Route>
+        ) : null}
       </Switch>
     </div>
   );
