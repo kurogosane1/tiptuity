@@ -18,6 +18,7 @@ const {
   GetEmp_Tip,
   LogUserOut,
   PaymentProcessing,
+  GetIndEmployee,
 } = require("../Controller/Main");
 const passport = require("passport");
 const tip_sample = require("../Data_samples/Tip_Samples");
@@ -108,7 +109,7 @@ router
   .get(isLoggedIn, FindClient)
   .put(isLoggedIn, UpdateIndClient);
 //Getting the individual Employee information for payment
-router.route("/pay/:id").get(GetEmployeeInfo).post(PaymentProcessing);
+router.route("/pay/:id").get(GetIndEmployee).post(PaymentProcessing);
 //Getting the data for employee information
 router.route("/api/EmpOverview/:id").get(isLoggedIn, GetEmp_Tip);
 

@@ -223,3 +223,16 @@ module.exports.PaymentProcessing = async (req, res) => {
     console.log(err);
   }
 };
+//This is for simply paying tips
+module.exports.GetIndEmployee = async (req, res) => {
+  console.log(req.params);
+  const { id } = req.params;
+  if (id) {
+    const result = await Employee.findAll({ where: { id } }).then(
+      (response) => response
+    );
+    res.status(200).json({ data: result });
+  } else {
+    res.json({ message: "No User Found" });
+  }
+};
