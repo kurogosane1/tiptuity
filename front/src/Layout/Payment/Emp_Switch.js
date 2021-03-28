@@ -35,7 +35,7 @@ export function Emp_Switch() {
         <Protect path="/api">
           <Index />
         </Protect>
-        <Route path={"/api/Employee/:id"}>
+        <Route exact path={"/api/Employee/:id"}>
           <Elements stripe={stripePromise}>
             <Ind_Emp />
           </Elements>
