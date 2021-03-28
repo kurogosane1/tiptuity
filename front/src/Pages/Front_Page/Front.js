@@ -32,8 +32,8 @@ export function Front() {
             flexDirection: "column",
             flexWrap: "wrap",
             lineHeight: "3rem",
-            justifyContent:'space-evenly',
-            alignItems:'center'
+            justifyContent: "space-evenly",
+            alignItems: "center",
           }}>
           <h1>
             Tiptuity has made it easier for you to pay a tip using your phone
@@ -45,7 +45,7 @@ export function Front() {
             for CVC for demo purpose
           </span>
           <QRcode
-            value={`https://tiptuityv2.herokuapp.com/api/Employee/00513b22-5614-4df2-8373-a5bf95f6546f`}
+            value={`https://tiptuityv2.herokuapp.com/pay/00513b22-5614-4df2-8373-a5bf95f6546f`}
             renderAs="svg"
             size={248}
           />
