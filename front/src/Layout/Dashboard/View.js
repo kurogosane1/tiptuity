@@ -12,6 +12,7 @@ import Employee from "../../Pages/IndividualEmp/Employee";
 import UpdateClient from "../../Pages/Dialog/UpdateClient";
 import IndClient from "../../Pages/IndClient/IndClient";
 import Protect from "../../Protected/Protect";
+import Ind_Emp from "../../Pages/Payment/Ind_Emp";
 
 export default function View() {
   return (
@@ -29,6 +30,9 @@ export default function View() {
         {window.innerWidth <= 600 ? (
           <Protect path="/api/Client" component={IndClient} />
         ) : null}
+        {/* <Route path="/pay/:id">
+          <Ind_Emp/>
+        </Route> */}
       </Switch>
     </div>
   );

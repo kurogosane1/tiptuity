@@ -35,7 +35,7 @@ export function Emp_Switch() {
         <Protect path="/api">
           <Index />
         </Protect>
-        <Route path={"/pay/:id"}>
+        <Route path="/pay/:id">
           <Ind_Emp />
         </Route>
         <Protect path="/AddEmployee">
