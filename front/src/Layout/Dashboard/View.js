@@ -17,6 +17,9 @@ import { loadStripe } from "@stripe/stripe-js";
 import { Ind_Emp } from "../../Pages/Payment/Ind_Emp";
 
 export default function View() {
+
+  const stripePromise = loadStripe(
+
   return (
     <div className="views">
       <Switch>
