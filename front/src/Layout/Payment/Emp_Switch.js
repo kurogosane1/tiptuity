@@ -25,11 +25,11 @@ export function Emp_Switch() {
         <Route exact path="/Login">
           <Login style={{ minHeight: "100vh" }} />
         </Route>
-        <Route path={"/api/Employee/:id"}>
+        {/* <Route path={"/api/Employee/:id"}>
           <Elements stripe={stripePromise}>
             <Ind_Emp />
           </Elements>
-        </Route>
+        </Route> */}
         <Route path="/Success">
           <Success />
         </Route>
