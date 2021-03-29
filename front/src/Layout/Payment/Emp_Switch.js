@@ -33,7 +33,7 @@ export function Emp_Switch() {
         <Route path="/Failure">
           <Failure />
         </Route>
-        <Route path="/pay/:id">
+        <Route path={`/pay/:id`}>
           <Elements stripe={stripePromise}>
             <Ind_Emp />
           </Elements>
