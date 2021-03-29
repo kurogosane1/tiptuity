@@ -33,17 +33,17 @@ export function Emp_Switch() {
         <Route path="/Failure">
           <Failure />
         </Route>
+        <Route path="/pay/:id">
+          <Elements stripe={stripePromise}>
+            <Ind_Emp />
+          </Elements>
+        </Route>
         <Protect path="/api">
           <Index />
         </Protect>
         <Protect path="/AddEmployee">
           <AddEmployee style={{ minHeight: "100vh" }} />
         </Protect>
-        <Route path="/pay/:id">
-          <Elements stripe={stripePromise}>
-            <Ind_Emp />
-          </Elements>
-        </Route>
       </Switch>
     </div>
   );
