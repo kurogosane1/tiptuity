@@ -98,6 +98,7 @@ router.route("/api/post/api").get(async (req, res) => {
 router.route("/api/Employees").get(isLoggedIn, GetTipEmpCli);
 //Adding and getting employees
 router.route("/api/AddEmployee").post(isLoggedIn, AddEmp);
+router.route("/AddEmployee").get(isLoggedIn).post(isLoggedIn, AddEmp);
 //Adding,Deleting and Updating Client
 router
   .route("/api/Client")
