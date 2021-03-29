@@ -21,7 +21,17 @@ export default function Ind_Emp({ match }) {
   let params = useParams();
 
   const history = useHistory();
-  const [emp, setEmp] = useState();
+  const [emp, setEmp] = useState({
+    id: "00513b22-5614-4df2-8373-a5bf95f6546f",
+    firstname: "Oceane",
+    lastname: "Donnelly",
+    streetaddress: "8714 Hartmann Dale",
+    email: "Thora32@yahoo.com",
+    isAdmin: true,
+    image: "http://placeimg.com/640/480/people",
+    createdAt: "2021-03-21T01:59:48.000Z",
+    updatedAt: "2021-03-21T01:59:48.000Z",
+  });
   const [tip, setTipAmount] = useState(0);
   const [alert, setAlert] = useState(); //This is incase the user inputs string instead of numbers
   const [name, setName] = useState();
@@ -141,9 +151,9 @@ export default function Ind_Emp({ match }) {
   });
 
   useEffect(() => {
-    console.log(url);
+    // console.log(url);
     setAlert();
-    getData();
+    // getData();
   }, []);
   return (
     <div className="payment_body">

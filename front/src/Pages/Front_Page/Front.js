@@ -45,7 +45,7 @@ export function Front() {
             for CVC for demo purpose
           </span>
           <QRcode
-            value="https://tiptuityv2.herokuapp.com/pay/00513b22-5614-4df2-8373-a5bf95f6546f"
+            value="https://tiptuityv2.herokuapp.com/Demo"
             size={248}
           />
         </div>

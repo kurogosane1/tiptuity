@@ -11,7 +11,8 @@ import Tipping from "../../Protected/Tipping";
 import Failure from "../../Pages/Payment/Failure";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
-// 
+import Demo from "../../Pages/IndividualEmp/Demo";
+//
 
 export function Emp_Switch() {
   // This is for stripe to work with this
@@ -38,6 +39,11 @@ export function Emp_Switch() {
         <Route path={`/pay/:id`}>
           <Elements stripe={stripePromise}>
             <Ind_Emp />
+          </Elements>
+        </Route>
+        <Route path={`/Demo`}>
+          <Elements stripe={stripePromise}>
+            <Demo />
           </Elements>
         </Route>
         <Protect path="/api">
