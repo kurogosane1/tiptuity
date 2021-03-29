@@ -15,7 +15,7 @@ import {
 //This is an individual employee payment section
 //For paying employees that have not been paid at all
 
-export default function Ind_Emp({ match }) {
+export default function Ind_Emp({ emp }) {
   //Get the param
   const { url } = useRouteMatch();
   let params = useParams();
@@ -42,9 +42,7 @@ export default function Ind_Emp({ match }) {
     console.log("This ran");
     let info = params.id;
     console.log(info);
-    const result = await axios
-      .get(url)
-      .then((response) => response.data.data);
+    const result = await axios.get(url).then((response) => response.data.data);
     await setEmp(...result);
   };
 
@@ -145,7 +143,8 @@ export default function Ind_Emp({ match }) {
   useEffect(() => {
     console.log(url);
     setAlert();
-    getData();
+    // getData();
+    setEmp(emp);
   }, []);
   return (
     <div className="payment_body">
