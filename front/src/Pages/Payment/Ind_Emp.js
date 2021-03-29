@@ -15,7 +15,7 @@ import {
 //This is an individual employee payment section
 //For paying employees that have not been paid at all
 
-export default function Ind_Emp({ match}) {
+export default function Ind_Emp({ match }) {
   //Get the param
   const { url } = useRouteMatch();
   let params = useParams();

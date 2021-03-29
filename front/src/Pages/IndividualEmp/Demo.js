@@ -4,7 +4,7 @@ import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import "../../style/Ind_Emp.css";
-import Card from "./Card";
+// import Card from "./Card";
 import {
   Dialog,
   DialogActions,
