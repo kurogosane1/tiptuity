@@ -40,7 +40,11 @@ export default function Ind_Emp({ match }) {
   //Getting the data based on the user information provided to us
   const getData = async () => {
     console.log("This ran");
-    const result = await axios.get(url).then((response) => response.data.data);
+    let info = params.id;
+    console.log(info);
+    const result = await axios
+      .get(url)
+      .then((response) => response.data.data);
     await setEmp(...result);
   };
 

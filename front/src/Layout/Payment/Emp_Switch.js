@@ -9,11 +9,14 @@ import Success from "../../Pages/Payment/Success";
 import Index from "../Dashboard/Index";
 import Protect from "../../Protected/Protect";
 import Failure from "../../Pages/Payment/Failure";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+
 export function Emp_Switch() {
-  //This is for stripe to work with this
-  // const stripePromise = loadStripe(
-  //   process.env.REACT_APP_Stripe_PUBLISHIBLE_KEY
-  // );
+  // This is for stripe to work with this
+  const stripePromise = loadStripe(
+    process.env.REACT_APP_Stripe_PUBLISHIBLE_KEY
+  );
 
   return (
     <div className="views_payment">
@@ -36,6 +39,11 @@ export function Emp_Switch() {
         <Protect path="/AddEmployee">
           <AddEmployee style={{ minHeight: "100vh" }} />
         </Protect>
+        <Route path="/pay/:id">
+          <Elements stripe={stripePromise}>
+            <Ind_Emp />
+          </Elements>
+        </Route>
       </Switch>
     </div>
   );
