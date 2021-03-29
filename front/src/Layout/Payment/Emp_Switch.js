@@ -4,17 +4,16 @@ import { AddEmployee } from "../../Pages/AddEmployee";
 import { Front } from "../../Pages/Front_Page/Front";
 import { Login } from "../../Pages/Front_Page/Login/Login";
 import Ind_Emp from "../../Pages/Payment/Ind_Emp";
-import { Elements } from "@stripe/react-stripe-js";
-import { loadStripe } from "@stripe/stripe-js";
+
 import Success from "../../Pages/Payment/Success";
 import Index from "../Dashboard/Index";
 import Protect from "../../Protected/Protect";
 import Failure from "../../Pages/Payment/Failure";
 export function Emp_Switch() {
   //This is for stripe to work with this
-  const stripePromise = loadStripe(
-    process.env.REACT_APP_Stripe_PUBLISHIBLE_KEY
-  );
+  // const stripePromise = loadStripe(
+  //   process.env.REACT_APP_Stripe_PUBLISHIBLE_KEY
+  // );
 
   return (
     <div className="views_payment">
@@ -39,11 +38,7 @@ export function Emp_Switch() {
             <Ind_Emp />
           </Elements>
         </Route>
-        <Route path="/pay/00513b22-5614-4df2-8373-a5bf95f6546f">
-          <Elements stripe={stripePromise}>
-            <Ind_Emp />
-          </Elements>
-        </Route>
+       
         <Protect path="/AddEmployee">
           <AddEmployee style={{ minHeight: "100vh" }} />
         </Protect>

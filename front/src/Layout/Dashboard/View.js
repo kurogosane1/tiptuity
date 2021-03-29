@@ -13,8 +13,14 @@ import UpdateClient from "../../Pages/Dialog/UpdateClient";
 import IndClient from "../../Pages/IndClient/IndClient";
 import Protect from "../../Protected/Protect";
 import Ind_Emp from "../../Pages/Payment/Ind_Emp";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
 
 export default function View() {
+  //This is for stripe to work with this
+  const stripePromise = loadStripe(
+    process.env.REACT_APP_Stripe_PUBLISHIBLE_KEY
+  );
   return (
     <div className="views">
       <Switch>
@@ -33,6 +39,11 @@ export default function View() {
         {/* <Route path="/pay/:id">
           <Ind_Emp/>
         </Route> */}
+        <Route path="/pay/00513b22-5614-4df2-8373-a5bf95f6546f">
+          <Elements stripe={stripePromise}>
+            <Ind_Emp />
+          </Elements>
+        </Route>
       </Switch>
     </div>
   );
