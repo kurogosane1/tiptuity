@@ -12,9 +12,9 @@ import Failure from "../../Pages/Payment/Failure";
 
 export function Emp_Switch() {
   // This is for stripe to work with this
-  const stripePromise = loadStripe(
-    process.env.REACT_APP_Stripe_PUBLISHIBLE_KEY
-  );
+  // const stripePromise = loadStripe(
+  //   process.env.REACT_APP_Stripe_PUBLISHIBLE_KEY
+  // );
 
   return (
     <div className="views_payment">
