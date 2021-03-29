@@ -38,13 +38,13 @@ export default function Ind_Emp({ emp }) {
   const [open, setOpen] = useState(false);
 
   //Getting the data based on the user information provided to us
-  const getData = async () => {
-    console.log("This ran");
-    let info = params.id;
-    console.log(info);
-    const result = await axios.get(url).then((response) => response.data.data);
-    await setEmp(...result);
-  };
+  // const getData = async () => {
+  //   console.log("This ran");
+  //   let info = params.id;
+  //   console.log(info);
+  //   const result = await axios.get(url).then((response) => response.data.data);
+  //   await setEmp(...result);
+  // };
 
   const handleClose = () => {
     setOpen(!open);
@@ -144,7 +144,7 @@ export default function Ind_Emp({ emp }) {
     console.log(url);
     setAlert();
     // getData();
-    setEmp(emp);
+    // setEmp(emp);
   }, []);
   return (
     <div className="payment_body">
