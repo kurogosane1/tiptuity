@@ -15,13 +15,13 @@ import {
 //This is an individual employee payment section
 //For paying employees that have not been paid at all
 
-export default function Ind_Emp({ emp }) {
+export default function Ind_Emp({ match}) {
   //Get the param
   const { url } = useRouteMatch();
   let params = useParams();
 
   const history = useHistory();
-  // const [emp, setEmp] = useState();
+  const [emp, setEmp] = useState();
   const [tip, setTipAmount] = useState(0);
   const [alert, setAlert] = useState(); //This is incase the user inputs string instead of numbers
   const [name, setName] = useState();
@@ -38,13 +38,13 @@ export default function Ind_Emp({ emp }) {
   const [open, setOpen] = useState(false);
 
   //Getting the data based on the user information provided to us
-  // const getData = async () => {
-  //   console.log("This ran");
-  //   let info = params.id;
-  //   console.log(info);
-  //   const result = await axios.get(url).then((response) => response.data.data);
-  //   await setEmp(...result);
-  // };
+  const getData = async () => {
+    console.log("This ran");
+    let info = params.id;
+    console.log(info);
+    const result = await axios.get(url).then((response) => response.data.data);
+    await setEmp(...result);
+  };
 
   const handleClose = () => {
     setOpen(!open);
@@ -143,7 +143,7 @@ export default function Ind_Emp({ emp }) {
   useEffect(() => {
     console.log(url);
     setAlert();
-    // getData();
+    getData();
     // setEmp(emp);
   }, []);
   return (

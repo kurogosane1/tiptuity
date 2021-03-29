@@ -226,6 +226,7 @@ module.exports.PaymentProcessing = async (req, res) => {
 //This is for simply paying tips
 module.exports.GetIndEmployee = async (req, res) => {
   const { id } = req.params;
+  console.log(id);
   if (id) {
     const result = await Employee.findAll({ where: { id } }).then(
       (response) => response

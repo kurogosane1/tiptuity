@@ -9,12 +9,15 @@ import Index from "../Dashboard/Index";
 import Protect from "../../Protected/Protect";
 import Tipping from "../../Protected/Tipping";
 import Failure from "../../Pages/Payment/Failure";
+import { Elements } from "@stripe/react-stripe-js";
+import { loadStripe } from "@stripe/stripe-js";
+// 
 
 export function Emp_Switch() {
   // This is for stripe to work with this
-  // const stripePromise = loadStripe(
-  //   process.env.REACT_APP_Stripe_PUBLISHIBLE_KEY
-  // );
+  const stripePromise = loadStripe(
+    process.env.REACT_APP_Stripe_PUBLISHIBLE_KEY
+  );
 
   return (
     <div className="views_payment">
@@ -31,12 +34,12 @@ export function Emp_Switch() {
         <Route path="/Failure">
           <Failure />
         </Route>
-        <Tipping path={`/pay/:id`} component={Ind_Emp} />
-        {/* <Route path={`/pay/:id`}>
+        {/* <Tipping path={`/pay/:id`} component={Ind_Emp} /> */}
+        <Route path={`/pay/:id`}>
           <Elements stripe={stripePromise}>
             <Ind_Emp />
           </Elements>
-        </Route> */}
+        </Route>
         <Protect path="/api">
           <Index />
         </Protect>
