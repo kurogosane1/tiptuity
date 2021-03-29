@@ -18,10 +18,9 @@ import { loadStripe } from "@stripe/stripe-js";
 //For paying employees that have not been paid at all
 
 export default function Ind_Emp({ match }) {
-
-    const stripePromise = loadStripe(
-      process.env.REACT_APP_Stripe_PUBLISHIBLE_KEY
-    );
+  const stripePromise = loadStripe(
+    process.env.REACT_APP_Stripe_PUBLISHIBLE_KEY
+  );
 
   //Get the param
   const { url } = useRouteMatch();
@@ -145,7 +144,7 @@ export default function Ind_Emp({ match }) {
   useEffect(() => {
     console.log(url);
     setAlert();
-    getData();
+    setInterval(getData(), 4000);
   }, []);
   return (
     <Elements stripe={stripePromise}>
