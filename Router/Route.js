@@ -110,6 +110,8 @@ router
   .put(isLoggedIn, UpdateIndClient);
 //Getting the individual Employee information for payment
 router.route("/pay/:id").get(GetIndEmployee).post(PaymentProcessing);
+//Another route for information
+// router.route("/emp/:id").get(GetIndEmployee);
 //Getting the data for employee information
 router.route("/api/EmpOverview/:id").get(isLoggedIn, GetEmp_Tip);
 

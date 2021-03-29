@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useRouteMatch, useHistory } from "react-router-dom";
+import { useRouteMatch, useHistory, useParams } from "react-router-dom";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
@@ -18,6 +18,8 @@ import {
 export default function Ind_Emp({ match }) {
   //Get the param
   const { url } = useRouteMatch();
+  let params = useParams();
+
   const history = useHistory();
   const [emp, setEmp] = useState();
   const [tip, setTipAmount] = useState(0);
@@ -38,7 +40,7 @@ export default function Ind_Emp({ match }) {
   //Getting the data based on the user information provided to us
   const getData = async () => {
     const result = await axios.get(url).then((response) => response.data.data);
-    setEmp(...result);
+    await setEmp(...result);
   };
 
   const handleClose = () => {
@@ -138,7 +140,7 @@ export default function Ind_Emp({ match }) {
   useEffect(() => {
     console.log(url);
     setAlert();
-    setInterval(getData(), 4000);
+    getData();
   }, []);
   return (
     <div className="payment_body">
