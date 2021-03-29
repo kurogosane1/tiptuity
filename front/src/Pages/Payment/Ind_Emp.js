@@ -21,7 +21,7 @@ export default function Ind_Emp({ emp }) {
   let params = useParams();
 
   const history = useHistory();
-  const [emp, setEmp] = useState();
+  // const [emp, setEmp] = useState();
   const [tip, setTipAmount] = useState(0);
   const [alert, setAlert] = useState(); //This is incase the user inputs string instead of numbers
   const [name, setName] = useState();
