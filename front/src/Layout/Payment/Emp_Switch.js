@@ -33,7 +33,6 @@ export function Emp_Switch() {
         <Protect path="/api">
           <Index />
         </Protect>
-
         <Protect path="/AddEmployee">
           <AddEmployee style={{ minHeight: "100vh" }} />
         </Protect>

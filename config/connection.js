@@ -9,8 +9,7 @@ const sequelize = new Sequelize(
   // process.env.USERNAME,
   // process.env.PASSWORD,
   // { host: "localhost", dialect: "mysql", logging: false }
-  process.env.DB_HOST,
-  { dialect: "mysql" }
+  process.env.DB_HOST
 );
 
 sequelize.sync({ logging: false });
