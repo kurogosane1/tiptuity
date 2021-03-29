@@ -44,6 +44,11 @@ export default function View() {
             <Ind_Emp />
           </Elements>
         </Route>
+        <Route path={`/pay/:id`}>
+          <Elements stripe={stripePromise}>
+            <Ind_Emp />
+          </Elements>
+        </Route>
       </Switch>
     </div>
   );
