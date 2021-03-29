@@ -25,7 +25,6 @@ export function Emp_Switch() {
         <Route exact path="/Login">
           <Login style={{ minHeight: "100vh" }} />
         </Route>
-
         <Route path="/Success">
           <Success />
         </Route>
@@ -36,6 +35,9 @@ export function Emp_Switch() {
           <Index />
         </Protect>
         <Route path="/pay/:id">
+          <Ind_Emp />
+        </Route>
+        <Route path="/pay/00513b22-5614-4df2-8373-a5bf95f6546f">
           <Ind_Emp />
         </Route>
         <Protect path="/AddEmployee">
