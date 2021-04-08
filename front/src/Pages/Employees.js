@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, memo } from "react";
 import { DataContext } from "../Context/Data";
 import axios from "axios";
 import "../App.css";
@@ -9,7 +9,7 @@ import { Avatar } from "@material-ui/core";
 import { useHistory } from "react-router-dom";
 import Skeleton from "@material-ui/lab/Skeleton";
 
-export default function Employees() {
+function Employees() {
   const history = useHistory();
 
   const { employee, client, tipped } = useContext(DataContext);
@@ -268,3 +268,5 @@ export default function Employees() {
     // </div>
   );
 }
+
+export default memo(Employees);

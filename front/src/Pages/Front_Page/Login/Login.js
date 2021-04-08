@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import axios from "axios";
 import "../../../style/Login.css";
 
@@ -7,6 +8,7 @@ export function Login() {
   const [email, setEmail] = useState();
   const [password, setPassword] = useState();
   const [mess, setMess] = useState();
+  const [isLoading, setIsLoading] = useState(false);
 
   const history = useHistory();
   //This is if the Guest Login is selected
@@ -18,6 +20,7 @@ export function Login() {
   //This is toLogUser t0 login
   async function LogUser(e) {
     e.preventDefault();
+    setIsLoading(true);
 
     const result = await axios
       .post("/Login", { email, password })
@@ -27,12 +30,15 @@ export function Login() {
 
     if (result === "Username or Password are incorrect") {
       setMess(result);
+      setIsLoading(false);
     }
     if (result === "Successfully Authenticated") {
       setMess();
+      setIsLoading(false);
       history.push("/api");
     }
     if (result === "Password is Incorrect") {
+      setIsLoading(false);
       setMess(result);
     }
   }
@@ -89,7 +95,7 @@ export function Login() {
             </div>
             <div className="input_areas button_area">
               <button type="submit" className="log_button">
-                Login
+                {isLoading === true ? <CircularProgress /> : "Login"}
               </button>
               <button type="submit" className="guest" onClick={Guest}>
                 Guest Login

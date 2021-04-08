@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+import React, { useContext, useEffect, useState, memo } from "react";
 import axios from "axios";
 import "../../style/Tips.css";
 import { GiMoneyStack } from "react-icons/gi";
@@ -7,7 +7,7 @@ import { GrMoney } from "react-icons/gr";
 import { DataContext } from "../../Context/Data";
 import Skeleton from "@material-ui/lab/Skeleton";
 
-export default function Tips() {
+function Tips() {
   const { employee, client, tipped } = useContext(DataContext);
 
   //Employee data is stored
@@ -180,3 +180,5 @@ export default function Tips() {
     </section>
   );
 }
+
+export default memo(Tips);

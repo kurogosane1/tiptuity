@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect, useContext, memo } from "react";
 import { Avatar } from "@material-ui/core";
 import Skeleton from "@material-ui/lab/Skeleton";
 import { DataContext } from "../Context/Data";
@@ -10,7 +10,7 @@ import { useTheme } from "@material-ui/core/styles";
 import { AddEmployee } from "./AddEmployee";
 import axios from "axios";
 
-export default function EmpOverview() {
+function EmpOverview() {
   const history = useHistory();
   const location = useLocation();
 
@@ -78,25 +78,6 @@ export default function EmpOverview() {
         ? setIndEmp([...information])
         : history.push("/api/Employee", { Data: information });
     }
-    // console.log(first, last, index, id);
-    // if (window.innerWidth > 600) {
-    //   setClicked(index);
-    //   let information = names.filter((info) => {
-    //     return info.id === id;
-    //   });
-    //   console.log(information);
-    //   setIndEmp([...information]);
-    // } else {
-    //   setClicked(index);
-    //   let information = names.filter((info) => {
-    //     return info.id === id;
-    //   });
-    //   setIndEmp([...information]);
-
-    //   history.push("/api/Employee", {
-    //     Data: information,
-    //   });
-    // }
   };
 
   useEffect(() => {
@@ -263,3 +244,5 @@ export default function EmpOverview() {
     </div>
   );
 }
+
+export default memo(EmpOverview);

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from "react";
+import React, { useContext, useState, useEffect, memo } from "react";
 import { useHistory } from "react-router-dom";
 import { DataContext } from "../../Context/Data";
 import { GrMoney } from "react-icons/gr";
@@ -13,7 +13,7 @@ import { AddClient } from "../Dialog/AddClient";
 
 require("dotenv").config();
 
-export default function Clients() {
+function Clients() {
   const history = useHistory();
   //getting the date from the employee section
   const { employee, client, tipped, setClient } = useContext(DataContext);
@@ -301,3 +301,5 @@ export default function Clients() {
     </>
   );
 }
+
+export default memo(Clients);
