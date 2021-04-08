@@ -1,4 +1,4 @@
-import React, { useState, useEffect, createContext } from "react";
+import React, { useState, useEffect, createContext, useMemo } from "react";
 import faker from "faker";
 import axios from "axios";
 // import { getDatabaseName } from "../../../Config/Connection";
@@ -25,6 +25,8 @@ export default function Data(props) {
   // useEffect(() => {
   //   GetData();
   // }, []);
+
+  
 
   return (
     <DataContext.Provider
