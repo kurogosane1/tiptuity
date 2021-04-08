@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo } from "react";
+import React, { useState, useEffect, useContext, useMemo, memo } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../../App.css";
@@ -23,7 +23,7 @@ import {
   Pie,
 } from "recharts";
 
-export default function Stats() {
+function Stats() {
   const history = useHistory();
   //getting the used Data from the backend
   const { empTip, GetData } = useContext(DataContext);
@@ -259,3 +259,5 @@ export default function Stats() {
     </>
   );
 }
+
+export default memo(Stats);
