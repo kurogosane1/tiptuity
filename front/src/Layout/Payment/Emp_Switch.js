@@ -7,11 +7,11 @@ import Ind_Emp from "../../Pages/Payment/Ind_Emp";
 import Success from "../../Pages/Payment/Success";
 import Index from "../Dashboard/Index";
 import Protect from "../../Protected/Protect";
-import Tipping from "../../Protected/Tipping";
 import Failure from "../../Pages/Payment/Failure";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Demo from "../../Pages/IndividualEmp/Demo";
+import Test from "../../Pages/IndClient/test";
 //
 
 export function Emp_Switch() {
@@ -35,7 +35,6 @@ export function Emp_Switch() {
         <Route path="/Failure">
           <Failure />
         </Route>
-        {/* <Tipping path={`/pay/:id`} component={Ind_Emp} /> */}
         <Route path={`/pay/:id`}>
           <Elements stripe={stripePromise}>
             <Ind_Emp />
@@ -46,6 +45,7 @@ export function Emp_Switch() {
             <Demo />
           </Elements>
         </Route>
+        <Route path="/tipss" component={Test} />
         <Protect path="/api">
           <Index />
         </Protect>

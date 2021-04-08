@@ -115,5 +115,9 @@ router.route("/pay/:id").get(GetIndEmployee).post(PaymentProcessing);
 // router.route("/pay/emp/:id").get(GetIndEmployee);
 //Getting the data for employee information
 router.route("/api/EmpOverview/:id").get(isLoggedIn, GetEmp_Tip);
+//Testing
+router.route("/tipss").get((req,res)=>{
+  console.log(req.body);
+})
 
 module.exports = router;
