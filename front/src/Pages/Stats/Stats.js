@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useContext, useMemo, memo } from "react";
+import React, { useState, useEffect, useContext, memo } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 import "../../App.css";
@@ -94,8 +94,6 @@ function Stats() {
     Sort();
     setIsLoading(false);
   }, []);
-
-  const result = useMemo(() => GetData(), [empTips]);
 
   return (
     <>
