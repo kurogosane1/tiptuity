@@ -11,7 +11,7 @@ import Failure from "../../Pages/Payment/Failure";
 import { Elements } from "@stripe/react-stripe-js";
 import { loadStripe } from "@stripe/stripe-js";
 import Demo from "../../Pages/IndividualEmp/Demo";
-import Test from "../../Pages/IndClient/test";
+// import Test from "../../Pages/IndClient/test";
 //
 
 export function Emp_Switch() {
