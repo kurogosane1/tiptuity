@@ -45,7 +45,7 @@ export function Emp_Switch() {
             <Demo />
           </Elements>
         </Route>
-        <Route path="/tipss" component={Test} />
+        {/* <Route path="/tipss" component={Test} /> */}
         <Protect path="/api">
           <Index />
         </Protect>
