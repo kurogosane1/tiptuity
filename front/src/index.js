@@ -3,11 +3,12 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import Footer from "./Pages/Front_Page/Footer";
 
-ReactDOM.render(
-  // <React.StrictMode>
-  <App />,
-  // </React.StrictMode>,
+ReactDOM.hydrate(
+  <React.StrictMode>
+    <App />,
+  </React.StrictMode>,
   document.getElementById("root")
 );
 

@@ -102,6 +102,9 @@ export function Login() {
               </button>
             </div>
           </form>
+          <div className="goback">
+            <button onClick={() => history.push("/")}>Home</button>
+          </div>
         </div>
       </div>
     </div>
