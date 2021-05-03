@@ -1,6 +1,6 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-// import { useHistory } from "react-router-dom";
+import { useHistory } from "react-router-dom";
 import { Nav } from "../Front_Page/Navbar/Nav";
 import Iphone from "../../Assets/FrontEnd.svg";
 import QR from "../../Assets/FrontQR.svg";
@@ -13,7 +13,7 @@ import Footer from "./Footer";
 import QRcode from "react-qr-code";
 
 export function Front() {
-  // const history = useHistory();
+  const history = useHistory();
   return (
     <>
       <div className="Main-Page" id="Home">
@@ -28,7 +28,12 @@ export function Front() {
             <span>Tipping software for Valet. Easily get tips for Valet's</span>
           </div>
           <ul className="front-link" data-aos="fade-up" data-aos-delay="100">
-            <li className="learnLink">Learn More</li>
+            <li>
+              <a className="learnLink" href="#information">
+                Learn More
+              </a>
+              {/* Learn More */}
+            </li>
             <li className="demoLink">
               <NavLink
                 to="/Login"
