@@ -61,19 +61,29 @@ export function Nav() {
       <div className={open ? "minNavblock" : "minNavblock_closed"}>
         <ul className="minBurgerLinks">
           <li>
-            <a href="#Home">Home</a>
+            <a href="#Home" onClick={() => setOpen(!open)}>
+              Home
+            </a>
           </li>
           <li>
-            <a href="#information">Information</a>
+            <a href="#information" onClick={() => setOpen(!open)}>
+              Information
+            </a>
           </li>
           <li>
-            <a href="#clients">Clients</a>
+            <a href="#clients" onClick={() => setOpen(!open)}>
+              Clients
+            </a>
           </li>
           <li>
-            <a href="#mobile">Mobile</a>
+            <a href="#mobile" onClick={() => setOpen(!open)}>
+              Mobile
+            </a>
           </li>
           <li>
-            <a href="#pricing">Pricing</a>
+            <a href="#pricing" onClick={() => setOpen(!open)}>
+              Pricing
+            </a>
           </li>
           <li>
             <NavLink
