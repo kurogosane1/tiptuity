@@ -1,6 +1,312 @@
 .payment_body {
-  height: 100vh;
-  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.payment_container {
+  /* width: 20vw; */
+  box-sizing: border-box;
+  padding: 1rem 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 30px;
+  background: #f5f5f7;
+  box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
+}
+
+.payment_container > h2 {
+  font-size: 2.5em;
+  text-align: center;
+}
+
+.payment_emp_img {
+  border-radius: 50%;
+  height: 150px;
+  width: 150px;
+}
+
+.payment_section {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.payment_input_areas {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+.payment_input_areas > label {
+  margin-bottom: 1rem;
+}
+.payment_input_areas > input {
+  padding: 15px 3rem;
+  border-radius: 9px;
+  border: none;
+  border-radius: 9px;
+  background: linear-gradient(145deg, #ddddde, #ffffff);
+  box-shadow: 13px 13px 26px #d0d0d2, -13px -13px 26px #ffffff;
+  font-family: "Poppins", sans-serif;
+  color: #2f2f31;
+  font-size: 16px;
+}
+
+.payment_input_areas > input:focus {
+  border-radius: 9px;
+  background: #f5f5f7;
+  box-shadow: inset 13px 13px 26px #d0d0d2, inset -13px -13px 26px #ffffff;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  outline: none;
+  color: #171718;
+  font-size: 16px;
+}
+
+.tipAmount {
+  align-self: center;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+.tipAmount > button {
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  outline: none;
+  color: #2f2f31;
+  font-family: "Poppins";
+  border: none;
+  border-radius: 32px;
+  font-size: 12px;
+  font-weight: 500;
+  background: linear-gradient(145deg, #ffffff, #ddddde);
+  box-shadow: 13px 13px 26px #a9a9aa, -13px -13px 26px #ffffff;
+}
+.tipAmount > button:active {
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  border-radius: 1rem;
+  outline: none;
+  color: #f5f5f7;
+  font-family: "Poppins";
+  border: none;
+  border-radius: 32px;
+  font-size: 12px;
+  font-weight: 500;
+  background: #5eb735;
+  box-shadow: inset 19px 19px 39px #56a831, inset -19px -19px 39px #66c639;
+}
+
+.tipAmount > input {
+  padding: 15px 3rem;
+  border-radius: 9px;
+  border: none;
+  border-radius: 9px;
+  background: linear-gradient(145deg, #ddddde, #ffffff);
+  box-shadow: 13px 13px 26px #d0d0d2, -13px -13px 26px #ffffff;
+  font-family: "Poppins", sans-serif;
+  color: #2f2f31;
+  font-size: 16px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  margin: 0;
+}
+
+.tipAmount > label {
+  margin-right: 1rem;
+}
+
+.StripeElement {
+  padding: 15px 3rem;
+  border-radius: 9px;
+  border: none;
+  border-radius: 9px;
+  width: 500px;
+  background: linear-gradient(145deg, #ddddde, #ffffff);
+  box-shadow: 13px 13px 26px #d0d0d2, -13px -13px 26px #ffffff;
+  font-family: "Poppins", sans-serif;
+  color: #2f2f31;
+  font-size: 16px;
+}
+.StripeElement:focus {
+  border-radius: 9px;
+  background: #f5f5f7;
+  box-shadow: inset 13px 13px 26px #d0d0d2, inset -13px -13px 26px #ffffff;
+  font-family: "Poppins", sans-serif;
+  border: none;
+  outline: none;
+  color: #171718;
+  font-size: 16px;
+}
+.payment_processing > button {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+
+  outline: none;
+  color: #2f2f31;
+  font-family: "Poppins";
+  font-size: 1rem;
+  border: none;
+  border-radius: 32px;
+  background: linear-gradient(145deg, #ffffff, #ddddde);
+  box-shadow: 13px 13px 26px #a9a9aa, -13px -13px 26px #ffffff;
+}
+.payment_processing > button:active {
+  cursor: pointer;
+  padding: 1rem;
+
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+
+  outline: none;
+  color: #f5f5f7;
+  font-family: "Poppins";
+  font-size: 1rem;
+  border: none;
+  border-radius: 32px;
+  background: #5eb735;
+  box-shadow: inset 19px 19px 39px #56a831, inset -19px -19px 39px #66c639;
+}
+
+.credit_card_inf {
+  margin: 20px auto;
+  text-align: center;
+}
+
+.ActionButton {
+  cursor: pointer;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+
+  outline: none;
+  color: #2f2f31;
+  font-family: "Poppins";
+  font-size: 1rem;
+  border: none;
+  border-radius: 32px;
+  background: linear-gradient(145deg, #ffffff, #ddddde);
+  box-shadow: 13px 13px 26px #a9a9aa, -13px -13px 26px #ffffff;
+}
+
+.ActionButton:active {
+  padding: 1rem;
+
+  margin-bottom: 1rem;
+  border-radius: 1rem;
+
+  outline: none;
+  color: #f5f5f7;
+  font-family: "Poppins";
+  font-size: 1rem;
+  border: none;
+  border-radius: 32px;
+  background: #5eb735;
+  box-shadow: inset 19px 19px 39px #56a831, inset -19px -19px 39px #66c639;
+}
+.ActionButton:disabled {
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+
+  outline: none;
+  color: #2f2f31;
+  font-family: "Poppins";
+  font-size: 1rem;
+  border: none;
+  border-radius: 32px;
+  background: grey;
+}
+
+.DisagreeButton {
+  cursor: pointer;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+
+  outline: none;
+  color: #f5f5f7;
+  font-family: "Poppins";
+  font-size: 1rem;
+  border: none;
+  border-radius: 32px;
+  background: linear-gradient(145deg, #ff3131, #e62929);
+  transition: 1s ease-in-out;
+}
+
+.DisagreeButton:active {
+  cursor: pointer;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  margin-right: 1rem;
+  border-radius: 1rem;
+
+  outline: none;
+  color: #f5f5f7;
+  font-family: "Poppins";
+  font-size: 1rem;
+  border: none;
+  border-radius: 32px;
+  background: linear-gradient(145deg, #e62929, #ff3131);
+  box-shadow: 5px 5px 10px #d92727, -5px -5px 10px #ff3535;
+}
+
+.column5 > input {
+  width: 100%;
+}
+
+@media screen and (max-width: 745px) {
+  .payment_section {
+    margin-top: 1em;
+  }
+  .payment_container {
+    background: inherit;
+    box-shadow: none;
+    margin: 0 auto;
+  }
+
+  .payment_container > h2,
+  .payment_container > h1 {
+    font-size: 1.5em;
+    text-align: center;
+    line-height: 1.5;
+  }
+
+  .payment_input_areas {
+    display: flex;
+    flex-direction: column;
+    margin: 10px auto;
+    justify-content: space-evenly;
+    align-items: center;
+  }
+
+  .StripeElement {
+    margin: 0 auto;
+    width: 90vw;
+  }
+}
+
+/* .payment_body {
+  height: 100%;
+  margin: 3rem auto;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -8,9 +314,9 @@
 }
 .payment_container {
   box-sizing: border-box;
-  /* width: 70%; */
+
   padding: 5rem;
-  height: autos;
+  height: auto;
   background: #f5f5f7;
   box-shadow: 20px 20px 60px #bfbfc1, -20px -20px 60px #ffffff;
   display: flex;
@@ -89,9 +395,7 @@
   width: 100%;
   text-align: center;
 }
-/* .column4 > input {
-  width: 30%;
-} */
+
 .column4 {
   grid-column: 0/1;
 }
@@ -114,8 +418,7 @@
   margin-bottom: 1rem;
   padding: 1rem;
   border-radius: 1rem;
-  /* width: auto; */
-  outline: none;
+   outline: none;
   color: #2f2f31;
   font-family: "Poppins";
   border: none;
@@ -129,8 +432,7 @@
   margin-right: 1rem;
   margin-bottom: 1rem;
   padding: 1rem;
-  border-radius: 1rem;
-  /* width: auto; */
+  border-radius: 1rem; 
   outline: none;
   color: #f5f5f7;
   font-family: "Poppins";
@@ -208,7 +510,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-bottom: 1rem;
   margin-right: 1rem;
   border-radius: 1rem;
-  /* width: 100%; */
+ 
   outline: none;
   color: #2f2f31;
   font-family: "Poppins";
@@ -221,10 +523,10 @@ input[type="number"]::-webkit-outer-spin-button {
 .payment_processing > button:active {
   cursor: pointer;
   padding: 1rem;
-  /* margin-top: 2rem; */
+ 
   margin-bottom: 1rem;
   border-radius: 1rem;
-  /* width: 50%; */
+ 
   outline: none;
   color: #f5f5f7;
   font-family: "Poppins";
@@ -241,7 +543,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-bottom: 1rem;
   margin-right: 1rem;
   border-radius: 1rem;
-  /* width: 100%; */
+
   outline: none;
   color: #2f2f31;
   font-family: "Poppins";
@@ -254,10 +556,10 @@ input[type="number"]::-webkit-outer-spin-button {
 
 .ActionButton:active {
   padding: 1rem;
-  /* margin-top: 2rem; */
+
   margin-bottom: 1rem;
   border-radius: 1rem;
-  /* width: 50%; */
+
   outline: none;
   color: #f5f5f7;
   font-family: "Poppins";
@@ -272,7 +574,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-bottom: 1rem;
   margin-right: 1rem;
   border-radius: 1rem;
-  /* width: 100%; */
+
   outline: none;
   color: #2f2f31;
   font-family: "Poppins";
@@ -288,7 +590,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-bottom: 1rem;
   margin-right: 1rem;
   border-radius: 1rem;
-  /* width: 100%; */
+ 
   outline: none;
   color: #f5f5f7;
   font-family: "Poppins";
@@ -297,7 +599,7 @@ input[type="number"]::-webkit-outer-spin-button {
   border-radius: 32px;
   background: linear-gradient(145deg, #ff3131, #e62929);
   transition: 1s ease-in-out;
-  /* box-shadow: 5px 5px 10px #f52c2c, -5px -5px 10px #ff3030; */
+
 }
 
 .DisagreeButton:active {
@@ -306,7 +608,7 @@ input[type="number"]::-webkit-outer-spin-button {
   margin-bottom: 1rem;
   margin-right: 1rem;
   border-radius: 1rem;
-  /* width: 100%; */
+
   outline: none;
   color: #f5f5f7;
   font-family: "Poppins";
@@ -340,4 +642,4 @@ input[type="number"]::-webkit-outer-spin-button {
   .StripeElement {
     width: auto;
   }
-}
+} */

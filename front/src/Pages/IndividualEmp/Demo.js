@@ -151,20 +151,12 @@ export default function Ind_Emp({ match }) {
   });
 
   useEffect(() => {
-    // console.log(url);
     setAlert();
-    // getData();
   }, []);
   return (
     <div className="payment_body">
       <div className="payment_container" style={{ justifyItems: "center" }}>
-        <h2
-          style={{
-            textAlign: "center",
-            marginBottom: "5px",
-            fontFamily: "Poppins",
-            fontSize: "2.5rem",
-          }}>
+        <h2>
           {emp ? emp.firstname : ""} {emp ? emp.lastname : ""}
         </h2>
 
@@ -235,10 +227,8 @@ export default function Ind_Emp({ match }) {
             <h2>{alert ? alert : null}</h2>
           </div>
         </div>
-        <div className="credit_card_inf" style={{ width: "100%" }}>
-          <label htmlFor="" style={{ textAlign: "center" }}>
-            Credit Card Information
-          </label>
+        <div className="credit_card_inf">
+          <label htmlFor="">Credit Card Information</label>
           <Card />
         </div>
         <div className="payment_processing">
