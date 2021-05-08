@@ -5,6 +5,7 @@ import Data from "./Context/Data";
 import { Emp_Switch } from "./Layout/Payment/Emp_Switch";
 import AOS from "aos";
 import "aos/dist/aos.css"; //
+import ScrollToTop from "./ScrollToTop";
 
 function App() {
   useEffect(() => {
@@ -13,6 +14,7 @@ function App() {
 
   return (
     <Data>
+      <ScrollToTop />
       <Router>
         <Emp_Switch />
       </Router>
