@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Route, Redirect } from "react-router-dom";
 
-export default function Protect({ path: path, component: Component, ...rest }) {
+export default function Protect({ path, component: Component, ...rest }) {
   const [isAuth, setIsAuth] = useState(false);
   const checkAuth = async () => {
     const result = await axios.get(path).then((response) => {
@@ -14,10 +14,10 @@ export default function Protect({ path: path, component: Component, ...rest }) {
       setIsAuth(false);
     }
   };
-  
+
   useEffect(() => {
     checkAuth();
-  }, []);
+  });
 
   return (
     <Route

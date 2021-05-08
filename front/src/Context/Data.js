@@ -1,5 +1,4 @@
-import React, { useState, useEffect, createContext, useMemo } from "react";
-import faker from "faker";
+import React, { useState, createContext } from "react";
 import axios from "axios";
 // import { getDatabaseName } from "../../../Config/Connection";
 
@@ -22,11 +21,7 @@ export default function Data(props) {
       setEmpTip([...TipsEmp]);
     });
   };
-  // useEffect(() => {
-  //   GetData();
-  // }, []);
 
-  
 
   return (
     <DataContext.Provider
