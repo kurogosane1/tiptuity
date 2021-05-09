@@ -1,6 +1,6 @@
 import { useEffect } from "react";
 import "./App.css";
-import { HashRouter as Router } from "react-router-dom";
+import { BrowserRouter as Router } from "react-router-dom";
 import Data from "./Context/Data";
 import { Emp_Switch } from "./Layout/Payment/Emp_Switch";
 import AOS from "aos";
