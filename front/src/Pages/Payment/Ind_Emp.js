@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useRouteMatch, useHistory, useParams } from "react-router-dom";
 import { useStripe, useElements } from "@stripe/react-stripe-js";
+import CircularProgress from "@material-ui/core/CircularProgress";
 import { v4 as uuidv4 } from "uuid";
 import axios from "axios";
 import "../../style/Ind_Emp.css";
@@ -16,6 +17,8 @@ import {
 //For paying employees that have not been paid at all
 
 export default function Ind_Emp({ match }) {
+  //Loading state
+  const [loading, setLoading] = useState(false);
   //Get the param
   const { url } = useRouteMatch();
   let params = useParams();
@@ -141,12 +144,14 @@ export default function Ind_Emp({ match }) {
   });
 
   useEffect(() => {
-    console.log(url);
+    setLoading(true);
     setAlert();
     getData();
-    // setEmp(emp);
+    setLoading(false);
   }, []);
-  return (
+  return loading ? (
+    <CircularProgress />
+  ) : (
     <div className="payment_body">
       <div className="payment_container" style={{ justifyItems: "center" }}>
         <h2
