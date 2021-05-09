@@ -14,8 +14,8 @@ function App() {
 
   return (
     <Data>
-      <ScrollToTop />
       <Router>
+        <ScrollToTop />
         <Emp_Switch />
       </Router>
     </Data>
