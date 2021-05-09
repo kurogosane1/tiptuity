@@ -3,7 +3,7 @@ import { Switch, Route } from "react-router-dom";
 import { AddEmployee } from "../../Pages/AddEmployee";
 import { Front } from "../../Pages/Front_Page/Front";
 import { Login } from "../../Pages/Front_Page/Login/Login";
-import Ind_Emp from "../../Pages/Payment/Ind_Emp";
+import IndEmp from "../../Pages/Payment/Ind_Emp";
 import Success from "../../Pages/Payment/Success";
 import Index from "../Dashboard/Index";
 import Protect from "../../Protected/Protect";
@@ -37,7 +37,7 @@ export function Emp_Switch() {
         </Route>
         <Route path={`/pay/:id`}>
           <Elements stripe={stripePromise}>
-            <Ind_Emp />
+            <IndEmp />
           </Elements>
         </Route>
         <Route path={`/Demo`}>

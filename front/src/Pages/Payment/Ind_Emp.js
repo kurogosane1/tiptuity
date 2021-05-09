@@ -16,7 +16,7 @@ import {
 //This is an individual employee payment section
 //For paying employees that have not been paid at all
 
-export default function Ind_Emp({ match }) {
+export default function IndEmp({ match }) {
   //Loading state
   const [loading, setLoading] = useState(false);
   //Get the param
