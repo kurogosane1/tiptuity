@@ -72,7 +72,7 @@ export default function IndEmp({ match }) {
   const PaymentProcess = async (e) => {
     e.preventDefault();
     const cardElement = element.getElement("card");
-    const tipNumber = uuidv4();
+    // const tipNumber = uuidv4();
     //This below is for billing address
     const Billing = {
       amount: tip,
