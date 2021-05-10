@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import "./App.css";
 import { BrowserRouter as Router } from "react-router-dom";
 import Data from "./Context/Data";
-import { Emp_Switch } from "./Layout/Payment/Emp_Switch";
+import { EmpSwitch } from "./Layout/Payment/Emp_Switch";
 import AOS from "aos";
 import "aos/dist/aos.css"; //
 import ScrollToTop from "./ScrollToTop";
@@ -16,7 +16,7 @@ function App() {
     <Data>
       <Router>
         <ScrollToTop />
-        <Emp_Switch />
+        <EmpSwitch />
       </Router>
     </Data>
   );

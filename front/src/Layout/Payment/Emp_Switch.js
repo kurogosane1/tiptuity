@@ -14,7 +14,7 @@ import Demo from "../../Pages/IndividualEmp/Demo";
 // import Test from "../../Pages/IndClient/test";
 //
 
-export function Emp_Switch() {
+export function EmpSwitch() {
   // This is for stripe to work with this
   const stripePromise = loadStripe(
     process.env.REACT_APP_Stripe_PUBLISHIBLE_KEY
