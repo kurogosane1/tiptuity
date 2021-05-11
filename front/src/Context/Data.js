@@ -115,8 +115,7 @@ export default function Data(props) {
         setEmployee,
         setClient,
         empTip,
-        // data,
-        // dispatch,
+       
       }}>
       {props.children}
     </DataContext.Provider>

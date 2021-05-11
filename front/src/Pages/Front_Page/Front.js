@@ -1,19 +1,15 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
-import { useHistory } from "react-router-dom";
 import { Nav } from "../Front_Page/Navbar/Nav";
 import Iphone from "../../Assets/FrontEnd.svg";
-import QR from "../../Assets/FrontQR.svg";
 import Img from "../../Assets/Dashboard.png";
 import Activity from "../../Assets/Activity.png";
 import front from "../../Assets/front.svg";
 import location from "../../Assets/location.png";
-// import "../../style/FrontPage.css";
 import Footer from "./Footer";
 import QRcode from "react-qr-code";
 
 export function Front() {
-  const history = useHistory();
   return (
     <>
       <div className="Main-Page" id="Home">

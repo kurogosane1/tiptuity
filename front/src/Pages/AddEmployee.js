@@ -2,9 +2,7 @@ import React, { useEffect, useState, useContext } from "react";
 import "../style/AddEmployee.css";
 import { useRouteMatch } from "react-router-dom";
 import axios from "axios";
-import QRCode from "qrcode.react";
 import { DataContext } from "../Context/Data";
-
 
 //This is where we will implement adding new employees
 export function AddEmployee({ closeDialog }) {
@@ -137,7 +135,6 @@ export function AddEmployee({ closeDialog }) {
           </div>
         </form>
       </div>
-     
     </div>
   );
 }
