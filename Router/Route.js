@@ -73,6 +73,7 @@ router.route("/api/post").get(async (req, res) => {
 router.route("/api/getinfo").get(async (req, res) => {
   const Salt = bcrypt.genSaltSync(10);
   const hashPassword = bcrypt.hashSync("password", Salt);
+  console.log(hashPassword);
 
   const something = [
     {
@@ -116,8 +117,8 @@ router.route("/pay/:id").get(GetIndEmployee).post(PaymentProcessing);
 //Getting the data for employee information
 router.route("/api/EmpOverview/:id").get(isLoggedIn, GetEmp_Tip);
 //Testing
-router.route("/tipss").get((req,res)=>{
+router.route("/tipss").get((req, res) => {
   console.log(req.body);
-})
+});
 
 module.exports = router;
