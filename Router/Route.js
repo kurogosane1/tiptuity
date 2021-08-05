@@ -8,10 +8,10 @@ const Employee = require("../Models/Employee");
 const Client = require("../Models/Client");
 const Users = require("../Models/User");
 const Tips = require("../Models/Tip");
-const { Emp_Sample } = require("../Data_samples/Employee_Sample");
-const { Client_Sample } = require("../Data_samples/Client_Sample");
-const { User_Sample } = require("../Data_samples/User_MockData");
-const tip_sample = require("../Data_samples/Tip_Samples");
+const { Emp_Sample } = require("../Datasamples/Employee_Sample");
+const { Client_Sample } = require("../Datasamples/Client_Sample");
+const { User_Sample } = require("../Datasamples/User_MockData");
+const tip_sample = require("../Datasamples/Tip_Samples");
 const myStore = require("../config/Session");
 const {
   VerifyLoggedIn,
