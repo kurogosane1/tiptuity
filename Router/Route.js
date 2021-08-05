@@ -42,7 +42,7 @@ router.route("/TipSample").get(async (req, res) => {
   const tips = await tip_sample
     .then((data) => data)
     .catch((err) => console.log(err));
-
+  
   const results = await Tips.bulkCreate(tips, { returning: true });
   res.status(200).json(results);
 });

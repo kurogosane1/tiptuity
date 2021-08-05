@@ -2,7 +2,7 @@ const sequelize = require("../config/connection");
 const { DataTypes } = require("sequelize");
 const Clients = require("./Client");
 const Employee = require("./Employee");
-// const Sample = require("../Data_samples/Tip_Samples");
+const Sample = require("../Datasamples/Tip_Samples");
 
 const Tip = sequelize.define("Tip", {
   id: {
