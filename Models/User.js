@@ -1,5 +1,6 @@
 const sequelize = require("../config/connection");
 const { DataTypes } = require("sequelize");
+const { User_Sample } = require("../data_samples/User_MockData");
 
 const User = sequelize.define("User", {
   id: {
@@ -22,6 +23,6 @@ const User = sequelize.define("User", {
   },
 });
 
-User.sync({ logging: false }).catch((err) => err.message);
+User.sync({ logging: false, force: false });
 
 module.exports = User;

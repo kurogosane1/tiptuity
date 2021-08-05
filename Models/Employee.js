@@ -1,8 +1,8 @@
 const sequelize = require("../config/connection");
 const { DataTypes } = require("sequelize");
-// const Tip = require("./Tip");
+
 //import sample to process
-const Sample = require("../Data_samples/Employee");
+const { Emp_Sample } = require("../data_samples/Employee_Sample");
 
 const Employee = sequelize.define("Employee", {
   id: {
@@ -38,12 +38,6 @@ const Employee = sequelize.define("Employee", {
   },
 });
 
-const sample = Sample();
-
-Employee.sync({ force: true, logging: false })
-  .then(() => {
-    Employee.bulkCreate(sample);
-  })
-  .catch((err) => err.message);
+Employee.sync({ force: false, logging: false });
 
 module.exports = Employee;

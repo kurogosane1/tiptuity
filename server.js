@@ -1,33 +1,46 @@
+// All packages
 const express = require("express");
-const app = express();
-const bodyParser = require("body-parser");
-const PORT = process.env.PORT || 4500;
-const sequelize = require("./config/connection");
-const session = require("./config/Session");
-const passport = require("passport");
-const flash = require("connect-flash");
-const path = require("path");
+const session = require("express-session");
 const cors = require("cors");
+const passport = require("./Passport");
+// Initiallizing express and other variables
+const app = express();
+const sequelize = require("./config/connection");
+const myStore = require("./config/Session");
+const PORT = process.env.PORT || 4000;
 
-// BodyParser makes it possible for our server to interpret data sent to it.
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: true }));
-app.use(bodyParser.text());
-app.use(bodyParser.json({ type: "application/vnd.api+json" }));
-app.use(bodyParser.json());
+// BodyParder now deprecated in 2021 but now part of express to interpret data sent to it
+app.use(express.json({ type: "application/vnd.api+json" }));
+app.use(express.urlencoded({ extended: true }));
+app.use(express.text());
+app.use(express.json());
 
+// Middleware
 app.use(cors());
-
-//usesing Sessions
 app.set("trust proxy", 1);
-app.use(flash());
-app.use(session);
+app.use(
+  session({
+    store: myStore,
+    key: process.env.SESSION_KEY,
+    resave: false,
+    saveUninitialized: false,
+    proxy: true,
+    secret: process.env.SESSION_SECRET,
+    cookie: {
+      maxAge: 1 * 60 * 60 * 1000,
+      sameSite: true,
+      secure: false,
+      httpOnly: true,
+    },
+  })
+);
+myStore.sync();
 app.use(passport.initialize());
 app.use(passport.session());
-require("./Controller/Passport")(passport);
 
-//General routes
-app.use("/", require("./Router/Route")); //For Protected Routes
+// Pointing to Router so that Express can use it
+app.use("/api", require("./router/route"));
+app.use("/pay", require("./router/payment"));
 
 //This is when to deploy
 if (process.env.NODE_ENV === "production") {
@@ -38,7 +51,7 @@ if (process.env.NODE_ENV === "production") {
   });
 }
 
-//Enabling sequelize and starting the server;
+// To initialize the server
 sequelize
   .authenticate()
   .then(() => {

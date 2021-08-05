@@ -1,5 +1,5 @@
-const Clients = require("../Models/Client");
-const Employee = require("../Models/Employee");
+const Clients = require("../models/Client");
+const Employee = require("../models/Employee");
 const faker = require("faker");
 
 const Data = async () => {
@@ -16,10 +16,12 @@ const Data = async () => {
     let client_id = Cl[i].id;
     let emp_id = Emp[i].id;
     let tip_amount = parseFloat(faker.finance.amount());
+    let tip_date = faker.date.between("2019-01-01", "2021-07-15");
     Sample.push({
       client_id,
       emp_id,
       tip_amount,
+      tip_date,
     });
   }
   return Sample;

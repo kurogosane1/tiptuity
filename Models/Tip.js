@@ -19,19 +19,20 @@ const Tip = sequelize.define("Tip", {
     type: DataTypes.UUID,
     allowNull: false,
   },
+
   tip_amount: {
     type: DataTypes.FLOAT,
-    // allowNull: false,
     defaultValue: 0,
+  },
+  tip_date: {
+    type: DataTypes.STRING,
+    defaultValue: Date.now(),
   },
 });
 
-// const Sample = Data();
-// const check = Sample.then((Data) => Data);
 Tip.sync();
 
 Tip.belongsTo(Clients, { foreignKey: { name: "client_id" } });
 Tip.belongsTo(Employee, { foreignKey: { name: "emp_id" } });
-// Employee.hasMany(Tip);
 
 module.exports = Tip;

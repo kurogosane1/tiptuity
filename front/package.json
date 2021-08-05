@@ -3,31 +3,23 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "@material-ui/core": "^4.11.3",
-    "@material-ui/icons": "^4.11.2",
-    "@material-ui/lab": "^4.0.0-alpha.57",
-    "@stripe/react-stripe-js": "^1.4.0",
-    "@stripe/stripe-js": "^1.13.1",
-    "@testing-library/jest-dom": "^5.11.9",
-    "@testing-library/react": "^11.2.5",
-    "@testing-library/user-event": "^12.6.3",
-    "@uploadcare/react-widget": "^1.3.5",
-    "aos": "^3.0.0-beta.6",
+    "@stripe/react-stripe-js": "^1.4.1",
+    "@testing-library/jest-dom": "^5.11.4",
+    "@testing-library/react": "^11.1.0",
+    "@testing-library/user-event": "^12.1.10",
+    "aos": "^2.3.4",
     "axios": "^0.21.1",
     "boxicons": "^2.0.7",
-    "dotenv": "^8.2.0",
-    "faker": "^5.4.0",
+    "dayjs": "^1.10.6",
+    "framer-motion": "^4.1.17",
     "qrcode.react": "^1.0.1",
-    "react": "^17.0.1",
-    "react-dom": "^17.0.1",
-    "react-icons": "^4.2.0",
-    "react-qr-code": "^1.1.1",
-    "react-router": "^4.3.1",
+    "react": "^17.0.2",
+    "react-dom": "^17.0.2",
     "react-router-dom": "^5.2.0",
-    "react-scripts": "4.0.2",
-    "recharts": "^2.0.8",
-    "uuid": "^8.3.2",
-    "web-vitals": "^1.1.0"
+    "react-scripts": "^4.0.3",
+    "recharts": "^2.0.10",
+    "styled-components": "^5.3.0",
+    "web-vitals": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -41,18 +33,6 @@
       "react-app/jest"
     ]
   },
-  "quokka": {
-    "babel": {
-      "ts": false,
-      "presets": [
-        "react-app"
-      ]
-    },
-    "plugins": [
-      "jsdom-quokka-plugin"
-    ],
-    "autoDetect": true
-  },
   "browserslist": {
     "production": [
       ">0.2%",
@@ -65,9 +45,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "@babel/register": "^7.13.8",
-    "jsdom-quokka-plugin": "^1.0.16"
-  },
-  "proxy": "http://localhost:4500"
+  "proxy": "http://localhost:4000"
 }
