@@ -46,7 +46,6 @@ function Signup() {
           }
         )
         .then((res) => {
-          console.log(res);
           if (res.data.message === "User Already Exists. Please Login") {
             setError("User Already Exists. Please Login");
           } else if (res.data.message === "success") {
