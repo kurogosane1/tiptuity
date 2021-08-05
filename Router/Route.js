@@ -1,6 +1,6 @@
 // Getting the Packages
 const express = require("express");
-const passport = require("../Passport");
+const passport = require("../passport");
 const bcrypt = require("bcrypt");
 
 // Importing from Databases
