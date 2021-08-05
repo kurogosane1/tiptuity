@@ -69,12 +69,12 @@ router.route("/signup").post((req, res, next) => {
         message: err.message || "Oops something is wrong",
       });
     if (user) {
-      req.login(user, (err) => {
-        if (err) {
-          return next(err);
-        }
-        res.json({ message: "success", id: user.id });
-      });
+      // req.login(user, (err) => {
+      //   if (err) {
+      //     return next(err);
+      //   }
+      res.json({ message: "success", id: user.id });
+      // });
     }
     if (info) return res.json({ message: info });
   })(req, res, next);

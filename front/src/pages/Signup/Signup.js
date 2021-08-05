@@ -11,6 +11,7 @@ import {
   OutLineButton,
   MessageContainer,
 } from "../../style";
+import { useUserData } from "../../context/LogContext";
 
 export const LoadVariance = {
   initial: { opacitiy: 0, y: "100" },
@@ -20,6 +21,7 @@ export const LoadVariance = {
 
 function Signup() {
   let history = useHistory();
+  const { setLogged } = useUserData();
   const emailAddress = useRef();
   const password = useRef();
   const password2 = useRef();
