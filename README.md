@@ -7,6 +7,12 @@
 Welcome to Tiptuity your cashless way of paying tips.
 The future possibilities are coming and Tiptuity is going to take advantage of it. 
 
+## VERSION 2
+Introducing version 2 that has the following update
+ - Graphical User Interface has been updated and it has been redesigned completely from scratch
+ - Authentication has been modified
+ - 
+
 Tituity was created as a class project for our graduation but we have decided to take the project further. 
 It had been developed by three awesome developers who learnt coding in a very short amount of time.
 The players are:
