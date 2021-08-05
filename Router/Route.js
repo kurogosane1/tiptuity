@@ -42,7 +42,7 @@ router.route("/TipSample").get(async (req, res) => {
   const tips = await tip_sample
     .then((data) => data)
     .catch((err) => console.log(err));
-  
+
   const results = await Tips.bulkCreate(tips, { returning: true });
   res.status(200).json(results);
 });
@@ -92,6 +92,7 @@ router.route("/Login").post((req, res, next) => {
           console.log(err);
           next(err);
         }
+        // Refused to load the image'<URL>'because it violates the following Content Security Policy
 
         return res.json({ message: "success", id: user });
       });
