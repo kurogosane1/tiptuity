@@ -2,7 +2,7 @@ const sequelize = require("../config/connection");
 const { DataTypes } = require("sequelize");
 
 //import sample to process
-const { Emp_Sample } = require("../data_samples/Employee_Sample");
+const { Emp_Sample } = require("../Data_samples/Employee_Sample");
 
 const Employee = sequelize.define("Employee", {
   id: {

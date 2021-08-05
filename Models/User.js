@@ -1,6 +1,6 @@
 const sequelize = require("../config/connection");
 const { DataTypes } = require("sequelize");
-const { User_Sample } = require("../data_samples/User_MockData");
+const { User_Sample } = require("../Data_samples/User_MockData");
 
 const User = sequelize.define("User", {
   id: {
