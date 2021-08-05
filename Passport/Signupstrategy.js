@@ -1,7 +1,7 @@
 const LocalStrategy = require("passport-local");
 const bcrypt = require("bcryptjs");
 const salt = bcrypt.genSaltSync(10);
-const Users = require("../models/User");
+const Users = require("../Models/User");
 
 const LoginStrategy = new LocalStrategy(
   {

@@ -1,5 +1,5 @@
-const Clients = require("../models/Client");
-const Employee = require("../models/Employee");
+const Clients = require("../Models/Client");
+const Employee = require("../Models/Employee");
 const faker = require("faker");
 
 const Data = async () => {

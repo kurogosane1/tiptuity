@@ -1,5 +1,5 @@
 const passport = require("passport");
-const Users = require("../models/User");
+const Users = require("../Models/User");
 
 // Different Strategies
 const SignupStrategy = require("./Signupstrategy");

@@ -2,7 +2,7 @@
 const express = require("express");
 const session = require("express-session");
 const cors = require("cors");
-const passport = require("./passport");
+const passport = require("./Passport");
 // Initiallizing express and other variables
 const app = express();
 const sequelize = require("./config/connection");

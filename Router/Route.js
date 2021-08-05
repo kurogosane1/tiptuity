@@ -1,13 +1,13 @@
 // Getting the Packages
 const express = require("express");
-const passport = require("../passport");
+const passport = require("../Passport");
 const bcrypt = require("bcrypt");
 
 // Importing from Databases
-const Employee = require("../models/Employee");
-const Client = require("../models/Client");
-const Users = require("../models/User");
-const Tips = require("../models/Tip");
+const Employee = require("../Models/Employee");
+const Client = require("../Models/Client");
+const Users = require("../Models/User");
+const Tips = require("../Models/Tip");
 const { Emp_Sample } = require("../data_samples/Employee_Sample");
 const { Client_Sample } = require("../data_samples/Client_Sample");
 const { User_Sample } = require("../data_samples/User_MockData");
