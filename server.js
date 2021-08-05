@@ -39,8 +39,8 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Pointing to Router so that Express can use it
-app.use("/api", require("./Router/route"));
-app.use("/pay", require("./Router/payment"));
+app.use("/api", require("./Router/route.js"));
+app.use("/pay", require("./Router/payment.js"));
 
 //This is when to deploy
 if (process.env.NODE_ENV === "production") {
